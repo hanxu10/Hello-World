@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "MBProgressHUD.h"
+#import "ZZJsonToModel/ZZJsonToModel.h"
 
 @interface ViewController ()
 
@@ -48,6 +49,14 @@
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         });
     });
+    
+    
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"info.json" ofType:nil];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    NSURL *xx = [NSURL URLWithString:@"/Users/xuxu/Desktop/aaxx"];
+    [ZZJsonToModel zz_createYYModelWithJson:json fileName:nil extensionName:@"json" fileURL:xx error:nil];
 }
 
 
