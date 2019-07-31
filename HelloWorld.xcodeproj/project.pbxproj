@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A2D247122DEAB8F00B99E7D /* HXYDrawingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2D247022DEAB8F00B99E7D /* HXYDrawingUtil.m */; };
+		7A3AB81D22E478B2001323FD /* text.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7A3AB81C22E478B1001323FD /* text.pdf */; };
+		7A3AB82722E59744001323FD /* test.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = 7A3AB82622E59744001323FD /* test.MP4 */; };
 		C3DC5EAB22DCD30800FE7FF3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC5EAA22DCD30800FE7FF3 /* AppDelegate.m */; };
 		C3DC5EAE22DCD30800FE7FF3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC5EAD22DCD30800FE7FF3 /* ViewController.m */; };
 		C3DC5EB122DCD30800FE7FF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3DC5EAF22DCD30800FE7FF3 /* Main.storyboard */; };
@@ -17,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A2D246F22DEAB8F00B99E7D /* HXYDrawingUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYDrawingUtil.h; sourceTree = "<group>"; };
+		7A2D247022DEAB8F00B99E7D /* HXYDrawingUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYDrawingUtil.m; sourceTree = "<group>"; };
+		7A3AB81C22E478B1001323FD /* text.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = text.pdf; sourceTree = "<group>"; };
+		7A3AB82622E59744001323FD /* test.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.MP4; sourceTree = "<group>"; };
 		C3DC5EA622DCD30800FE7FF3 /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3DC5EA922DCD30800FE7FF3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C3DC5EAA22DCD30800FE7FF3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -42,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A2D246E22DEAB7400B99E7D /* Drawing */ = {
+			isa = PBXGroup;
+			children = (
+				7A2D246F22DEAB8F00B99E7D /* HXYDrawingUtil.h */,
+				7A2D247022DEAB8F00B99E7D /* HXYDrawingUtil.m */,
+			);
+			path = Drawing;
+			sourceTree = "<group>";
+		};
 		C3DC5E9D22DCD30800FE7FF3 = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +77,9 @@
 		C3DC5EA822DCD30800FE7FF3 /* HelloWorld */ = {
 			isa = PBXGroup;
 			children = (
+				7A3AB82622E59744001323FD /* test.MP4 */,
+				7A3AB81C22E478B1001323FD /* text.pdf */,
+				7A2D246E22DEAB7400B99E7D /* Drawing */,
 				C3DC5EBF22DCD4AD00FE7FF3 /* MBProgressHUD */,
 				C3DC5EA922DCD30800FE7FF3 /* AppDelegate.h */,
 				C3DC5EAA22DCD30800FE7FF3 /* AppDelegate.m */,
@@ -142,8 +161,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3DC5EB622DCD30900FE7FF3 /* LaunchScreen.storyboard in Resources */,
+				7A3AB81D22E478B2001323FD /* text.pdf in Resources */,
 				C3DC5EB322DCD30900FE7FF3 /* Assets.xcassets in Resources */,
 				C3DC5EB122DCD30800FE7FF3 /* Main.storyboard in Resources */,
+				7A3AB82722E59744001323FD /* test.MP4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +178,7 @@
 				C3DC5EAE22DCD30800FE7FF3 /* ViewController.m in Sources */,
 				C3DC5EB922DCD30900FE7FF3 /* main.m in Sources */,
 				C3DC5EAB22DCD30800FE7FF3 /* AppDelegate.m in Sources */,
+				7A2D247122DEAB8F00B99E7D /* HXYDrawingUtil.m in Sources */,
 				C3DC5EC222DCD4BC00FE7FF3 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,13 +322,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8DW8Y7UETJ;
+				DEVELOPMENT_TEAM = 5ABL5P6344;
 				INFOPLIST_FILE = HelloWorld/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hxy-tech.HelloWorld";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hxy-tech.HelloWorld.xx";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -317,13 +339,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8DW8Y7UETJ;
+				DEVELOPMENT_TEAM = 5ABL5P6344;
 				INFOPLIST_FILE = HelloWorld/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hxy-tech.HelloWorld";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hxy-tech.HelloWorld.xx";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
