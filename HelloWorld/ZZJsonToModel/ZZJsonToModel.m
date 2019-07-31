@@ -54,7 +54,7 @@ static NSString *headerString = @"\n// ZZJsonToModel(GitHub:https://github.com/z
 
 + (BOOL)modelWithFileName:(NSString *)fileName extensionName:(NSString *)extensionName json:(NSDictionary *)json fileURL:(NSURL *)url error:(Error)error {
 #warning 此地址为 mac 文件夹地址，地址错误报错为 The folder “XXX.h” doesn’t exist.（暂时仅支持模拟器生成 model 文件，正在完善中。。。）
-    if (TARGET_IPHONE_SIMULATOR) {
+    if (!TARGET_IPHONE_SIMULATOR) {
         NSLog(@"暂时仅支持模拟器生成 model 文件，正在完善中。。。");
         return NO;
     }else {
