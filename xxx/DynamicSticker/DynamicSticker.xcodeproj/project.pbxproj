@@ -1,0 +1,397 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C36AC50522F1DA1700E32DFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C36AC50422F1DA1700E32DFE /* AppDelegate.m */; };
+		C36AC50822F1DA1700E32DFE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C36AC50722F1DA1700E32DFE /* ViewController.m */; };
+		C36AC50A22F1DA1700E32DFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C36AC50922F1DA1700E32DFE /* Assets.xcassets */; };
+		C36AC50D22F1DA1700E32DFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C36AC50B22F1DA1700E32DFE /* Main.storyboard */; };
+		C36AC51022F1DA1700E32DFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C36AC50F22F1DA1700E32DFE /* main.m */; };
+		C36AC51922F1DA6A00E32DFE /* XXDragDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = C36AC51722F1DA6A00E32DFE /* XXDragDropView.m */; };
+		C36AC51D22F1DBD100E32DFE /* XXWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = C36AC51C22F1DBD100E32DFE /* XXWindowController.m */; };
+		C675462E7FAFD67075498264 /* libPods-DynamicSticker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D99433F193433013724ECCA /* libPods-DynamicSticker.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		465BC360215BB56D857D4BF1 /* Pods-DynamicSticker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicSticker.release.xcconfig"; path = "Target Support Files/Pods-DynamicSticker/Pods-DynamicSticker.release.xcconfig"; sourceTree = "<group>"; };
+		7E5620F0A17A1312543494F6 /* Pods-DynamicSticker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicSticker.debug.xcconfig"; path = "Target Support Files/Pods-DynamicSticker/Pods-DynamicSticker.debug.xcconfig"; sourceTree = "<group>"; };
+		8D99433F193433013724ECCA /* libPods-DynamicSticker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DynamicSticker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C36AC50022F1DA1700E32DFE /* DynamicSticker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DynamicSticker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C36AC50322F1DA1700E32DFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C36AC50422F1DA1700E32DFE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C36AC50622F1DA1700E32DFE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C36AC50722F1DA1700E32DFE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C36AC50922F1DA1700E32DFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C36AC50C22F1DA1700E32DFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C36AC50E22F1DA1700E32DFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C36AC50F22F1DA1700E32DFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C36AC51122F1DA1700E32DFE /* DynamicSticker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DynamicSticker.entitlements; sourceTree = "<group>"; };
+		C36AC51722F1DA6A00E32DFE /* XXDragDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDragDropView.m; sourceTree = "<group>"; };
+		C36AC51822F1DA6A00E32DFE /* XXDragDropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDragDropView.h; sourceTree = "<group>"; };
+		C36AC51A22F1DAB100E32DFE /* XXProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXProtocol.h; sourceTree = "<group>"; };
+		C36AC51B22F1DBD100E32DFE /* XXWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXWindowController.h; sourceTree = "<group>"; };
+		C36AC51C22F1DBD100E32DFE /* XXWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXWindowController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C36AC4FD22F1DA1700E32DFE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C675462E7FAFD67075498264 /* libPods-DynamicSticker.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		068199DC570D7C3F9F08EE05 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7E5620F0A17A1312543494F6 /* Pods-DynamicSticker.debug.xcconfig */,
+				465BC360215BB56D857D4BF1 /* Pods-DynamicSticker.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		0B7FF24B3D1B9D39831EA9AB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8D99433F193433013724ECCA /* libPods-DynamicSticker.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C36AC4F722F1DA1600E32DFE = {
+			isa = PBXGroup;
+			children = (
+				C36AC50222F1DA1700E32DFE /* DynamicSticker */,
+				C36AC50122F1DA1700E32DFE /* Products */,
+				068199DC570D7C3F9F08EE05 /* Pods */,
+				0B7FF24B3D1B9D39831EA9AB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C36AC50122F1DA1700E32DFE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C36AC50022F1DA1700E32DFE /* DynamicSticker.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C36AC50222F1DA1700E32DFE /* DynamicSticker */ = {
+			isa = PBXGroup;
+			children = (
+				C36AC51A22F1DAB100E32DFE /* XXProtocol.h */,
+				C36AC51822F1DA6A00E32DFE /* XXDragDropView.h */,
+				C36AC51722F1DA6A00E32DFE /* XXDragDropView.m */,
+				C36AC50322F1DA1700E32DFE /* AppDelegate.h */,
+				C36AC50422F1DA1700E32DFE /* AppDelegate.m */,
+				C36AC50622F1DA1700E32DFE /* ViewController.h */,
+				C36AC50722F1DA1700E32DFE /* ViewController.m */,
+				C36AC50922F1DA1700E32DFE /* Assets.xcassets */,
+				C36AC50B22F1DA1700E32DFE /* Main.storyboard */,
+				C36AC50E22F1DA1700E32DFE /* Info.plist */,
+				C36AC50F22F1DA1700E32DFE /* main.m */,
+				C36AC51122F1DA1700E32DFE /* DynamicSticker.entitlements */,
+				C36AC51B22F1DBD100E32DFE /* XXWindowController.h */,
+				C36AC51C22F1DBD100E32DFE /* XXWindowController.m */,
+			);
+			path = DynamicSticker;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C36AC4FF22F1DA1700E32DFE /* DynamicSticker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C36AC51422F1DA1700E32DFE /* Build configuration list for PBXNativeTarget "DynamicSticker" */;
+			buildPhases = (
+				3A1A6401AF28A84616CF5985 /* [CP] Check Pods Manifest.lock */,
+				C36AC4FC22F1DA1700E32DFE /* Sources */,
+				C36AC4FD22F1DA1700E32DFE /* Frameworks */,
+				C36AC4FE22F1DA1700E32DFE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DynamicSticker;
+			productName = DynamicSticker;
+			productReference = C36AC50022F1DA1700E32DFE /* DynamicSticker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C36AC4F822F1DA1600E32DFE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "hxy-tech.com";
+				TargetAttributes = {
+					C36AC4FF22F1DA1700E32DFE = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = C36AC4FB22F1DA1700E32DFE /* Build configuration list for PBXProject "DynamicSticker" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C36AC4F722F1DA1600E32DFE;
+			productRefGroup = C36AC50122F1DA1700E32DFE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C36AC4FF22F1DA1700E32DFE /* DynamicSticker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C36AC4FE22F1DA1700E32DFE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C36AC50A22F1DA1700E32DFE /* Assets.xcassets in Resources */,
+				C36AC50D22F1DA1700E32DFE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3A1A6401AF28A84616CF5985 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DynamicSticker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C36AC4FC22F1DA1700E32DFE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C36AC50822F1DA1700E32DFE /* ViewController.m in Sources */,
+				C36AC51922F1DA6A00E32DFE /* XXDragDropView.m in Sources */,
+				C36AC51022F1DA1700E32DFE /* main.m in Sources */,
+				C36AC50522F1DA1700E32DFE /* AppDelegate.m in Sources */,
+				C36AC51D22F1DBD100E32DFE /* XXWindowController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C36AC50B22F1DA1700E32DFE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C36AC50C22F1DA1700E32DFE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C36AC51222F1DA1700E32DFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C36AC51322F1DA1700E32DFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C36AC51522F1DA1700E32DFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E5620F0A17A1312543494F6 /* Pods-DynamicSticker.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DynamicSticker/DynamicSticker.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DynamicSticker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hxy-tech.DynamicSticker";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C36AC51622F1DA1700E32DFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 465BC360215BB56D857D4BF1 /* Pods-DynamicSticker.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DynamicSticker/DynamicSticker.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DynamicSticker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hxy-tech.DynamicSticker";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C36AC4FB22F1DA1700E32DFE /* Build configuration list for PBXProject "DynamicSticker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C36AC51222F1DA1700E32DFE /* Debug */,
+				C36AC51322F1DA1700E32DFE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C36AC51422F1DA1700E32DFE /* Build configuration list for PBXNativeTarget "DynamicSticker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C36AC51522F1DA1700E32DFE /* Debug */,
+				C36AC51622F1DA1700E32DFE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C36AC4F822F1DA1600E32DFE /* Project object */;
+}
