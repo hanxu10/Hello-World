@@ -10,6 +10,7 @@
 #import "MBProgressHUD.h"
 #import "HXYDrawingUtil.h"
 #import <AVFoundation/AVFoundation.h>
+#import "ZZJsonToModel/ZZJsonToModel.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) AVAssetImageGenerator *gen;
@@ -272,6 +273,21 @@
         }
     }];
     
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        // Do something...
+        sleep(4);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
+    
+    
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"info.json" ofType:nil];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    NSURL *xx = [NSURL URLWithString:@"/Users/xuxu/Desktop/aaxx"];
+    [ZZJsonToModel zz_createYYModelWithJson:json fileName:nil extensionName:@"json" fileURL:xx error:nil];
 }
 
 - (void)pdf {

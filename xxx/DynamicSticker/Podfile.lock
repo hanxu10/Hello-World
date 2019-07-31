@@ -1,0 +1,30 @@
+PODS:
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - SSZipArchive (2.2.2)
+  - YYModel (1.0.4)
+
+DEPENDENCIES:
+  - BlocksKit
+  - SSZipArchive
+  - YYModel
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - BlocksKit
+    - SSZipArchive
+    - YYModel
+
+SPEC CHECKSUMS:
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
+
+COCOAPODS: 1.6.1

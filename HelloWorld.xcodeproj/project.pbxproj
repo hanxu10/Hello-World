@@ -10,6 +10,9 @@
 		7A2D247122DEAB8F00B99E7D /* HXYDrawingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2D247022DEAB8F00B99E7D /* HXYDrawingUtil.m */; };
 		7A3AB81D22E478B2001323FD /* text.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7A3AB81C22E478B1001323FD /* text.pdf */; };
 		7A3AB82722E59744001323FD /* test.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = 7A3AB82622E59744001323FD /* test.MP4 */; };
+		C36AC52D22F1E29800E32DFE /* info.json in Resources */ = {isa = PBXBuildFile; fileRef = C36AC52822F1E29800E32DFE /* info.json */; };
+		C36AC52E22F1E29800E32DFE /* NSString+ZZFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = C36AC52A22F1E29800E32DFE /* NSString+ZZFormat.m */; };
+		C36AC52F22F1E29800E32DFE /* ZZJsonToModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C36AC52C22F1E29800E32DFE /* ZZJsonToModel.m */; };
 		C3DC5EAB22DCD30800FE7FF3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC5EAA22DCD30800FE7FF3 /* AppDelegate.m */; };
 		C3DC5EAE22DCD30800FE7FF3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC5EAD22DCD30800FE7FF3 /* ViewController.m */; };
 		C3DC5EB122DCD30800FE7FF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3DC5EAF22DCD30800FE7FF3 /* Main.storyboard */; };
@@ -24,6 +27,11 @@
 		7A2D247022DEAB8F00B99E7D /* HXYDrawingUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYDrawingUtil.m; sourceTree = "<group>"; };
 		7A3AB81C22E478B1001323FD /* text.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = text.pdf; sourceTree = "<group>"; };
 		7A3AB82622E59744001323FD /* test.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.MP4; sourceTree = "<group>"; };
+		C36AC52822F1E29800E32DFE /* info.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = info.json; sourceTree = "<group>"; };
+		C36AC52922F1E29800E32DFE /* NSString+ZZFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZZFormat.h"; sourceTree = "<group>"; };
+		C36AC52A22F1E29800E32DFE /* NSString+ZZFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZZFormat.m"; sourceTree = "<group>"; };
+		C36AC52B22F1E29800E32DFE /* ZZJsonToModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZJsonToModel.h; sourceTree = "<group>"; };
+		C36AC52C22F1E29800E32DFE /* ZZJsonToModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZJsonToModel.m; sourceTree = "<group>"; };
 		C3DC5EA622DCD30800FE7FF3 /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3DC5EA922DCD30800FE7FF3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C3DC5EAA22DCD30800FE7FF3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -56,6 +64,16 @@
 				7A2D247022DEAB8F00B99E7D /* HXYDrawingUtil.m */,
 			);
 			path = Drawing;
+		C36AC52722F1E29800E32DFE /* ZZJsonToModel */ = {
+			isa = PBXGroup;
+			children = (
+				C36AC52822F1E29800E32DFE /* info.json */,
+				C36AC52922F1E29800E32DFE /* NSString+ZZFormat.h */,
+				C36AC52A22F1E29800E32DFE /* NSString+ZZFormat.m */,
+				C36AC52B22F1E29800E32DFE /* ZZJsonToModel.h */,
+				C36AC52C22F1E29800E32DFE /* ZZJsonToModel.m */,
+			);
+			path = ZZJsonToModel;
 			sourceTree = "<group>";
 		};
 		C3DC5E9D22DCD30800FE7FF3 = {
@@ -80,6 +98,7 @@
 				7A3AB82622E59744001323FD /* test.MP4 */,
 				7A3AB81C22E478B1001323FD /* text.pdf */,
 				7A2D246E22DEAB7400B99E7D /* Drawing */,
+				C36AC52722F1E29800E32DFE /* ZZJsonToModel */,
 				C3DC5EBF22DCD4AD00FE7FF3 /* MBProgressHUD */,
 				C3DC5EA922DCD30800FE7FF3 /* AppDelegate.h */,
 				C3DC5EAA22DCD30800FE7FF3 /* AppDelegate.m */,
@@ -162,6 +181,7 @@
 			files = (
 				C3DC5EB622DCD30900FE7FF3 /* LaunchScreen.storyboard in Resources */,
 				7A3AB81D22E478B2001323FD /* text.pdf in Resources */,
+				C36AC52D22F1E29800E32DFE /* info.json in Resources */,
 				C3DC5EB322DCD30900FE7FF3 /* Assets.xcassets in Resources */,
 				C3DC5EB122DCD30800FE7FF3 /* Main.storyboard in Resources */,
 				7A3AB82722E59744001323FD /* test.MP4 in Resources */,
@@ -180,6 +200,8 @@
 				C3DC5EAB22DCD30800FE7FF3 /* AppDelegate.m in Sources */,
 				7A2D247122DEAB8F00B99E7D /* HXYDrawingUtil.m in Sources */,
 				C3DC5EC222DCD4BC00FE7FF3 /* MBProgressHUD.m in Sources */,
+				C36AC52F22F1E29800E32DFE /* ZZJsonToModel.m in Sources */,
+				C36AC52E22F1E29800E32DFE /* NSString+ZZFormat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

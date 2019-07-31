@@ -1,0 +1,14 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+gem "cocoapods", '1.6.1'
+gem "psych", '2.2.2'
+
+# pod 依赖管理
+gem "bd_pod_extentions", '6.3.0'
+gem "ies_pod_extensions", '0.0.3'
+
+gem "bd_pod_cache_lock"
+gem "cocoapods-rock", '~> 0.0.3.1'
+gem 'cocoapods-mbox-support'
+gem "cocoapods-lego", '0.0.5'
+
