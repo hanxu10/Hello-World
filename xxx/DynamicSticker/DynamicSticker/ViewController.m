@@ -41,8 +41,7 @@
         return image;
     }];
     
-    im
-    
+
 }
 
 @end
