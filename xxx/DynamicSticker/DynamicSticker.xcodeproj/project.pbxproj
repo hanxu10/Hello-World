@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A91529F22F40619005A9757 /* InfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A91529D22F40619005A9757 /* InfoModel.m */; };
+		7A96087422F1EB8500E1C2B5 /* XXImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A96087322F1EB8500E1C2B5 /* XXImage.m */; };
 		C36AC50522F1DA1700E32DFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C36AC50422F1DA1700E32DFE /* AppDelegate.m */; };
 		C36AC50822F1DA1700E32DFE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C36AC50722F1DA1700E32DFE /* ViewController.m */; };
 		C36AC50A22F1DA1700E32DFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C36AC50922F1DA1700E32DFE /* Assets.xcassets */; };
@@ -19,6 +21,10 @@
 
 /* Begin PBXFileReference section */
 		465BC360215BB56D857D4BF1 /* Pods-DynamicSticker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicSticker.release.xcconfig"; path = "Target Support Files/Pods-DynamicSticker/Pods-DynamicSticker.release.xcconfig"; sourceTree = "<group>"; };
+		7A91529D22F40619005A9757 /* InfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoModel.m; sourceTree = "<group>"; };
+		7A91529E22F40619005A9757 /* InfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoModel.h; sourceTree = "<group>"; };
+		7A96087222F1EB8500E1C2B5 /* XXImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXImage.h; sourceTree = "<group>"; };
+		7A96087322F1EB8500E1C2B5 /* XXImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXImage.m; sourceTree = "<group>"; };
 		7E5620F0A17A1312543494F6 /* Pods-DynamicSticker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicSticker.debug.xcconfig"; path = "Target Support Files/Pods-DynamicSticker/Pods-DynamicSticker.debug.xcconfig"; sourceTree = "<group>"; };
 		8D99433F193433013724ECCA /* libPods-DynamicSticker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DynamicSticker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C36AC50022F1DA1700E32DFE /* DynamicSticker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DynamicSticker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +94,8 @@
 		C36AC50222F1DA1700E32DFE /* DynamicSticker */ = {
 			isa = PBXGroup;
 			children = (
+				7A91529E22F40619005A9757 /* InfoModel.h */,
+				7A91529D22F40619005A9757 /* InfoModel.m */,
 				C36AC51A22F1DAB100E32DFE /* XXProtocol.h */,
 				C36AC51822F1DA6A00E32DFE /* XXDragDropView.h */,
 				C36AC51722F1DA6A00E32DFE /* XXDragDropView.m */,
@@ -95,6 +103,8 @@
 				C36AC50422F1DA1700E32DFE /* AppDelegate.m */,
 				C36AC50622F1DA1700E32DFE /* ViewController.h */,
 				C36AC50722F1DA1700E32DFE /* ViewController.m */,
+				7A96087222F1EB8500E1C2B5 /* XXImage.h */,
+				7A96087322F1EB8500E1C2B5 /* XXImage.m */,
 				C36AC50922F1DA1700E32DFE /* Assets.xcassets */,
 				C36AC50B22F1DA1700E32DFE /* Main.storyboard */,
 				C36AC50E22F1DA1700E32DFE /* Info.plist */,
@@ -138,6 +148,11 @@
 				TargetAttributes = {
 					C36AC4FF22F1DA1700E32DFE = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -204,8 +219,10 @@
 				C36AC50822F1DA1700E32DFE /* ViewController.m in Sources */,
 				C36AC51922F1DA6A00E32DFE /* XXDragDropView.m in Sources */,
 				C36AC51022F1DA1700E32DFE /* main.m in Sources */,
+				7A91529F22F40619005A9757 /* InfoModel.m in Sources */,
 				C36AC50522F1DA1700E32DFE /* AppDelegate.m in Sources */,
 				C36AC51D22F1DBD100E32DFE /* XXWindowController.m in Sources */,
+				7A96087422F1EB8500E1C2B5 /* XXImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,7 +356,6 @@
 			baseConfigurationReference = 7E5620F0A17A1312543494F6 /* Pods-DynamicSticker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = DynamicSticker/DynamicSticker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DynamicSticker/Info.plist;
@@ -357,7 +373,6 @@
 			baseConfigurationReference = 465BC360215BB56D857D4BF1 /* Pods-DynamicSticker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = DynamicSticker/DynamicSticker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DynamicSticker/Info.plist;

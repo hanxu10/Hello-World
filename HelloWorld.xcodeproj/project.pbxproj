@@ -10,9 +10,13 @@
 		7A2D247122DEAB8F00B99E7D /* HXYDrawingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2D247022DEAB8F00B99E7D /* HXYDrawingUtil.m */; };
 		7A3AB81D22E478B2001323FD /* text.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7A3AB81C22E478B1001323FD /* text.pdf */; };
 		7A3AB82722E59744001323FD /* test.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = 7A3AB82622E59744001323FD /* test.MP4 */; };
+		7A9152C422F73780005A9757 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9152C122F73780005A9757 /* NSObject+YYModel.m */; };
+		7A9152C522F73780005A9757 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9152C222F73780005A9757 /* YYClassInfo.m */; };
+		7A9152CC22F7EF18005A9757 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9152CB22F7EF18005A9757 /* Person.m */; };
+		7A9152D022F7F2E4005A9757 /* HXYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9152CF22F7F2E4005A9757 /* HXYClassInfo.m */; };
 		7A96086A22F1E8E700E1C2B5 /* ZZJsonToModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A96086522F1E8E700E1C2B5 /* ZZJsonToModel.m */; };
-		7A96086B22F1E8E700E1C2B5 /* info.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A96086822F1E8E700E1C2B5 /* info.json */; };
 		7A96086C22F1E8E700E1C2B5 /* NSString+ZZFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A96086922F1E8E700E1C2B5 /* NSString+ZZFormat.m */; };
+		7A96086E22F1E97900E1C2B5 /* info.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A96086D22F1E97900E1C2B5 /* info.json */; };
 		C3DC5EAB22DCD30800FE7FF3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC5EAA22DCD30800FE7FF3 /* AppDelegate.m */; };
 		C3DC5EAE22DCD30800FE7FF3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC5EAD22DCD30800FE7FF3 /* ViewController.m */; };
 		C3DC5EB122DCD30800FE7FF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3DC5EAF22DCD30800FE7FF3 /* Main.storyboard */; };
@@ -27,11 +31,20 @@
 		7A2D247022DEAB8F00B99E7D /* HXYDrawingUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYDrawingUtil.m; sourceTree = "<group>"; };
 		7A3AB81C22E478B1001323FD /* text.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = text.pdf; sourceTree = "<group>"; };
 		7A3AB82622E59744001323FD /* test.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.MP4; sourceTree = "<group>"; };
+		7A9152BF22F73780005A9757 /* YYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYClassInfo.h; sourceTree = "<group>"; };
+		7A9152C022F73780005A9757 /* YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYModel.h; sourceTree = "<group>"; };
+		7A9152C122F73780005A9757 /* NSObject+YYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYModel.m"; sourceTree = "<group>"; };
+		7A9152C222F73780005A9757 /* YYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYClassInfo.m; sourceTree = "<group>"; };
+		7A9152C322F73780005A9757 /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
+		7A9152CA22F7EF18005A9757 /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		7A9152CB22F7EF18005A9757 /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		7A9152CE22F7F2E4005A9757 /* HXYClassInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYClassInfo.h; sourceTree = "<group>"; };
+		7A9152CF22F7F2E4005A9757 /* HXYClassInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYClassInfo.m; sourceTree = "<group>"; };
 		7A96086522F1E8E700E1C2B5 /* ZZJsonToModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZJsonToModel.m; sourceTree = "<group>"; };
 		7A96086622F1E8E700E1C2B5 /* NSString+ZZFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZZFormat.h"; sourceTree = "<group>"; };
 		7A96086722F1E8E700E1C2B5 /* ZZJsonToModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZJsonToModel.h; sourceTree = "<group>"; };
-		7A96086822F1E8E700E1C2B5 /* info.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = info.json; sourceTree = "<group>"; };
 		7A96086922F1E8E700E1C2B5 /* NSString+ZZFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZZFormat.m"; sourceTree = "<group>"; };
+		7A96086D22F1E97900E1C2B5 /* info.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = info.json; sourceTree = "<group>"; };
 		C3DC5EA622DCD30800FE7FF3 /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3DC5EA922DCD30800FE7FF3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C3DC5EAA22DCD30800FE7FF3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -66,13 +79,34 @@
 			path = Drawing;
 			sourceTree = "<group>";
 		};
+		7A9152BE22F73780005A9757 /* YYModel */ = {
+			isa = PBXGroup;
+			children = (
+				7A9152C322F73780005A9757 /* NSObject+YYModel.h */,
+				7A9152C122F73780005A9757 /* NSObject+YYModel.m */,
+				7A9152BF22F73780005A9757 /* YYClassInfo.h */,
+				7A9152C222F73780005A9757 /* YYClassInfo.m */,
+				7A9152C022F73780005A9757 /* YYModel.h */,
+			);
+			path = YYModel;
+			sourceTree = "<group>";
+		};
+		7A9152CD22F7F2C6005A9757 /* HXYModel */ = {
+			isa = PBXGroup;
+			children = (
+				7A9152CE22F7F2E4005A9757 /* HXYClassInfo.h */,
+				7A9152CF22F7F2E4005A9757 /* HXYClassInfo.m */,
+			);
+			path = HXYModel;
+			sourceTree = "<group>";
+		};
 		7A96086422F1E8E700E1C2B5 /* ZZJsonToModel */ = {
 			isa = PBXGroup;
 			children = (
+				7A96086D22F1E97900E1C2B5 /* info.json */,
 				7A96086522F1E8E700E1C2B5 /* ZZJsonToModel.m */,
 				7A96086622F1E8E700E1C2B5 /* NSString+ZZFormat.h */,
 				7A96086722F1E8E700E1C2B5 /* ZZJsonToModel.h */,
-				7A96086822F1E8E700E1C2B5 /* info.json */,
 				7A96086922F1E8E700E1C2B5 /* NSString+ZZFormat.m */,
 			);
 			path = ZZJsonToModel;
@@ -97,6 +131,8 @@
 		C3DC5EA822DCD30800FE7FF3 /* HelloWorld */ = {
 			isa = PBXGroup;
 			children = (
+				7A9152CD22F7F2C6005A9757 /* HXYModel */,
+				7A9152BE22F73780005A9757 /* YYModel */,
 				7A96086422F1E8E700E1C2B5 /* ZZJsonToModel */,
 				7A3AB82622E59744001323FD /* test.MP4 */,
 				7A3AB81C22E478B1001323FD /* text.pdf */,
@@ -111,6 +147,8 @@
 				C3DC5EB422DCD30900FE7FF3 /* LaunchScreen.storyboard */,
 				C3DC5EB722DCD30900FE7FF3 /* Info.plist */,
 				C3DC5EB822DCD30900FE7FF3 /* main.m */,
+				7A9152CA22F7EF18005A9757 /* Person.h */,
+				7A9152CB22F7EF18005A9757 /* Person.m */,
 			);
 			path = HelloWorld;
 			sourceTree = "<group>";
@@ -150,6 +188,7 @@
 		C3DC5E9E22DCD30800FE7FF3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = HXY;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "hxy-tech.com";
 				TargetAttributes = {
@@ -186,7 +225,7 @@
 				C3DC5EB322DCD30900FE7FF3 /* Assets.xcassets in Resources */,
 				C3DC5EB122DCD30800FE7FF3 /* Main.storyboard in Resources */,
 				7A3AB82722E59744001323FD /* test.MP4 in Resources */,
-				7A96086B22F1E8E700E1C2B5 /* info.json in Resources */,
+				7A96086E22F1E97900E1C2B5 /* info.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,10 +238,14 @@
 			files = (
 				C3DC5EAE22DCD30800FE7FF3 /* ViewController.m in Sources */,
 				C3DC5EB922DCD30900FE7FF3 /* main.m in Sources */,
+				7A9152CC22F7EF18005A9757 /* Person.m in Sources */,
+				7A9152D022F7F2E4005A9757 /* HXYClassInfo.m in Sources */,
 				7A96086C22F1E8E700E1C2B5 /* NSString+ZZFormat.m in Sources */,
+				7A9152C422F73780005A9757 /* NSObject+YYModel.m in Sources */,
 				C3DC5EAB22DCD30800FE7FF3 /* AppDelegate.m in Sources */,
 				7A2D247122DEAB8F00B99E7D /* HXYDrawingUtil.m in Sources */,
 				7A96086A22F1E8E700E1C2B5 /* ZZJsonToModel.m in Sources */,
+				7A9152C522F73780005A9757 /* YYClassInfo.m in Sources */,
 				C3DC5EC222DCD4BC00FE7FF3 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

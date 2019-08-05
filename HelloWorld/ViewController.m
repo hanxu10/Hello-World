@@ -11,6 +11,8 @@
 #import "HXYDrawingUtil.h"
 #import <AVFoundation/AVFoundation.h>
 #import "ZZJsonToModel/ZZJsonToModel.h"
+#import "Person.h"
+#import "YYModel.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) AVAssetImageGenerator *gen;
@@ -20,6 +22,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    Person *p = [Person yy_modelWithJSON:@{
+                                           @"name" : @"zhangfeng",
+                                           @"address" : @"中国",
+                                           }];
     
 //    UIImageView *waterImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
 //    waterImageView.image = [UIImage imageNamed:@"water"];
@@ -286,8 +293,8 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"info.json" ofType:nil];
     NSData *data = [NSData dataWithContentsOfFile:path];
     id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-    NSURL *xxsdf = [NSURL URLWithString:@"/Users/xuxu/Desktop/aaxx"];
-    [ZZJsonToModel zz_createYYModelWithJson:json fileName:nil extensionName:@"json" fileURL:xxsdf error:nil];
+    NSURL *xxsdf = [NSURL URLWithString:@"/Users/zhangfeng/Desktop/jsonGENModel"];
+    [ZZJsonToModel zz_createYYModelWithJson:json fileName:@"InfoModel" extensionName:@"json" fileURL:xxsdf error:nil];
 }
 
 - (void)pdf {

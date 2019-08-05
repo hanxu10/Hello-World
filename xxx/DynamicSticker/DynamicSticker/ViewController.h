@@ -12,6 +12,14 @@
 @interface ViewController : NSViewController
 
 @property (weak) IBOutlet XXDragDropView *dragDropView;
+@property (weak) IBOutlet NSImageView *staticImageView;
+@property (weak) IBOutlet NSTextField *staticImageLabel;
+@property (weak) IBOutlet NSImageView *frameOneImageView;
+@property (weak) IBOutlet NSImageView *frameTwoImageView;
+@property (weak) IBOutlet NSImageView *frameThreeImageView;
+@property (weak) IBOutlet NSTextField *colCountTextField;
+@property (weak) IBOutlet NSTextField *frameRateTextField;
+
 
 @end
 
