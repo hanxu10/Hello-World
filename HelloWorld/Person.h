@@ -10,10 +10,21 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol ProtocolXXX <NSObject>
+
+@end
+
+@protocol ProtocolYYY <NSObject>
+
+@end
+
+
 @interface Person : NSObject
 
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *address;
+@property (nonatomic, strong) id<ProtocolXXX, ProtocolYYY> pxy;
+@property (nonatomic, strong, readonly) NSString *name;
+@property (nonatomic, strong) void (^doSomeThingBlock)(NSString *some);
+
 
 @end
 

@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef NS_OPTIONS(NSUInteger, YYEncodingType) {
     YYEncodingTypeMask       = 0xFF, ///< mask of type value
     YYEncodingTypeUnknown    = 0, ///< unknown
@@ -54,6 +56,8 @@ typedef NS_OPTIONS(NSUInteger, YYEncodingType) {
     YYEncodingTypePropertyCustomSetter = 1 << 22, ///< setter=
     YYEncodingTypePropertyDynamic      = 1 << 23, ///< @dynamic
 };
+
+YYEncodingType HXYEncodingGetType(const char *typeEncoding);
 
 @interface HXYClassIvarInfo : NSObject
 
@@ -105,11 +109,18 @@ typedef NS_OPTIONS(NSUInteger, YYEncodingType) {
 @property (nonatomic, assign, readonly) BOOL isMeta;
 @property (nonatomic, strong, readonly) NSString *name;
 @property (nonatomic, strong, readonly) HXYClassInfo *superClassInfo;
-@property (nonatomic, strong, readonly) NSDictionary<NSString *, HXYClassInfo *> *ivarInfos;
-@property (nonatomic, strong, readonly) NSDictionary<NSString *, HXYClassInfo *> *methodInfos;
-@property (nonatomic, strong, readonly) NSDictionary<NSString *, HXYClassInfo *> *propertyInfos;
+@property (nonatomic, strong, readonly) NSDictionary<NSString *, HXYClassIvarInfo *> *ivarInfos;
+@property (nonatomic, strong, readonly) NSDictionary<NSString *, HXYClassMethodInfo *> *methodInfos;
+@property (nonatomic, strong, readonly) NSDictionary<NSString *, HXYClassPropertyInfo *> *propertyInfos;
 
+- (void)setNeedUpdate;
 
+- (BOOL)needUpdate;
+
++ (nullable instancetype)classInfoWithClass:(Class)cls;
+
++ (nullable instancetype)classInfoWithClassName:(NSString *)className;
 
 @end
 
+NS_ASSUME_NONNULL_END
