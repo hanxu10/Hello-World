@@ -7,6 +7,7 @@
 //
 
 #import "HXYViewControllerRed.h"
+#import "Person.h"
 
 @interface HXYViewControllerRed ()
 
@@ -38,11 +39,17 @@
     shapeLayer.frame = CGRectMake(0, 00, 23, 23);
     [self.view.layer addSublayer:shapeLayer];
     
+    void(*testImp)(id, SEL)  = [self methodForSelector:@selector(test)];
+    testImp(self, @selector(test));
     
-    
+    Person *p = [[Person alloc] init];
+    [p doit];
 }
 
-
+- (void)test {
+    SEL xx = _cmd;
+    NSLog(@"谢谢%@", NSStringFromSelector(xx));
+}
 
 /*
 #pragma mark - Navigation

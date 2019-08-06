@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) NSString *name;
 @property (nonatomic, strong) void (^doSomeThingBlock)(NSString *some);
 
+- (void)doit;
 
 @end
 
