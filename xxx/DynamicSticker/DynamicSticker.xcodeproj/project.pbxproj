@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7A91529F22F40619005A9757 /* InfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A91529D22F40619005A9757 /* InfoModel.m */; };
+		7A9152F422F975E7005A9757 /* pngquant in Resources */ = {isa = PBXBuildFile; fileRef = 7A9152F322F975E7005A9757 /* pngquant */; };
 		7A96087422F1EB8500E1C2B5 /* XXImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A96087322F1EB8500E1C2B5 /* XXImage.m */; };
 		C36AC50522F1DA1700E32DFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C36AC50422F1DA1700E32DFE /* AppDelegate.m */; };
 		C36AC50822F1DA1700E32DFE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C36AC50722F1DA1700E32DFE /* ViewController.m */; };
@@ -23,6 +24,7 @@
 		465BC360215BB56D857D4BF1 /* Pods-DynamicSticker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicSticker.release.xcconfig"; path = "Target Support Files/Pods-DynamicSticker/Pods-DynamicSticker.release.xcconfig"; sourceTree = "<group>"; };
 		7A91529D22F40619005A9757 /* InfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoModel.m; sourceTree = "<group>"; };
 		7A91529E22F40619005A9757 /* InfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoModel.h; sourceTree = "<group>"; };
+		7A9152F322F975E7005A9757 /* pngquant */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = pngquant; path = DynamicSticker/pngquant; sourceTree = "<group>"; };
 		7A96087222F1EB8500E1C2B5 /* XXImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXImage.h; sourceTree = "<group>"; };
 		7A96087322F1EB8500E1C2B5 /* XXImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXImage.m; sourceTree = "<group>"; };
 		7E5620F0A17A1312543494F6 /* Pods-DynamicSticker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicSticker.debug.xcconfig"; path = "Target Support Files/Pods-DynamicSticker/Pods-DynamicSticker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		C36AC4F722F1DA1600E32DFE = {
 			isa = PBXGroup;
 			children = (
+				7A9152F322F975E7005A9757 /* pngquant */,
 				C36AC50222F1DA1700E32DFE /* DynamicSticker */,
 				C36AC50122F1DA1700E32DFE /* Products */,
 				068199DC570D7C3F9F08EE05 /* Pods */,
@@ -179,6 +182,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A9152F422F975E7005A9757 /* pngquant in Resources */,
 				C36AC50A22F1DA1700E32DFE /* Assets.xcassets in Resources */,
 				C36AC50D22F1DA1700E32DFE /* Main.storyboard in Resources */,
 			);

@@ -85,8 +85,10 @@
             
             NSString *staticImageName = @"static.png";
             NSString *bigImageName = @"big.png";
+            NSString *bigTempImageName = @"big_temp.png";
             [XXImage saveImage:self.staticImage fileName:[tempDirPath stringByAppendingPathComponent:staticImageName]];
-            [XXImage saveImage:bigImage fileName:[tempDirPath stringByAppendingPathComponent:bigImageName]];
+            //先存一个临时的大图
+            [XXImage saveImage:bigImage fileName:[tempDirPath stringByAppendingPathComponent:bigTempImageName]];
             
             InfoModel *infoModel = [[InfoModel alloc] init];
             infoModel.disabletextinput = @"1";
@@ -98,13 +100,69 @@
             infoModel.shapes = @[shape];
             [[infoModel yy_modelToJSONData] writeToFile:[tempDirPath stringByAppendingPathComponent:@"info.json"] atomically:YES];
             
-            [SSZipArchive createZipFileAtPath:zipPath withContentsOfDirectory:tempDirPath];
-            [[NSFileManager defaultManager] removeItemAtPath:tempDirPath error:nil];
+            NSString *pngQuantPath = [[NSBundle mainBundle] pathForResource:@"pngquant" ofType:nil];
+            NSMutableString *cmdString = [NSMutableString string];
+            [cmdString appendFormat:@"cd %@;", tempDirPath];
+            [cmdString appendFormat:@"%@ --quality=10-70 %@ --output %@", pngQuantPath, bigTempImageName, bigImageName];
             
-            [[NSWorkspace sharedWorkspace] selectFile:zipPath inFileViewerRootedAtPath:@"xx"];
+//            ./pngquant --quality=10-70 image.png
+            
+            [self cmd:cmdString completion:^(BOOL success) {
+                if (success) {
+                    [[NSFileManager defaultManager] removeItemAtPath:[tempDirPath stringByAppendingPathComponent:bigTempImageName] error:nil];
+                    [SSZipArchive createZipFileAtPath:zipPath withContentsOfDirectory:tempDirPath];
+                    [[NSFileManager defaultManager] removeItemAtPath:tempDirPath error:nil];
+                    [self showAlert:@"生成zip成功" buttonTitle:@"在finder中找到文件" completionHandler:^(BOOL ok){
+                        if (ok) {
+                            [[NSWorkspace sharedWorkspace] selectFile:zipPath inFileViewerRootedAtPath:@"xx"];
+                        }
+                    }];
+                } else {
+                    [self showAlert:@"生成zip失败" buttonTitle:@"ok" completionHandler:nil];
+                }
+            }];
         }
     }];
 }
+
+- (void)showAlert:(NSString *)informativeText buttonTitle:(NSString *)buttonTitle completionHandler:(void (^)(BOOL ok))completionHandler {
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setMessageText:@"good"];
+    [alert setInformativeText:informativeText];
+    [alert addButtonWithTitle:buttonTitle];
+    [alert addButtonWithTitle:@"Cancel"];
+    [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
+        if(returnCode == NSAlertFirstButtonReturn){
+            if (completionHandler) {
+                completionHandler(YES);
+            }
+        }else if(returnCode == NSAlertSecondButtonReturn){
+            if (completionHandler) {
+                completionHandler(NO);
+            }
+        }
+    }];
+}
+
+- (void)cmd:(NSString *)cmd completion:(void (^)(BOOL success))completion {
+    // 初始化并设置shell路径
+    NSTask *task = [[NSTask alloc] init];
+    [task setLaunchPath: @"/bin/bash"];
+    // -c 用来执行string-commands（命令字符串），也就说不管后面的字符串里是什么都会被当做shellcode来执行
+    NSArray *arguments = [NSArray arrayWithObjects: @"-c", cmd, nil];
+    [task setArguments: arguments];
+
+    task.terminationHandler = ^(NSTask * task) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) {
+                completion([task terminationStatus] == 0);
+            }
+        });
+    };
+    [task launch];
+    [task waitUntilExit];
+}
+
 
 - (void)controlTextDidChange:(NSNotification *)noti {
     if (noti.object == self.colCountTextField) {

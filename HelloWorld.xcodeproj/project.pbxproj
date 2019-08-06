@@ -14,6 +14,11 @@
 		7A9152C522F73780005A9757 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9152C222F73780005A9757 /* YYClassInfo.m */; };
 		7A9152CC22F7EF18005A9757 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9152CB22F7EF18005A9757 /* Person.m */; };
 		7A9152D022F7F2E4005A9757 /* HXYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9152CF22F7F2E4005A9757 /* HXYClassInfo.m */; };
+		7A9152DD22F9567C005A9757 /* AWESlidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9152D622F9567C005A9757 /* AWESlidingScrollView.m */; };
+		7A9152DE22F9567C005A9757 /* AWESlidingTabbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9152D822F9567C005A9757 /* AWESlidingTabbarView.m */; };
+		7A9152DF22F9567C005A9757 /* AWESlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9152D922F9567C005A9757 /* AWESlidingViewController.m */; };
+		7A9152E522F958DE005A9757 /* HXYViewControllerRed.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9152E422F958DE005A9757 /* HXYViewControllerRed.m */; };
+		7A9152E822F958E6005A9757 /* HXYViewControllerBlue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9152E722F958E6005A9757 /* HXYViewControllerBlue.m */; };
 		7A96086A22F1E8E700E1C2B5 /* ZZJsonToModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A96086522F1E8E700E1C2B5 /* ZZJsonToModel.m */; };
 		7A96086C22F1E8E700E1C2B5 /* NSString+ZZFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A96086922F1E8E700E1C2B5 /* NSString+ZZFormat.m */; };
 		7A96086E22F1E97900E1C2B5 /* info.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A96086D22F1E97900E1C2B5 /* info.json */; };
@@ -40,6 +45,17 @@
 		7A9152CB22F7EF18005A9757 /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		7A9152CE22F7F2E4005A9757 /* HXYClassInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYClassInfo.h; sourceTree = "<group>"; };
 		7A9152CF22F7F2E4005A9757 /* HXYClassInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYClassInfo.m; sourceTree = "<group>"; };
+		7A9152D622F9567C005A9757 /* AWESlidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWESlidingScrollView.m; sourceTree = "<group>"; };
+		7A9152D722F9567C005A9757 /* AWESlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWESlidingViewController.h; sourceTree = "<group>"; };
+		7A9152D822F9567C005A9757 /* AWESlidingTabbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWESlidingTabbarView.m; sourceTree = "<group>"; };
+		7A9152D922F9567C005A9757 /* AWESlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWESlidingViewController.m; sourceTree = "<group>"; };
+		7A9152DA22F9567C005A9757 /* AWESlidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWESlidingScrollView.h; sourceTree = "<group>"; };
+		7A9152DB22F9567C005A9757 /* AWESlidingTabbarProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWESlidingTabbarProtocol.h; sourceTree = "<group>"; };
+		7A9152DC22F9567C005A9757 /* AWESlidingTabbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWESlidingTabbarView.h; sourceTree = "<group>"; };
+		7A9152E322F958DE005A9757 /* HXYViewControllerRed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYViewControllerRed.h; sourceTree = "<group>"; };
+		7A9152E422F958DE005A9757 /* HXYViewControllerRed.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYViewControllerRed.m; sourceTree = "<group>"; };
+		7A9152E622F958E6005A9757 /* HXYViewControllerBlue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYViewControllerBlue.h; sourceTree = "<group>"; };
+		7A9152E722F958E6005A9757 /* HXYViewControllerBlue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYViewControllerBlue.m; sourceTree = "<group>"; };
 		7A96086522F1E8E700E1C2B5 /* ZZJsonToModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZJsonToModel.m; sourceTree = "<group>"; };
 		7A96086622F1E8E700E1C2B5 /* NSString+ZZFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZZFormat.h"; sourceTree = "<group>"; };
 		7A96086722F1E8E700E1C2B5 /* ZZJsonToModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZJsonToModel.h; sourceTree = "<group>"; };
@@ -100,6 +116,20 @@
 			path = HXYModel;
 			sourceTree = "<group>";
 		};
+		7A9152D522F9567C005A9757 /* HXYSlidingController */ = {
+			isa = PBXGroup;
+			children = (
+				7A9152D622F9567C005A9757 /* AWESlidingScrollView.m */,
+				7A9152D722F9567C005A9757 /* AWESlidingViewController.h */,
+				7A9152D822F9567C005A9757 /* AWESlidingTabbarView.m */,
+				7A9152D922F9567C005A9757 /* AWESlidingViewController.m */,
+				7A9152DA22F9567C005A9757 /* AWESlidingScrollView.h */,
+				7A9152DB22F9567C005A9757 /* AWESlidingTabbarProtocol.h */,
+				7A9152DC22F9567C005A9757 /* AWESlidingTabbarView.h */,
+			);
+			path = HXYSlidingController;
+			sourceTree = "<group>";
+		};
 		7A96086422F1E8E700E1C2B5 /* ZZJsonToModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +161,7 @@
 		C3DC5EA822DCD30800FE7FF3 /* HelloWorld */ = {
 			isa = PBXGroup;
 			children = (
+				7A9152D522F9567C005A9757 /* HXYSlidingController */,
 				7A9152CD22F7F2C6005A9757 /* HXYModel */,
 				7A9152BE22F73780005A9757 /* YYModel */,
 				7A96086422F1E8E700E1C2B5 /* ZZJsonToModel */,
@@ -142,6 +173,10 @@
 				C3DC5EAA22DCD30800FE7FF3 /* AppDelegate.m */,
 				C3DC5EAC22DCD30800FE7FF3 /* ViewController.h */,
 				C3DC5EAD22DCD30800FE7FF3 /* ViewController.m */,
+				7A9152E322F958DE005A9757 /* HXYViewControllerRed.h */,
+				7A9152E422F958DE005A9757 /* HXYViewControllerRed.m */,
+				7A9152E622F958E6005A9757 /* HXYViewControllerBlue.h */,
+				7A9152E722F958E6005A9757 /* HXYViewControllerBlue.m */,
 				C3DC5EAF22DCD30800FE7FF3 /* Main.storyboard */,
 				C3DC5EB222DCD30900FE7FF3 /* Assets.xcassets */,
 				C3DC5EB422DCD30900FE7FF3 /* LaunchScreen.storyboard */,
@@ -236,12 +271,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A9152DE22F9567C005A9757 /* AWESlidingTabbarView.m in Sources */,
 				C3DC5EAE22DCD30800FE7FF3 /* ViewController.m in Sources */,
+				7A9152E822F958E6005A9757 /* HXYViewControllerBlue.m in Sources */,
 				C3DC5EB922DCD30900FE7FF3 /* main.m in Sources */,
+				7A9152E522F958DE005A9757 /* HXYViewControllerRed.m in Sources */,
 				7A9152CC22F7EF18005A9757 /* Person.m in Sources */,
 				7A9152D022F7F2E4005A9757 /* HXYClassInfo.m in Sources */,
 				7A96086C22F1E8E700E1C2B5 /* NSString+ZZFormat.m in Sources */,
 				7A9152C422F73780005A9757 /* NSObject+YYModel.m in Sources */,
+				7A9152DF22F9567C005A9757 /* AWESlidingViewController.m in Sources */,
+				7A9152DD22F9567C005A9757 /* AWESlidingScrollView.m in Sources */,
 				C3DC5EAB22DCD30800FE7FF3 /* AppDelegate.m in Sources */,
 				7A2D247122DEAB8F00B99E7D /* HXYDrawingUtil.m in Sources */,
 				7A96086A22F1E8E700E1C2B5 /* ZZJsonToModel.m in Sources */,

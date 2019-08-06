@@ -13,15 +13,96 @@
 #import "ZZJsonToModel/ZZJsonToModel.h"
 #import "Person.h"
 #import "YYModel.h"
+#import "HXYSlidingController/AWESlidingViewController.h"
+#import "HXYSlidingController/AWESlidingTabbarView.h"
+#import "HXYViewControllerBlue.h"
+#import "HXYViewControllerRed.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) AVAssetImageGenerator *gen;
+@property (nonatomic, strong) AWESlidingTabbarView *slidingTabView;
+@property (nonatomic, strong) AWESlidingViewController *slidingViewController;
+
+@property (nonatomic, strong) HXYViewControllerBlue *blueVc;
+@property (nonatomic, strong) HXYViewControllerRed *redVc;
+
 @end
 
 @implementation ViewController
 
+- (AWESlidingViewController *)slidingViewController
+{
+    if (!_slidingViewController) {
+        _slidingViewController = [[AWESlidingViewController alloc] init];
+        _slidingViewController.automaticallyAdjustsScrollViewInsets = NO;
+        _slidingViewController.slideEnabled = YES;
+        _slidingViewController.delegate = self;
+        _slidingViewController.tabbarView = self.slidingTabView;
+    }
+    return _slidingViewController;
+}
+
+- (AWESlidingTabbarView *)slidingTabView
+{
+    if (!_slidingTabView) {
+        _slidingTabView = [[AWESlidingTabbarView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40) buttonStyle:AWESlidingTabButtonStyleIrregularText scrollEnabled:NO dataArray:@[@"视频", @"照片"] selectedDataArray:@[@"视频", @"照片"]];
+        _slidingTabView.backgroundColor = [UIColor purpleColor];
+        [_slidingTabView configureButtonTextColor:[UIColor redColor] selectedTextColor:[UIColor greenColor]];
+    }
+    return _slidingTabView;
+}
+
+- (HXYViewControllerRed *)redVc {
+    if (!_redVc) {
+        _redVc = [[HXYViewControllerRed alloc] init];
+    }
+    return _redVc;
+}
+
+- (HXYViewControllerBlue *)blueVc {
+    if (!_blueVc) {
+        _blueVc = [[HXYViewControllerBlue alloc] init];
+    }
+    return _blueVc;
+}
+
+#pragma mark - AWESlidingViewControllerDelegate
+
+- (NSInteger)numberOfControllers:(AWESlidingViewController *)slidingController
+{
+    return 2;
+}
+
+- (UIViewController *)slidingViewController:(AWESlidingViewController *)slidingViewController viewControllerAtIndex:(NSInteger)index
+{
+    if (index == 0) {
+        return self.redVc;
+    } else {
+        return self.blueVc;
+    }
+}
+
+- (void)slidingViewController:(AWESlidingViewController *)slidingViewController didSelectIndex:(NSInteger)index
+{
+
+}
+
+#pragma mark -
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    AWESlidingViewController *slidingVc = [[AWESlidingViewController alloc] init];
+    [self.view addSubview:self.slidingTabView];
+    self.slidingTabView.frame = CGRectMake(0, 0, self.view.frame.size.width, 40);
+    
+    [self addChildViewController:self.slidingViewController];
+    [self.slidingViewController didMoveToParentViewController:self];
+    [self.view addSubview:self.slidingViewController.view];
+    self.slidingViewController.view.frame = CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height - 40);
+    self.slidingViewController.selectedIndex = 0;
+   
+    return;
     
     Person *p = [Person yy_modelWithJSON:@{
                                            @"name" : @"zhangfeng",
