@@ -42,8 +42,8 @@
     void(*testImp)(id, SEL)  = [self methodForSelector:@selector(test)];
     testImp(self, @selector(test));
     
-    Person *p = [[Person alloc] init];
-    [p doit];
+//    Person *p = [[Person alloc] init];
+//    [p doit];
 }
 
 - (void)test {
@@ -51,14 +51,27 @@
     NSLog(@"谢谢%@", NSStringFromSelector(xx));
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    dispatch_semaphore_t sem = dispatch_semaphore_create(0);
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        NSLog(@"任务1:%@",[NSThread currentThread]);
+        dispatch_semaphore_signal(sem);
+    });
+    
+    dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSLog(@"任务2:%@",[NSThread currentThread]);
+        dispatch_semaphore_signal(sem);
+    });
+    
+    dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSLog(@"任务3:%@",[NSThread currentThread]);
+    });
 }
-*/
 
 @end
