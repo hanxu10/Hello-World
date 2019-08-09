@@ -5,6 +5,22 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol HXYModel <NSObject>
+@optional
+
++ (NSDictionary<NSString *, id> *)modelCustomPropertyMapper;
++ (NSDictionary<NSString *, id> *)modelContainerPropertyGenericClass;
++ (Class)modelCustomClassForDictionary:(NSDictionary *)dictionary;
++ (NSArray<NSString *> *)modelPropertyWhiteList;
+- (NSDictionary *)modelCustomWillTransformFromDictionary:(NSDictionary *)dic;
+- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic;
+- (BOOL)modelCustomTransformToDictionary:(NSMutableDictionary *)dic;
+
+@end
+
+
+
+
 @interface NSObject(HXYModel)
 
 

@@ -102,12 +102,27 @@
     self.slidingViewController.view.frame = CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height - 40);
     self.slidingViewController.selectedIndex = 0;
    
-    return;
+    
+    struct example {
+        id   anObject;
+        char *aString;
+        int  anInt;
+    };
+    
+    char *buf2 = @encode(struct example);
+    char *buf3 = @encode(CGPoint);
+    char *buf4 = @encode(CGRect);
+    char *buf5 = @encode(void(^)(NSString *, CGRect));
+    char *buf6 = @encode(id);
+    char *buf7 = @encode(Person);
+    char *buf8 = @encode(Class);
     
     Person *p = [Person yy_modelWithJSON:@{
                                            @"name" : @"zhangfeng",
                                            @"address" : @"中国",
                                            }];
+   
+    NSLog(@"");
     
 //    UIImageView *waterImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
 //    waterImageView.image = [UIImage imageNamed:@"water"];

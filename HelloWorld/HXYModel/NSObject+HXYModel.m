@@ -5,7 +5,10 @@
 
 #import "NSObject+HXYModel.h"
 #import "HXYClassInfo.h"
+#import "YYClassInfo.h"
+#import "YYModel.h"
 #import <objc/message.h>
+#import <Social/Social.h>
 
 #ifndef force_inline
 #define force_inline __inline__ __attribute__((always_inline))
@@ -308,7 +311,194 @@ static force_inline NSDateFormatter *HXYISODateFormatter() {
     return formatter;
 }
 
+static force_inline id HXYValueForKeyPath(NSDictionary *dic, NSArray *keyPaths) {
+    id value = nil;
+    for (NSUInteger i = 0, max = keyPaths.count; i < max; ++i) {
+        value = dic[keyPaths[i]];
+        if (i + 1 < max) {
+            if ([value isKindOfClass:[NSDictionary class]]) {
+                dic = value;
+            } else {
+                return nil;
+            }
+        }
+    }
+    return value;
+}
 
+static force_inline id HXYValueForMultiKeys(NSDictionary *dic, NSArray *multiKeys) {
+    id value = nil;
+    for (id key in multiKeys) {
+        if ([key isKindOfClass:[NSString class]]) {
+            value = dic[key];
+            if (value) {
+                break;
+            }
+        } else {
+            value = HXYValueForKeyPath(dic, (NSArray *)key);
+            if (value) {
+                break;
+            }
+        }
+    }
+    return value;
+}
+
+@interface _HXYModelPropertyMeta : NSObject {
+    NSString *_name;
+    YYEncodingType _type;
+    HXYEncodingNSType _nsType;
+    BOOL _isCNumber;
+    Class _cls;
+    Class _genericCls;
+    SEL _getter;
+    SEL _setter;
+    BOOL _isKVCCompatible;
+    BOOL _isStructAvailableForKeyedArchiver;
+    BOOL _hasCustomClassFromDictionary;
+
+    NSString *_mappedToKey;
+    NSArray *_mappedToKeyPath;
+    NSArray *_mappedToKeyArray;
+    HXYClassPropertyInfo *_info;
+    _HXYModelPropertyMeta *next;
+}
+@end
+
+@implementation _HXYModelPropertyMeta
+
++ (instancetype)metaWithClassInfo:(HXYClassInfo *)classInfo propertyInfo:(HXYClassPropertyInfo *)propertyInfo generic:(Class)generic {
+    if (!generic && propertyInfo.protocols) {
+        for (NSString *protocol in propertyInfo.protocols) {
+            Class cls = objc_getClass(protocol.UTF8String);
+            if (cls) {
+                generic = cls;
+                break;
+            }
+        }
+    }
+
+    _HXYModelPropertyMeta *meta = [[self alloc] init];
+    meta->_name = propertyInfo.name;
+    meta->_type = propertyInfo.type;
+    meta->_info = propertyInfo;
+    meta->_genericCls = generic;
+
+    if ((meta->_type & YYEncodingTypeMask) == YYEncodingTypeObject) {
+        meta->_nsType = HXYClassGetNSType(propertyInfo.cls);
+    } else {
+        meta->_isCNumber = HXYEncodingTypeIsCNumber(meta->_type);
+    }
+
+    if ((meta->_type & YYEncodingTypeMask) == YYEncodingTypeStruct) {
+        static NSSet *types = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            NSMutableSet *set = [NSMutableSet set];
+            [set addObject:@"{CGSize=ff}"];
+            [set addObject:@"{CGPoint=ff}"];
+            [set addObject:@"{CGRect={CGPoint=ff}{CGSize=ff}"];
+            [set addObject:@"{CGAffineTransform=ffffff}"];
+            [set addObject:@"{UIEdgeInsets=ffff}"];
+            [set addObject:@"{UIOffset=ff}"];
+
+            [set addObject:@"{CGSize=dd}"];
+            [set addObject:@"{CGPoint=dd}"];
+            [set addObject:@"{CGRect={CGPoint=dd}{CGSize=dd}}"];
+            [set addObject:@"{CGAffineTransform=dddddd}"];
+            [set addObject:@"{UIEdgeInsets=dddd}"];
+            [set addObject:@"{UIOffset=dd}"];
+
+            types = set;
+        });
+        if ([types containsObject:propertyInfo.typeEncoding]) {
+            meta->_isStructAvailableForKeyedArchiver = YES;
+        }
+    }
+    meta->_cls = propertyInfo.cls;
+
+    if (generic) {
+        meta->_hasCustomClassFromDictionary = [generic respondsToSelector:@selector(modelCustomClassForDictionary:)];
+    } else if (meta->_cls && meta->_nsType == HXYEncodingTypeNSUnknown) {
+        meta->_hasCustomClassFromDictionary = [meta->_cls respondsToSelector:@selector(modelCustomClassForDictionary:)];
+    }
+
+    if (propertyInfo.getter) {
+        if ([classInfo.cls instancesRespondToSelector:propertyInfo.getter]) {
+            meta->_getter = propertyInfo.getter;
+        }
+    }
+    if (propertyInfo.setter) {
+        if ([classInfo.cls instancesRespondToSelector:propertyInfo.setter]) {
+            meta->_setter = propertyInfo.setter;
+        }
+    }
+
+    if (meta->_getter && meta->_setter) {
+        switch (meta->_type & YYEncodingTypeMask) {
+            case YYEncodingTypeBool:
+            case YYEncodingTypeInt8:
+            case YYEncodingTypeUInt8:
+            case YYEncodingTypeInt16:
+            case YYEncodingTypeUInt16:
+            case YYEncodingTypeInt32:
+            case YYEncodingTypeUInt32:
+            case YYEncodingTypeInt64:
+            case YYEncodingTypeUInt64:
+            case YYEncodingTypeFloat:
+            case YYEncodingTypeDouble:
+            case YYEncodingTypeObject:
+            case YYEncodingTypeClass:
+            case YYEncodingTypeBlock:
+            case YYEncodingTypeStruct:
+            case YYEncodingTypeUnion: {
+                meta->_isKVCCompatible = YES;
+            }
+                break;
+            default:
+                break;
+        }
+    }
+
+    return meta;
+}
+@end
+
+@interface _HXYModelMeta : NSObject {
+    HXYClassInfo *_classInfo;
+    NSDictionary *_mapper;
+    NSArray *_allPropertyMetas;
+    NSArray *_keyPathPropertyMetas;
+    NSArray *_multiKeysPropertyMetas;
+    NSUInteger _keyMappedCount;
+    HXYEncodingNSType _nsType;
+
+    BOOL _hasCustomWillTransformFromDictionary;
+    BOOL _hasCustomTransformFromDictionary;
+    BOOL _hasCustomTransformToDictionary;
+    BOOL _hasCustomClassFromDictionary;
+}
+
+@end
+
+@implementation _HXYModelMeta
+
+- (instancetype)initWithClass:(Class)cls {
+    YYClassInfo *classInfo = [YYClassInfo classInfoWithClass:cls];
+    if (!classInfo) {
+        return nil;
+    }
+    self = [super init];
+
+    NSSet *blackList = nil;
+    if ([cls respondsToSelector:@selector(modelPropertyBlacklist)]) {
+        NSArray *properties = [(id<HXYModel>)cls modelPropertyBlacklist];
+    }
+
+}
+
+
+@end
 
 @implementation NSObject(HXYModel)
 
