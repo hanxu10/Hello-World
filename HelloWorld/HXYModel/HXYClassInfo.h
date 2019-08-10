@@ -11,53 +11,53 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_OPTIONS(NSUInteger, YYEncodingType) {
-    YYEncodingTypeMask       = 0xFF, ///< mask of type value
-    YYEncodingTypeUnknown    = 0, ///< unknown
-    YYEncodingTypeVoid       = 1, ///< void
-    YYEncodingTypeBool       = 2, ///< bool
-    YYEncodingTypeInt8       = 3, ///< char / BOOL
-    YYEncodingTypeUInt8      = 4, ///< unsigned char
-    YYEncodingTypeInt16      = 5, ///< short
-    YYEncodingTypeUInt16     = 6, ///< unsigned short
-    YYEncodingTypeInt32      = 7, ///< int
-    YYEncodingTypeUInt32     = 8, ///< unsigned int
-    YYEncodingTypeInt64      = 9, ///< long long
-    YYEncodingTypeUInt64     = 10, ///< unsigned long long
-    YYEncodingTypeFloat      = 11, ///< float
-    YYEncodingTypeDouble     = 12, ///< double
-    YYEncodingTypeLongDouble = 13, ///< long double
-    YYEncodingTypeObject     = 14, ///< id
-    YYEncodingTypeClass      = 15, ///< Class
-    YYEncodingTypeSEL        = 16, ///< SEL
-    YYEncodingTypeBlock      = 17, ///< block
-    YYEncodingTypePointer    = 18, ///< void*
-    YYEncodingTypeStruct     = 19, ///< struct
-    YYEncodingTypeUnion      = 20, ///< union
-    YYEncodingTypeCString    = 21, ///< char*
-    YYEncodingTypeCArray     = 22, ///< char[10] (for example)
+typedef NS_OPTIONS(NSUInteger, HXYEncodingType) {
+    HXYEncodingTypeMask       = 0xFF, ///< mask of type value
+    HXYEncodingTypeUnknown    = 0, ///< unknown
+    HXYEncodingTypeVoid       = 1, ///< void
+    HXYEncodingTypeBool       = 2, ///< bool
+    HXYEncodingTypeInt8       = 3, ///< char / BOOL
+    HXYEncodingTypeUInt8      = 4, ///< unsigned char
+    HXYEncodingTypeInt16      = 5, ///< short
+    HXYEncodingTypeUInt16     = 6, ///< unsigned short
+    HXYEncodingTypeInt32      = 7, ///< int
+    HXYEncodingTypeUInt32     = 8, ///< unsigned int
+    HXYEncodingTypeInt64      = 9, ///< long long
+    HXYEncodingTypeUInt64     = 10, ///< unsigned long long
+    HXYEncodingTypeFloat      = 11, ///< float
+    HXYEncodingTypeDouble     = 12, ///< double
+    HXYEncodingTypeLongDouble = 13, ///< long double
+    HXYEncodingTypeObject     = 14, ///< id
+    HXYEncodingTypeClass      = 15, ///< Class
+    HXYEncodingTypeSEL        = 16, ///< SEL
+    HXYEncodingTypeBlock      = 17, ///< block
+    HXYEncodingTypePointer    = 18, ///< void*
+    HXYEncodingTypeStruct     = 19, ///< struct
+    HXYEncodingTypeUnion      = 20, ///< union
+    HXYEncodingTypeCString    = 21, ///< char*
+    HXYEncodingTypeCArray     = 22, ///< char[10] (for example)
     
-    YYEncodingTypeQualifierMask   = 0xFF00,   ///< mask of qualifier
-    YYEncodingTypeQualifierConst  = 1 << 8,  ///< const
-    YYEncodingTypeQualifierIn     = 1 << 9,  ///< in
-    YYEncodingTypeQualifierInout  = 1 << 10, ///< inout
-    YYEncodingTypeQualifierOut    = 1 << 11, ///< out
-    YYEncodingTypeQualifierBycopy = 1 << 12, ///< bycopy
-    YYEncodingTypeQualifierByref  = 1 << 13, ///< byref
-    YYEncodingTypeQualifierOneway = 1 << 14, ///< oneway
+    HXYEncodingTypeQualifierMask   = 0xFF00,   ///< mask of qualifier
+    HXYEncodingTypeQualifierConst  = 1 << 8,  ///< const
+    HXYEncodingTypeQualifierIn     = 1 << 9,  ///< in
+    HXYEncodingTypeQualifierInout  = 1 << 10, ///< inout
+    HXYEncodingTypeQualifierOut    = 1 << 11, ///< out
+    HXYEncodingTypeQualifierBycopy = 1 << 12, ///< bycopy
+    HXYEncodingTypeQualifierByref  = 1 << 13, ///< byref
+    HXYEncodingTypeQualifierOneway = 1 << 14, ///< oneway
     
-    YYEncodingTypePropertyMask         = 0xFF0000, ///< mask of property
-    YYEncodingTypePropertyReadonly     = 1 << 16, ///< readonly
-    YYEncodingTypePropertyCopy         = 1 << 17, ///< copy
-    YYEncodingTypePropertyRetain       = 1 << 18, ///< retain
-    YYEncodingTypePropertyNonatomic    = 1 << 19, ///< nonatomic
-    YYEncodingTypePropertyWeak         = 1 << 20, ///< weak
-    YYEncodingTypePropertyCustomGetter = 1 << 21, ///< getter=
-    YYEncodingTypePropertyCustomSetter = 1 << 22, ///< setter=
-    YYEncodingTypePropertyDynamic      = 1 << 23, ///< @dynamic
+    HXYEncodingTypePropertyMask         = 0xFF0000, ///< mask of property
+    HXYEncodingTypePropertyReadonly     = 1 << 16, ///< readonly
+    HXYEncodingTypePropertyCopy         = 1 << 17, ///< copy
+    HXYEncodingTypePropertyRetain       = 1 << 18, ///< retain
+    HXYEncodingTypePropertyNonatomic    = 1 << 19, ///< nonatomic
+    HXYEncodingTypePropertyWeak         = 1 << 20, ///< weak
+    HXYEncodingTypePropertyCustomGetter = 1 << 21, ///< getter=
+    HXYEncodingTypePropertyCustomSetter = 1 << 22, ///< setter=
+    HXYEncodingTypePropertyDynamic      = 1 << 23, ///< @dynamic
 };
 
-YYEncodingType HXYEncodingGetType(const char *typeEncoding);
+HXYEncodingType HXYEncodingGetType(const char *typeEncoding);
 
 @interface HXYClassIvarInfo : NSObject
 
@@ -65,7 +65,7 @@ YYEncodingType HXYEncodingGetType(const char *typeEncoding);
 @property (nonatomic, strong, readonly) NSString *name;
 @property (nonatomic, assign, readonly) ptrdiff_t offset;
 @property (nonatomic, strong, readonly) NSString *typeEncoding;
-@property (nonatomic, assign, readonly) YYEncodingType type;
+@property (nonatomic, assign, readonly) HXYEncodingType type;
 
 - (instancetype)initWithIvar:(Ivar)ivar;
 
@@ -89,7 +89,7 @@ YYEncodingType HXYEncodingGetType(const char *typeEncoding);
 
 @property (nonatomic, assign, readonly) objc_property_t property;
 @property (nonatomic, strong, readonly) NSString *name;
-@property (nonatomic, assign, readonly) YYEncodingType type;
+@property (nonatomic, assign, readonly) HXYEncodingType type;
 @property (nonatomic, strong, readonly) NSString *typeEncoding;
 @property (nonatomic, strong, readonly) NSString *ivarName;
 @property (nonatomic, assign, readonly, nullable) Class cls;

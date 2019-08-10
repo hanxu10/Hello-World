@@ -28,6 +28,17 @@ void doitFunc(id self, SEL _cmd)
 
 @implementation Person
 
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"name"  : @"n",
+             @"bookId": @[@"id", @"ID", @"book_id"]};
+}
+
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{
+             @"stringArray" : [NSString class],
+             };
+}
+
 + (BOOL)resolveInstanceMethod:(SEL)sel {
     if (sel == @selector(doit)) {
 //        class_addMethod(self.class, sel, doitFunc, "v@:");

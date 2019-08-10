@@ -5,10 +5,7 @@
 
 #import "NSObject+HXYModel.h"
 #import "HXYClassInfo.h"
-#import "YYClassInfo.h"
-#import "YYModel.h"
 #import <objc/message.h>
-#import <Social/Social.h>
 
 #ifndef force_inline
 #define force_inline __inline__ __attribute__((always_inline))
@@ -85,20 +82,20 @@ static force_inline HXYEncodingNSType HXYClassGetNSType(Class cls) {
     return HXYEncodingTypeNSUnknown;
 }
 
-static force_inline BOOL HXYEncodingTypeIsCNumber(YYEncodingType type) {
-    switch (type & YYEncodingTypeMask) {
-        case YYEncodingTypeBool:
-        case YYEncodingTypeInt8:
-        case YYEncodingTypeUInt8:
-        case YYEncodingTypeInt16:
-        case YYEncodingTypeUInt16:
-        case YYEncodingTypeInt32:
-        case YYEncodingTypeUInt32:
-        case YYEncodingTypeInt64:
-        case YYEncodingTypeUInt64:
-        case YYEncodingTypeFloat:
-        case YYEncodingTypeDouble:
-        case YYEncodingTypeLongDouble:
+static force_inline BOOL HXYEncodingTypeIsCNumber(HXYEncodingType type) {
+    switch (type & HXYEncodingTypeMask) {
+        case HXYEncodingTypeBool:
+        case HXYEncodingTypeInt8:
+        case HXYEncodingTypeUInt8:
+        case HXYEncodingTypeInt16:
+        case HXYEncodingTypeUInt16:
+        case HXYEncodingTypeInt32:
+        case HXYEncodingTypeUInt32:
+        case HXYEncodingTypeInt64:
+        case HXYEncodingTypeUInt64:
+        case HXYEncodingTypeFloat:
+        case HXYEncodingTypeDouble:
+        case HXYEncodingTypeLongDouble:
             return YES;
         default:
             return NO;
@@ -177,7 +174,7 @@ static force_inline NSNumber *HXYNSNumberCreateFromID(id value) {
 }
 
 static force_inline NSDate *HXYNSDateFromString(NSString *string) {
-    typedef NSDate* (^HXYNSDateParseBlock)(NSString *string);
+    typedef NSDate *(^HXYNSDateParseBlock)(NSString *string);
 #define kParserNum 34
     static HXYNSDateParseBlock blocks[kParserNum + 1] = {0};
     static dispatch_once_t onceToken;
@@ -190,7 +187,9 @@ static force_inline NSDate *HXYNSDateFromString(NSString *string) {
             formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
             formatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
             formatter.dateFormat = @"yyyy-MM-dd";
-            blocks[10] = ^(NSString *string) { return [formatter dateFromString:string]; };
+            blocks[10] = ^(NSString *string) {
+                return [formatter dateFromString:string];
+            };
         }
 
         {
@@ -254,11 +253,21 @@ static force_inline NSDate *HXYNSDateFromString(NSString *string) {
             formatter2.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
             formatter2.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
 
-            blocks[20] = ^(NSString *string) { return [formatter dateFromString:string]; };
-            blocks[24] = ^(NSString *string) { return [formatter dateFromString:string]?: [formatter2 dateFromString:string]; };
-            blocks[25] = ^(NSString *string) { return [formatter dateFromString:string]; };
-            blocks[28] = ^(NSString *string) { return [formatter2 dateFromString:string]; };
-            blocks[29] = ^(NSString *string) { return [formatter2 dateFromString:string]; };
+            blocks[20] = ^(NSString *string) {
+                return [formatter dateFromString:string];
+            };
+            blocks[24] = ^(NSString *string) {
+                return [formatter dateFromString:string] ?: [formatter2 dateFromString:string];
+            };
+            blocks[25] = ^(NSString *string) {
+                return [formatter dateFromString:string];
+            };
+            blocks[28] = ^(NSString *string) {
+                return [formatter2 dateFromString:string];
+            };
+            blocks[29] = ^(NSString *string) {
+                return [formatter2 dateFromString:string];
+            };
         }
 
         {
@@ -274,14 +283,24 @@ static force_inline NSDate *HXYNSDateFromString(NSString *string) {
             formatter2.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
             formatter2.dateFormat = @"EEE MMM dd HH:mm:ss.SSS Z yyyy";
 
-            blocks[30] = ^(NSString *string) { return [formatter dateFromString:string]; };
-            blocks[34] = ^(NSString *string) { return [formatter2 dateFromString:string]; };
+            blocks[30] = ^(NSString *string) {
+                return [formatter dateFromString:string];
+            };
+            blocks[34] = ^(NSString *string) {
+                return [formatter2 dateFromString:string];
+            };
         }
     });
-    if (!string) return nil;
-    if (string.length > kParserNum) return nil;
+    if (!string) {
+        return nil;
+    }
+    if (string.length > kParserNum) {
+        return nil;
+    }
     HXYNSDateParseBlock parser = blocks[string.length];
-    if (!parser) return nil;
+    if (!parser) {
+        return nil;
+    }
     return parser(string);
 #undef kParserNum
 }
@@ -345,8 +364,8 @@ static force_inline id HXYValueForMultiKeys(NSDictionary *dic, NSArray *multiKey
 }
 
 @interface _HXYModelPropertyMeta : NSObject {
-    NSString *_name;
-    YYEncodingType _type;
+@package
+    HXYEncodingType _type;
     HXYEncodingNSType _nsType;
     BOOL _isCNumber;
     Class _cls;
@@ -361,7 +380,8 @@ static force_inline id HXYValueForMultiKeys(NSDictionary *dic, NSArray *multiKey
     NSArray *_mappedToKeyPath;
     NSArray *_mappedToKeyArray;
     HXYClassPropertyInfo *_info;
-    _HXYModelPropertyMeta *next;
+    _HXYModelPropertyMeta *_next;
+    NSString *_name;
 }
 @end
 
@@ -384,13 +404,13 @@ static force_inline id HXYValueForMultiKeys(NSDictionary *dic, NSArray *multiKey
     meta->_info = propertyInfo;
     meta->_genericCls = generic;
 
-    if ((meta->_type & YYEncodingTypeMask) == YYEncodingTypeObject) {
+    if ((meta->_type & HXYEncodingTypeMask) == HXYEncodingTypeObject) {
         meta->_nsType = HXYClassGetNSType(propertyInfo.cls);
     } else {
         meta->_isCNumber = HXYEncodingTypeIsCNumber(meta->_type);
     }
 
-    if ((meta->_type & YYEncodingTypeMask) == YYEncodingTypeStruct) {
+    if ((meta->_type & HXYEncodingTypeMask) == HXYEncodingTypeStruct) {
         static NSSet *types = nil;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
@@ -435,23 +455,23 @@ static force_inline id HXYValueForMultiKeys(NSDictionary *dic, NSArray *multiKey
     }
 
     if (meta->_getter && meta->_setter) {
-        switch (meta->_type & YYEncodingTypeMask) {
-            case YYEncodingTypeBool:
-            case YYEncodingTypeInt8:
-            case YYEncodingTypeUInt8:
-            case YYEncodingTypeInt16:
-            case YYEncodingTypeUInt16:
-            case YYEncodingTypeInt32:
-            case YYEncodingTypeUInt32:
-            case YYEncodingTypeInt64:
-            case YYEncodingTypeUInt64:
-            case YYEncodingTypeFloat:
-            case YYEncodingTypeDouble:
-            case YYEncodingTypeObject:
-            case YYEncodingTypeClass:
-            case YYEncodingTypeBlock:
-            case YYEncodingTypeStruct:
-            case YYEncodingTypeUnion: {
+        switch (meta->_type & HXYEncodingTypeMask) {
+            case HXYEncodingTypeBool:
+            case HXYEncodingTypeInt8:
+            case HXYEncodingTypeUInt8:
+            case HXYEncodingTypeInt16:
+            case HXYEncodingTypeUInt16:
+            case HXYEncodingTypeInt32:
+            case HXYEncodingTypeUInt32:
+            case HXYEncodingTypeInt64:
+            case HXYEncodingTypeUInt64:
+            case HXYEncodingTypeFloat:
+            case HXYEncodingTypeDouble:
+            case HXYEncodingTypeObject:
+            case HXYEncodingTypeClass:
+            case HXYEncodingTypeBlock:
+            case HXYEncodingTypeStruct:
+            case HXYEncodingTypeUnion: {
                 meta->_isKVCCompatible = YES;
             }
                 break;
@@ -484,7 +504,7 @@ static force_inline id HXYValueForMultiKeys(NSDictionary *dic, NSArray *multiKey
 @implementation _HXYModelMeta
 
 - (instancetype)initWithClass:(Class)cls {
-    YYClassInfo *classInfo = [YYClassInfo classInfoWithClass:cls];
+    HXYClassInfo *classInfo = [HXYClassInfo classInfoWithClass:cls];
     if (!classInfo) {
         return nil;
     }
@@ -492,15 +512,404 @@ static force_inline id HXYValueForMultiKeys(NSDictionary *dic, NSArray *multiKey
 
     NSSet *blackList = nil;
     if ([cls respondsToSelector:@selector(modelPropertyBlacklist)]) {
-        NSArray *properties = [(id<HXYModel>)cls modelPropertyBlacklist];
+        NSArray *properties = [(id <HXYModel>)cls modelPropertyBlacklist];
+        if (properties) {
+            blackList = [NSSet setWithArray:properties];
+        }
+    }
+
+    NSSet *whiteList = nil;
+    if ([cls respondsToSelector:@selector(modelPropertyWhiteList)]) {
+        NSArray *properties = [(id <HXYModel>)cls modelPropertyWhiteList];
+        if (properties) {
+            whiteList = [NSSet setWithArray:properties];
+        }
+    }
+
+    NSDictionary *genericMapper = nil;
+    if ([cls respondsToSelector:@selector(modelContainerPropertyGenericClass)]) {
+        genericMapper = [(id <HXYModel>)cls modelContainerPropertyGenericClass];
+        if (genericMapper) {
+            NSMutableDictionary *tmp = [NSMutableDictionary dictionary];
+            [genericMapper enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+                if (![key isKindOfClass:[NSString class]]) {
+                    return;
+                }
+                Class meta = object_getClass(obj);
+                if (!meta) {
+                    return;
+                }
+                if (class_isMetaClass(meta)) {
+                    tmp[key] = obj;
+                } else if ([obj isKindOfClass:[NSString class]]) {
+                    Class cls = NSClassFromString(obj);
+                    if (cls) {
+                        tmp[key] = cls;
+                    }
+                }
+            }];
+            genericMapper = tmp;
+        }
+    }
+
+    NSMutableDictionary *allPropertyMetas = [NSMutableDictionary dictionary];
+    HXYClassInfo *curClassInfo = classInfo;
+    while (curClassInfo && curClassInfo.superCls != nil) {
+        for (HXYClassPropertyInfo *propertyInfo in curClassInfo.propertyInfos.allValues) {
+            if (!propertyInfo.name) {
+                continue;
+            }
+            if (blackList && [blackList containsObject:propertyInfo.name]) {
+                continue;
+            }
+            if (whiteList && ![whiteList containsObject:propertyInfo.name]) {
+                continue;
+            }
+
+            _HXYModelPropertyMeta *meta = [_HXYModelPropertyMeta metaWithClassInfo:classInfo propertyInfo:propertyInfo generic:genericMapper[propertyInfo.name]];
+            if (!meta || !meta->_name) {
+                continue;
+            }
+            if (!meta->_getter || !meta->_setter) {
+                continue;
+            }
+            if (allPropertyMetas[meta->_name]) {
+                continue;
+            }
+            allPropertyMetas[meta->_name] = meta;
+        }
+        curClassInfo = curClassInfo.superClassInfo;
+    }
+    if (allPropertyMetas.count) {
+        _allPropertyMetas = allPropertyMetas.allValues.copy;
+    }
+
+    NSMutableDictionary *mapper = [NSMutableDictionary dictionary];
+    NSMutableArray *keyPathPropertyMetas = [NSMutableArray array];
+    NSMutableArray *multiKeysPropertyMetas = [NSMutableArray array];
+
+    if ([cls respondsToSelector:@selector(modelCustomPropertyMapper)]) {
+        NSDictionary *customMapper = [(id <HXYModel>)cls modelCustomPropertyMapper];
+        [customMapper enumerateKeysAndObjectsUsingBlock:^(NSString *propertyName, NSString *mappedToKey, BOOL *stop) {
+            _HXYModelPropertyMeta *propertyMeta = allPropertyMetas[propertyName];
+            if (!propertyMeta) {
+                return;
+            }
+            [allPropertyMetas removeObjectForKey:propertyName];
+
+            if ([mappedToKey isKindOfClass:[NSString class]]) {
+                if (mappedToKey.length == 0) {
+                    return;
+                }
+                propertyMeta->_mappedToKey = mappedToKey;
+                NSArray *keyPath = [mappedToKey componentsSeparatedByString:@"."];
+                for (NSString *onePath in keyPath) {
+                    if (onePath.length == 0) {
+                        NSMutableArray *tmp = keyPath.mutableCopy;
+                        [tmp removeObject:@""];
+                        keyPath = tmp;
+                        break;
+                    }
+                }
+                if (keyPath.count > 1) {
+                    propertyMeta->_mappedToKeyPath = keyPath;
+                    [keyPathPropertyMetas addObject:propertyMeta];
+                }
+                propertyMeta->_next = mapper[mappedToKey] ?: nil;
+                mapper[mappedToKey] = propertyMeta;
+            } else if ([mappedToKey isKindOfClass:[NSArray class]]) {
+                NSMutableArray *mappedToKeyArray = [NSMutableArray array];
+                for (NSString *oneKey in (NSArray *)mappedToKey) {
+                    if (![oneKey isKindOfClass:[NSString class]]) {
+                        continue;
+                    }
+                    if (oneKey.length == 0) {
+                        continue;
+                    }
+
+                    NSArray *keyPath = [oneKey componentsSeparatedByString:@"."];
+                    if (keyPath.count) {
+                        [mappedToKeyArray addObject:keyPath];
+                    } else {
+                        [mappedToKeyArray addObject:oneKey];
+                    }
+
+                    if (!propertyMeta->_mappedToKey) {
+                        propertyMeta->_mappedToKey = oneKey;
+                        propertyMeta->_mappedToKeyPath = keyPath.count > 1 ? keyPath : nil;
+                    }
+                }
+                if (!propertyMeta->_mappedToKey) {
+                    return;
+                }
+
+                propertyMeta->_mappedToKeyArray = mappedToKeyArray;
+                [multiKeysPropertyMetas addObject:propertyMeta];
+
+                propertyMeta->_next = mapper[mappedToKey] ?: nil;
+                mapper[mappedToKey] = propertyMeta;
+            }
+        }];
+    }
+
+    [allPropertyMetas enumerateKeysAndObjectsUsingBlock:^(NSString *name, _HXYModelPropertyMeta *propertyMeta, BOOL *stop) {
+        propertyMeta->_mappedToKey = name;
+        propertyMeta->_next = mapper[name] ?: nil;
+        mapper[name] = propertyMeta;
+    }];
+
+    if (mapper.count) {
+        _mapper = mapper;
+    }
+
+    if (keyPathPropertyMetas) {
+        _keyPathPropertyMetas = keyPathPropertyMetas;
+    }
+
+    if (multiKeysPropertyMetas) {
+        _multiKeysPropertyMetas = multiKeysPropertyMetas;
+    }
+
+    _classInfo = classInfo;
+    _keyMappedCount = _allPropertyMetas.count;
+    _nsType = HXYClassGetNSType(cls);
+    _hasCustomWillTransformFromDictionary = ([cls instancesRespondToSelector:@selector(modelCustomWillTransformFromDictionary:)]);
+    _hasCustomTransformFromDictionary = ([cls instancesRespondToSelector:@selector(modelCustomTransformFromDictionary:)]);
+    _hasCustomTransformToDictionary = ([cls instancesRespondToSelector:@selector(modelCustomTransformToDictionary:)]);
+    _hasCustomClassFromDictionary = ([cls respondsToSelector:@selector(modelCustomClassForDictionary:)]);
+
+    return self;
+}
+
++ (instancetype)metaWithClass:(Class)cls {
+    if (!cls) {
+        return nil;
+    }
+    static CFMutableDictionaryRef cache;
+    static dispatch_once_t onceToken;
+    static dispatch_semaphore_t lock;
+    dispatch_once(&onceToken, ^{
+        cache = CFDictionaryCreateMutable(CFAllocatorGetDefault(), 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+        lock = dispatch_semaphore_create(1);
+    });
+    dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
+    _HXYModelMeta *meta = CFDictionaryGetValue(cache, (__bridge const void *)(cls));
+    dispatch_semaphore_signal(lock);
+    if (!meta || meta->_classInfo.needUpdate) {
+        meta = [[_HXYModelMeta alloc] initWithClass:cls];
+        if (meta) {
+            dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
+            CFDictionarySetValue(cache, (__bridge const void *)(cls), (__bridge const void *)(meta));
+            dispatch_semaphore_signal(lock);
+        }
+    }
+    return meta;
+}
+
+@end
+
+static force_inline NSNumber *ModelCreateNumberFromProperty(id model, _HXYModelPropertyMeta *meta) {
+    switch (meta->_type & HXYEncodingTypeMask) {
+        case HXYEncodingTypeBool: {
+            return @(((bool (*)(id, SEL))(void *)objc_msgSend)((id)model, meta->_getter));
+        }
+        case HXYEncodingTypeInt8: {
+            return @(((int8_t (*)(id, SEL))(void *)objc_msgSend)((id)model, meta->_getter));
+        }
+        case HXYEncodingTypeUInt8: {
+            return @(((uint8_t (*)(id, SEL))(void *)objc_msgSend)((id)model, meta->_getter));
+        }
+        case HXYEncodingTypeInt16: {
+            return @(((int16_t (*)(id, SEL))(void *)objc_msgSend)((id)model, meta->_getter));
+        }
+        case HXYEncodingTypeUInt16: {
+            return @(((uint16_t (*)(id, SEL))(void *)objc_msgSend)((id)model, meta->_getter));
+        }
+        case HXYEncodingTypeInt32: {
+            return @(((int32_t (*)(id, SEL))(void *)objc_msgSend)((id)model, meta->_getter));
+        }
+        case HXYEncodingTypeUInt32: {
+            return @(((uint32_t (*)(id, SEL))(void *)objc_msgSend)((id)model, meta->_getter));
+        }
+        case HXYEncodingTypeInt64: {
+            return @(((int64_t (*)(id, SEL))(void *)objc_msgSend)((id)model, meta->_getter));
+        }
+        case HXYEncodingTypeUInt64: {
+            return @(((uint64_t (*)(id, SEL))(void *)objc_msgSend)((id)model, meta->_getter));
+        }
+        case HXYEncodingTypeFloat: {
+            float num = ((float (*)(id, SEL))(void *)objc_msgSend)((id)model, meta->_getter);
+            if (isnan(num) || isinf(num)) {
+                return nil;
+            }
+            return @(num);
+        }
+        case HXYEncodingTypeDouble: {
+            double num = ((double (*)(id, SEL))(void *)objc_msgSend)((id)model, meta->_getter);
+            if (isnan(num) || isinf(num)) {
+                return nil;
+            }
+            return @(num);
+        }
+        case HXYEncodingTypeLongDouble: {
+            double num = ((long double (*)(id, SEL))(void *)objc_msgSend)((id)model, meta->_getter);
+            if (isnan(num) || isinf(num)) {
+                return nil;
+            }
+            return @(num);
+        }
+        default:
+            return nil;
+    }
+}
+
+static force_inline void ModelSetNumberToProperty(id model, NSNumber *num, _HXYModelPropertyMeta *meta) {
+    switch (meta->_type & HXYEncodingTypeMask) {
+        case HXYEncodingTypeBool: {
+            ((void (*)(id, SEL, bool))(void *)objc_msgSend)((id)model, meta->_setter, num.boolValue);
+        }
+            break;
+        case HXYEncodingTypeInt8: {
+            ((void (*)(id, SEL, int8_t))(void *)objc_msgSend)((id)model, meta->_setter, (int8_t)num.charValue);
+        }
+            break;
+        case HXYEncodingTypeUInt8: {
+            ((void (*)(id, SEL, uint8_t))(void *)objc_msgSend)((id)model, meta->_setter, (uint8_t)num.unsignedCharValue);
+        }
+            break;
+        case HXYEncodingTypeInt16: {
+            ((void (*)(id, SEL, int16_t))(void *)objc_msgSend)((id)model, meta->_setter, (int16_t)num.shortValue);
+        }
+            break;
+        case HXYEncodingTypeUInt16: {
+            ((void (*)(id, SEL, uint16_t))(void *)objc_msgSend)((id)model, meta->_setter, (uint16_t)num.unsignedShortValue);
+        }
+            break;
+        case HXYEncodingTypeInt32: {
+            ((void (*)(id, SEL, int32_t))(void *)objc_msgSend)((id)model, meta->_setter, (int32_t)num.intValue);
+        }
+        case HXYEncodingTypeUInt32: {
+            ((void (*)(id, SEL, uint32_t))(void *)objc_msgSend)((id)model, meta->_setter, (uint32_t)num.unsignedIntValue);
+        }
+            break;
+        case HXYEncodingTypeInt64: {
+            if ([num isKindOfClass:[NSDecimalNumber class]]) {
+                ((void (*)(id, SEL, int64_t))(void *)objc_msgSend)((id)model, meta->_setter, (int64_t)num.stringValue.longLongValue);
+            } else {
+                ((void (*)(id, SEL, uint64_t))(void *)objc_msgSend)((id)model, meta->_setter, (uint64_t)num.longLongValue);
+            }
+        }
+            break;
+        case HXYEncodingTypeUInt64: {
+            if ([num isKindOfClass:[NSDecimalNumber class]]) {
+                ((void (*)(id, SEL, int64_t))(void *)objc_msgSend)((id)model, meta->_setter, (int64_t)num.stringValue.longLongValue);
+            } else {
+                ((void (*)(id, SEL, uint64_t))(void *)objc_msgSend)((id)model, meta->_setter, (uint64_t)num.unsignedLongLongValue);
+            }
+        }
+            break;
+        case HXYEncodingTypeFloat: {
+            float f = num.floatValue;
+            if (isnan(f) || isinf(f)) {
+                f = 0;
+            }
+            ((void (*)(id, SEL, float))(void *)objc_msgSend)((id)model, meta->_setter, f);
+        }
+            break;
+        case HXYEncodingTypeDouble: {
+            double d = num.doubleValue;
+            if (isnan(d) || isinf(d)) {
+                d = 0;
+            }
+            ((void (*)(id, SEL, double))(void *)objc_msgSend)((id)model, meta->_setter, d);
+        }
+            break;
+        case HXYEncodingTypeLongDouble: {
+            long double d = num.doubleValue;
+            if (isnan(d) || isinf(d)) {
+                d = 0;
+            }
+            ((void (*)(id, SEL, long double))(void *)objc_msgSend)((id)model, meta->_setter, (long double)d);
+        } // break; commented for code coverage in _next line
+        default:
+            break;
+    }
+}
+
+static void ModelSetValueForProperty(id model, id value, _HXYModelPropertyMeta *meta) {
+    if (meta->_isCNumber) {
+        NSNumber *num = HXYNSNumberCreateFromID(value);
+        ModelSetNumberToProperty(model, num, meta);
+        if (num) {
+            [num class];
+        }
+    } else if (meta->_nsType) {
+        if (value == (id)kCFNull) {
+            ((void (*)(id, SEL, id))objc_msgSend)((id)model, meta->_setter, (id)nil);
+        } else {
+            switch (meta->_nsType) {
+                case HXYEncodingTypeNSString:
+                case HXYEncodingTypeNSMutableString: {
+                    if ([value isKindOfClass:[NSString class]]) {
+                        if (meta->_nsType == HXYEncodingTypeNSString) {
+                            ((void (*)(id, SEL, id))objc_msgSend)((id)model, meta->_setter, value);
+                        } else {
+                            ((void (*)(id, SEL, id))objc_msgSend)((id)model, meta->_setter, ((NSString *)value).mutableCopy);
+                        }
+                    } else if ([value isKindOfClass:[NSNumber class]]) {
+                        ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model,
+                                meta->_setter,
+                                (meta->_nsType == HXYEncodingTypeNSString) ?
+                                        ((NSNumber *)value).stringValue :
+                                        ((NSNumber *)value).stringValue.mutableCopy);
+                    } else if ([value isKindOfClass:[NSData class]]) {
+                        NSMutableString *string = [[NSMutableString alloc] initWithData:value encoding:NSUTF8StringEncoding];
+                        ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, string);
+                    } else if ([value isKindOfClass:[NSURL class]]) {
+                        ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model,
+                                meta->_setter,
+                                (meta->_nsType == HXYEncodingTypeNSString) ?
+                                        ((NSURL *)value).absoluteString :
+                                        ((NSURL *)value).absoluteString.mutableCopy);
+                    } else if ([value isKindOfClass:[NSAttributedString class]]) {
+                        ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model,
+                                meta->_setter,
+                                (meta->_nsType == HXYEncodingTypeNSString) ?
+                                        ((NSAttributedString *)value).string :
+                                        ((NSAttributedString *)value).string.mutableCopy);
+                    }
+                }
+                    break;
+
+            }
+        }
     }
 
 }
-
-
-@end
 
 @implementation NSObject(HXYModel)
 
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

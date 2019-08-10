@@ -6,55 +6,54 @@
 //  Copyright © 2019 hxy-tech.com. All rights reserved.
 //
 
-#import <Social/Social.h>
 #import "HXYClassInfo.h"
 
-YYEncodingType HXYEncodingGetType(const char *typeEncoding) {
+HXYEncodingType HXYEncodingGetType(const char *typeEncoding) {
     char *type = (char *)typeEncoding;
     if (!type) {
-        return YYEncodingTypeUnknown;
+        return HXYEncodingTypeUnknown;
     }
     size_t len = strlen(type);
     if (len == 0) {
-        return YYEncodingTypeUnknown;
+        return HXYEncodingTypeUnknown;
     }
 
-    YYEncodingType qualifier = 0;
+    HXYEncodingType qualifier = 0;
     bool prefix = true;
     while (prefix) {
         switch (*type) {
             case 'r': {
-                qualifier |= YYEncodingTypeQualifierConst;
+                qualifier |= HXYEncodingTypeQualifierConst;
                 ++type;
             }
                 break;
             case 'n': {
-                qualifier |= YYEncodingTypeQualifierIn;
+                qualifier |= HXYEncodingTypeQualifierIn;
                 type++;
             }
                 break;
             case 'N': {
-                qualifier |= YYEncodingTypeQualifierInout;
+                qualifier |= HXYEncodingTypeQualifierInout;
                 type++;
             }
                 break;
             case 'o': {
-                qualifier |= YYEncodingTypeQualifierOut;
+                qualifier |= HXYEncodingTypeQualifierOut;
                 type++;
             }
                 break;
             case 'O': {
-                qualifier |= YYEncodingTypeQualifierBycopy;
+                qualifier |= HXYEncodingTypeQualifierBycopy;
                 type++;
             }
                 break;
             case 'R': {
-                qualifier |= YYEncodingTypeQualifierByref;
+                qualifier |= HXYEncodingTypeQualifierByref;
                 type++;
             }
                 break;
             case 'V': {
-                qualifier |= YYEncodingTypeQualifierOneway;
+                qualifier |= HXYEncodingTypeQualifierOneway;
                 type++;
             }
                 break;
@@ -67,63 +66,63 @@ YYEncodingType HXYEncodingGetType(const char *typeEncoding) {
 
     len = strlen(type);
     if (len == 0) {
-        return YYEncodingTypeUnknown | qualifier;
+        return HXYEncodingTypeUnknown | qualifier;
     }
 
     switch (*type) {
         case 'v':
-            return YYEncodingTypeVoid | qualifier;
+            return HXYEncodingTypeVoid | qualifier;
         case 'B':
-            return YYEncodingTypeBool | qualifier;
+            return HXYEncodingTypeBool | qualifier;
         case 'c':
-            return YYEncodingTypeInt8 | qualifier;
+            return HXYEncodingTypeInt8 | qualifier;
         case 'C':
-            return YYEncodingTypeUInt8 | qualifier;
+            return HXYEncodingTypeUInt8 | qualifier;
         case 's':
-            return YYEncodingTypeInt16 | qualifier;
+            return HXYEncodingTypeInt16 | qualifier;
         case 'S':
-            return YYEncodingTypeUInt16 | qualifier;
+            return HXYEncodingTypeUInt16 | qualifier;
         case 'i':
-            return YYEncodingTypeInt32 | qualifier;
+            return HXYEncodingTypeInt32 | qualifier;
         case 'I':
-            return YYEncodingTypeUInt32 | qualifier;
+            return HXYEncodingTypeUInt32 | qualifier;
         case 'l':
-            return YYEncodingTypeInt32 | qualifier;
+            return HXYEncodingTypeInt32 | qualifier;
         case 'L':
-            return YYEncodingTypeUInt32 | qualifier;
+            return HXYEncodingTypeUInt32 | qualifier;
         case 'q':
-            return YYEncodingTypeInt64 | qualifier;
+            return HXYEncodingTypeInt64 | qualifier;
         case 'Q':
-            return YYEncodingTypeUInt64 | qualifier;
+            return HXYEncodingTypeUInt64 | qualifier;
         case 'f':
-            return YYEncodingTypeFloat | qualifier;
+            return HXYEncodingTypeFloat | qualifier;
         case 'd':
-            return YYEncodingTypeDouble | qualifier;
+            return HXYEncodingTypeDouble | qualifier;
         case 'D':
-            return YYEncodingTypeLongDouble | qualifier;
+            return HXYEncodingTypeLongDouble | qualifier;
         case '#':
-            return YYEncodingTypeClass | qualifier;
+            return HXYEncodingTypeClass | qualifier;
         case ':':
-            return YYEncodingTypeSEL | qualifier;
+            return HXYEncodingTypeSEL | qualifier;
         case '*':
-            return YYEncodingTypeCString | qualifier;
+            return HXYEncodingTypeCString | qualifier;
         case '^':
-            return YYEncodingTypePointer | qualifier;
+            return HXYEncodingTypePointer | qualifier;
         case '[':
-            return YYEncodingTypeCArray | qualifier;
+            return HXYEncodingTypeCArray | qualifier;
         case '(':
-            return YYEncodingTypeUnion | qualifier;
+            return HXYEncodingTypeUnion | qualifier;
         case '{':
-            return YYEncodingTypeStruct | qualifier;
+            return HXYEncodingTypeStruct | qualifier;
         case '@': {
             if (len == 2 && *(type + 1) == '?') {
-                return YYEncodingTypeBlock | qualifier;
+                return HXYEncodingTypeBlock | qualifier;
             } else {
-                return YYEncodingTypeObject | qualifier;
+                return HXYEncodingTypeObject | qualifier;
             }
         }
         default:
-            return YYEncodingTypeUnknown | qualifier;
+            return HXYEncodingTypeUnknown | qualifier;
     }
 }
 
@@ -211,7 +210,7 @@ YYEncodingType HXYEncodingGetType(const char *typeEncoding) {
             _name = [NSString stringWithUTF8String:name];
         }
 
-        YYEncodingType type = 0;
+        HXYEncodingType type = 0;
         unsigned int attrCount;
         objc_property_attribute_t *attrs = property_copyAttributeList(property, &attrCount);
         for (unsigned int i = 0; i < attrCount; i++) {
@@ -221,7 +220,7 @@ YYEncodingType HXYEncodingGetType(const char *typeEncoding) {
                         _typeEncoding = [NSString stringWithUTF8String:attrs[i].value];
                         type = HXYEncodingGetType(attrs[i].value);
 
-                        if ((type & YYEncodingTypeMask) == YYEncodingTypeObject && _typeEncoding.length) {
+                        if ((type & HXYEncodingTypeMask) == HXYEncodingTypeObject && _typeEncoding.length) {
                             NSScanner *scanner = [NSScanner scannerWithString:_typeEncoding];
                             if (![scanner scanString:@"@\"" intoString:NULL]) {
                                 continue;
@@ -259,38 +258,38 @@ YYEncodingType HXYEncodingGetType(const char *typeEncoding) {
                 }
                     break;
                 case 'R': {
-                    type |= YYEncodingTypePropertyReadonly;
+                    type |= HXYEncodingTypePropertyReadonly;
                 }
                     break;
                 case 'C': {
-                    type |= YYEncodingTypePropertyCopy;
+                    type |= HXYEncodingTypePropertyCopy;
                 }
                     break;
                 case '&': {
-                    type |= YYEncodingTypePropertyRetain;
+                    type |= HXYEncodingTypePropertyRetain;
                 }
                     break;
                 case 'N': {
-                    type |= YYEncodingTypePropertyNonatomic;
+                    type |= HXYEncodingTypePropertyNonatomic;
                 }
                     break;
                 case 'D': {
-                    type |= YYEncodingTypePropertyDynamic;
+                    type |= HXYEncodingTypePropertyDynamic;
                 }
                     break;
                 case 'W': {
-                    type |= YYEncodingTypePropertyWeak;
+                    type |= HXYEncodingTypePropertyWeak;
                 }
                     break;
                 case 'G': {
-                    type |= YYEncodingTypePropertyCustomGetter;
+                    type |= HXYEncodingTypePropertyCustomGetter;
                     if (attrs[i].value) {
                         _getter = NSSelectorFromString([NSString stringWithUTF8String:attrs[i].value]);
                     }
                 }
                     break;
                 case 'S': {
-                    type |= YYEncodingTypePropertyCustomSetter;
+                    type |= HXYEncodingTypePropertyCustomSetter;
                     if (attrs[i].value) {
                         _setter = NSSelectorFromString([NSString stringWithUTF8String:attrs[i].value]);
                     }

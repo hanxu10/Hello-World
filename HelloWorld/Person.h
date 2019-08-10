@@ -24,8 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGRect pRect;
 @property (nonatomic, strong) id<ProtocolXXX, ProtocolYYY> pxy;
 @property (nonatomic, strong) NSArray<Person *> *children;
-@property (nonatomic, strong, readonly) NSString *name;
-@property (nonatomic, strong, readonly) Person *nextPerson;
+@property (nonatomic, strong) NSArray *stringArray;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *bookId;
+@property (nonatomic, strong) Person *nextPerson;
 @property (nonatomic, strong) void (^doSomeThingBlock)(NSString *some);
 
 - (void)doit;

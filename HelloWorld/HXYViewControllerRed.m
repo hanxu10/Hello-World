@@ -8,6 +8,7 @@
 
 #import "HXYViewControllerRed.h"
 #import "Person.h"
+#import <objc/message.h>
 
 @interface HXYViewControllerRed ()
 
@@ -41,6 +42,8 @@
     
     void(*testImp)(id, SEL)  = [self methodForSelector:@selector(test)];
     testImp(self, @selector(test));
+    
+    ((void(*)(id, SEL))objc_msgSend)(self, @selector(test));
     
 //    Person *p = [[Person alloc] init];
 //    [p doit];

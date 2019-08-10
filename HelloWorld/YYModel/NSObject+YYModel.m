@@ -767,7 +767,7 @@ static force_inline void ModelSetNumberToProperty(__unsafe_unretained id model,
             long double d = num.doubleValue;
             if (isnan(d) || isinf(d)) d = 0;
             ((void (*)(id, SEL, long double))(void *) objc_msgSend)((id)model, meta->_setter, (long double)d);
-        } // break; commented for code coverage in next line
+        } // break; commented for code coverage in _next line
         default: break;
     }
 }
@@ -998,7 +998,7 @@ static void ModelSetValueForProperty(__unsafe_unretained id model,
                                                                            ((NSSet *)valueSet).mutableCopy);
                         }
                     }
-                } // break; commented for code coverage in next line
+                } // break; commented for code coverage in _next line
                     
                 default: break;
             }
@@ -1090,7 +1090,7 @@ static void ModelSetValueForProperty(__unsafe_unretained id model,
                         ((void (*)(id, SEL, void *))(void *) objc_msgSend)((id)model, meta->_setter, nsValue.pointerValue);
                     }
                 }
-            } // break; commented for code coverage in next line
+            } // break; commented for code coverage in _next line
                 
             default: break;
         }
@@ -1592,7 +1592,7 @@ static NSString *ModelDescription(NSObject *model) {
                 case YYEncodingTypeLongDouble: {
                     long double num = ((long double (*)(id, SEL))(void *) objc_msgSend)((id)self, propertyMeta->_getter);
                     ((void (*)(id, SEL, long double))(void *) objc_msgSend)((id)one, propertyMeta->_setter, num);
-                } // break; commented for code coverage in next line
+                } // break; commented for code coverage in _next line
                 default: break;
             }
         } else {
@@ -1617,7 +1617,7 @@ static NSString *ModelDescription(NSObject *model) {
                             [one setValue:value forKey:propertyMeta->_name];
                         }
                     } @catch (NSException *exception) {}
-                } // break; commented for code coverage in next line
+                } // break; commented for code coverage in _next line
                 default: break;
             }
         }

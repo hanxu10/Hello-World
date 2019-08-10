@@ -115,8 +115,8 @@
 			children = (
 				7A9152CE22F7F2E4005A9757 /* HXYClassInfo.h */,
 				7A9152CF22F7F2E4005A9757 /* HXYClassInfo.m */,
-				3852B9AB92D1FCC3F41CA1ED /* NSObject+HXYModel.m */,
 				3852B367CB2EE29FE2A1C7ED /* NSObject+HXYModel.h */,
+				3852B9AB92D1FCC3F41CA1ED /* NSObject+HXYModel.m */,
 			);
 			path = HXYModel;
 			sourceTree = "<group>";

@@ -227,7 +227,7 @@ YYEncodingType YYEncodingGetType(const char *typeEncoding) {
                 if (attrs[i].value) {
                     _setter = NSSelectorFromString([NSString stringWithUTF8String:attrs[i].value]);
                 }
-            } // break; commented for code coverage in next line
+            } // break; commented for code coverage in _next line
             default: break;
         }
     }

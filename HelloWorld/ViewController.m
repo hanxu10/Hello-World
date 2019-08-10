@@ -103,6 +103,11 @@
     self.slidingViewController.selectedIndex = 0;
    
     
+    NSString *keyPath = @".a.b.c.";
+    NSArray *keyPathArray = [keyPath componentsSeparatedByString:@"."];
+    
+    
+    
     struct example {
         id   anObject;
         char *aString;

@@ -12,6 +12,7 @@
 + (NSDictionary<NSString *, id> *)modelContainerPropertyGenericClass;
 + (Class)modelCustomClassForDictionary:(NSDictionary *)dictionary;
 + (NSArray<NSString *> *)modelPropertyWhiteList;
++ (NSArray<NSString *> *)modelPropertyBlacklist;
 - (NSDictionary *)modelCustomWillTransformFromDictionary:(NSDictionary *)dic;
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic;
 - (BOOL)modelCustomTransformToDictionary:(NSMutableDictionary *)dic;
