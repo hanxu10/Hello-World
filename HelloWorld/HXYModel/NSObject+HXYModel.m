@@ -485,6 +485,7 @@ static force_inline id HXYValueForMultiKeys(NSDictionary *dic, NSArray *multiKey
 @end
 
 @interface _HXYModelMeta : NSObject {
+@package
     HXYClassInfo *_classInfo;
     NSDictionary *_mapper;
     NSArray *_allPropertyMetas;
@@ -881,11 +882,350 @@ static void ModelSetValueForProperty(id model, id value, _HXYModelPropertyMeta *
                 }
                     break;
 
+                case HXYEncodingTypeNSValue:
+                case HXYEncodingTypeNSNumber:
+                case HXYEncodingTypeNSDecimalNumber: {
+                    if (meta->_nsType == HXYEncodingTypeNSNumber) {
+                        ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, HXYNSNumberCreateFromID(value));
+                    } else if (meta->_nsType == HXYEncodingTypeNSDecimalNumber) {
+                        if ([value isKindOfClass:[NSDecimalNumber class]]) {
+                            ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, value);
+                        } else if ([value isKindOfClass:[NSNumber class]]) {
+                            NSDecimalNumber *decNum = [NSDecimalNumber decimalNumberWithDecimal:[((NSNumber *)value) decimalValue]];
+                            ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, decNum);
+                        } else if ([value isKindOfClass:[NSString class]]) {
+                            NSDecimalNumber *decNum = [NSDecimalNumber decimalNumberWithString:value];
+                            NSDecimal dec = decNum.decimalValue;
+                            if (dec._length == 0 && dec._isNegative) {
+                                decNum = nil; // NaN
+                            }
+                            ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, decNum);
+                        }
+                    } else {
+                        if ([value isKindOfClass:[NSValue class]]) {
+                            ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, value);
+                        }
+                    }
+                }
+                    break;
+                case HXYEncodingTypeNSData:
+                case HXYEncodingTypeNSMutableData: {
+                    if ([value isKindOfClass:[NSData class]]) {
+                        if (meta->_nsType == HXYEncodingTypeNSData) {
+                            ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, value);
+                        } else {
+                            NSMutableData *data = ((NSData *)value).mutableCopy;
+                            ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, data);
+                        }
+                    } else if ([value isKindOfClass:[NSString class]]) {
+                        NSData *data = [(NSString *)value dataUsingEncoding:NSUTF8StringEncoding];
+                        if (meta->_nsType == HXYEncodingTypeNSMutableData) {
+                            data = ((NSData *)data).mutableCopy;
+                        }
+                        ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, data);
+                    }
+                }
+                    break;
+
+                case HXYEncodingTypeNSDate: {
+                    if ([value isKindOfClass:[NSDate class]]) {
+                        ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, value);
+                    } else if ([value isKindOfClass:[NSString class]]) {
+                        ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, HXYNSDateFromString(value));
+                    }
+                }
+                    break;
+
+                case HXYEncodingTypeNSURL: {
+                    if ([value isKindOfClass:[NSURL class]]) {
+                        ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, value);
+                    } else if ([value isKindOfClass:[NSString class]]) {
+                        NSCharacterSet *set = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+                        NSString *str = [value stringByTrimmingCharactersInSet:set];
+                        if (str.length == 0) {
+                            ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, nil);
+                        } else {
+                            ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, [[NSURL alloc] initWithString:str]);
+                        }
+                    }
+                }
+                    break;
+
+                case HXYEncodingTypeNSArray:
+                case HXYEncodingTypeNSMutableArray: {
+                    if (meta->_genericCls) {
+                        NSArray *valueArr = nil;
+                        if ([value isKindOfClass:[NSArray class]]) {
+                            valueArr = value;
+                        } else if ([value isKindOfClass:[NSSet class]]) {
+                            valueArr = [(NSSet *)value allObjects];
+                        }
+                        if (valueArr) {
+                            NSMutableArray *objectArr = [NSMutableArray array];
+                            for (id one in objectArr) {
+                                if ([one isKindOfClass:meta->_genericCls]) {
+                                    [objectArr addObject:one];
+                                } else if ([one isKindOfClass:[NSDictionary class]]) {
+                                    Class cls = meta->_genericCls;
+                                    if (meta->_hasCustomClassFromDictionary) {
+                                        cls = [cls modelCustomClassForDictionary:one];
+                                        if (!cls) {
+                                            cls = meta->_genericCls;
+                                        }
+                                    }
+                                    NSObject *newOne = [[cls alloc] init];
+//                                    [newOne hxy_modelSetWithDictionary:one];
+                                    if (newOne) {
+                                        [objectArr addObject:newOne];
+                                    }
+                                }
+                            }
+                            ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, objectArr);
+                        }
+                    } else {
+                        if ([value isKindOfClass:[NSArray class]]) {
+                            if (meta->_nsType == HXYEncodingTypeNSArray) {
+                                ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, value);
+                            } else {
+                                ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model,
+                                        meta->_setter,
+                                        ((NSArray *)value).mutableCopy);
+                            }
+                        } else if ([value isKindOfClass:[NSSet class]]) {
+                            if (meta->_nsType == HXYEncodingTypeNSArray) {
+                                ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, ((NSSet *)value).allObjects);
+                            } else {
+                                ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model,
+                                        meta->_setter,
+                                        ((NSSet *)value).allObjects.mutableCopy);
+                            }
+                        }
+                    }
+                }
+                    break;
+
+                case HXYEncodingTypeNSDictionary:
+                case HXYEncodingTypeNSMutableDictionary: {
+                    if ([value isKindOfClass:[NSDictionary class]]) {
+                        if (meta->_genericCls) {
+                            NSMutableDictionary *dic = [NSMutableDictionary new];
+                            [((NSDictionary *)value) enumerateKeysAndObjectsUsingBlock:^(NSString *oneKey, id oneValue, BOOL *stop) {
+                                if ([oneValue isKindOfClass:[NSDictionary class]]) {
+                                    Class cls = meta->_genericCls;
+                                    if (meta->_hasCustomClassFromDictionary) {
+                                        cls = [cls modelCustomClassForDictionary:oneValue];
+                                        if (!cls) {
+                                            cls = meta->_genericCls;
+                                        } // for xcode code coverage
+                                    }
+                                    NSObject *newOne = [cls new];
+//                                    [newOne yy_modelSetWithDictionary:(id)oneValue];
+                                    if (newOne) {
+                                        dic[oneKey] = newOne;
+                                    }
+                                }
+                            }];
+                            ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, dic);
+                        } else {
+                            if (meta->_nsType == HXYEncodingTypeNSDictionary) {
+                                ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, value);
+                            } else {
+                                ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model,
+                                        meta->_setter,
+                                        ((NSDictionary *)value).mutableCopy);
+                            }
+                        }
+                    }
+                }
+                    break;
+
+                case HXYEncodingTypeNSSet:
+                case HXYEncodingTypeNSMutableSet: {
+                    NSSet *valueSet = nil;
+                    if ([value isKindOfClass:[NSArray class]]) {
+                        valueSet = [NSMutableSet setWithArray:value];
+                    } else if ([value isKindOfClass:[NSSet class]]) {
+                        valueSet = ((NSSet *)value);
+                    }
+
+                    if (meta->_genericCls) {
+                        NSMutableSet *set = [NSMutableSet new];
+                        for (id one in valueSet) {
+                            if ([one isKindOfClass:meta->_genericCls]) {
+                                [set addObject:one];
+                            } else if ([one isKindOfClass:[NSDictionary class]]) {
+                                Class cls = meta->_genericCls;
+                                if (meta->_hasCustomClassFromDictionary) {
+                                    cls = [cls modelCustomClassForDictionary:one];
+                                    if (!cls) {
+                                        cls = meta->_genericCls;
+                                    } // for xcode code coverage
+                                }
+                                NSObject *newOne = [cls new];
+//                                [newOne yy_modelSetWithDictionary:one];
+                                if (newOne) {
+                                    [set addObject:newOne];
+                                }
+                            }
+                        }
+                        ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, set);
+                    } else {
+                        if (meta->_nsType == HXYEncodingTypeNSSet) {
+                            ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, valueSet);
+                        } else {
+                            ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model,
+                                    meta->_setter,
+                                    ((NSSet *)valueSet).mutableCopy);
+                        }
+                    }
+                } // break; commented for code coverage in _next line
+
+                default:
+                    break;
             }
         }
+    } else {
+        BOOL isNull = (value == (id)kCFNull);
+        switch (meta->_type & HXYEncodingTypeMask) {
+            case HXYEncodingTypeObject: {
+                Class cls = meta->_genericCls ?: meta->_cls;
+                if (isNull) {
+                    ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, (id)nil);
+                } else if ([value isKindOfClass:cls] || !cls) {
+                    ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, (id)value);
+                } else if ([value isKindOfClass:[NSDictionary class]]) {
+                    NSObject *one = nil;
+                    if (meta->_getter) {
+                        one = ((id (*)(id, SEL))(void *)objc_msgSend)((id)model, meta->_getter);
+                    }
+                    if (one) {
+//                        [one hxy_modelSetWithDictionary:value];
+                    } else {
+                        if (meta->_hasCustomClassFromDictionary) {
+                            cls = [cls modelCustomClassForDictionary:value] ?: cls;
+                        }
+                        one = [cls new];
+//                        [one hxy_modelSetWithDictionary:value];
+                        ((void (*)(id, SEL, id))(void *)objc_msgSend)((id)model, meta->_setter, (id)one);
+                    }
+                }
+            }
+                break;
+            case HXYEncodingTypeClass: {
+                if (isNull) {
+                    ((void (*)(id, SEL, Class))(void *)objc_msgSend)((id)model, meta->_setter, (Class)NULL);
+                } else {
+                    Class cls = nil;
+                    if ([value isKindOfClass:[NSString class]]) {
+                        cls = NSClassFromString(value);
+                        if (cls) {
+                            ((void (*)(id, SEL, Class))(void *)objc_msgSend)((id)model, meta->_setter, (Class)cls);
+                        }
+                    } else {
+                        cls = object_getClass(value);
+                        if (cls) {
+                            if (class_isMetaClass(cls)) {
+                                ((void (*)(id, SEL, Class))(void *)objc_msgSend)((id)model, meta->_setter, (Class)value);
+                            }
+                        }
+                    }
+                }
+            }
+                break;
+
+            case HXYEncodingTypeSEL: {
+                if (isNull) {
+                    ((void (*)(id, SEL, SEL))(void *)objc_msgSend)((id)model, meta->_setter, (SEL)NULL);
+                } else if ([value isKindOfClass:[NSString class]]) {
+                    SEL sel = NSSelectorFromString(value);
+                    if (sel) {
+                        ((void (*)(id, SEL, SEL))(void *)objc_msgSend)((id)model, meta->_setter, (SEL)sel);
+                    }
+                }
+            }
+                break;
+
+            case HXYEncodingTypeBlock: {
+                if (isNull) {
+                    ((void (*)(id, SEL, void (^)()))(void *)objc_msgSend)((id)model, meta->_setter, (void (^)())NULL);
+                } else if ([value isKindOfClass:HXYNSBlockClass()]) {
+                    ((void (*)(id, SEL, void (^)()))(void *)objc_msgSend)((id)model, meta->_setter, (void (^)())value);
+                }
+            }
+                break;
+
+            case HXYEncodingTypeStruct:
+            case HXYEncodingTypeUnion:
+            case HXYEncodingTypeCArray: {
+                if ([value isKindOfClass:[NSValue class]]) {
+                    const char *valueType = ((NSValue *)value).objCType;
+                    const char *metaType = meta->_info.typeEncoding.UTF8String;
+                    if (valueType && metaType && strcmp(valueType, metaType) == 0) {
+                        [model setValue:value forKey:meta->_name];
+                    }
+                }
+            }
+                break;
+
+            case HXYEncodingTypePointer:
+            case HXYEncodingTypeCString: {
+                if (isNull) {
+                    ((void (*)(id, SEL, void *))(void *)objc_msgSend)((id)model, meta->_setter, (void *)NULL);
+                } else if ([value isKindOfClass:[NSValue class]]) {
+                    NSValue *nsValue = value;
+                    if (nsValue.objCType && strcmp(nsValue.objCType, "^v") == 0) {
+                        ((void (*)(id, SEL, void *))(void *)objc_msgSend)((id)model, meta->_setter, nsValue.pointerValue);
+                    }
+                }
+            } // break; commented for code coverage in _next line
+
+            default:
+                break;
+        }
+    }
+}
+
+typedef struct {
+    void *modelMeta;
+    void *model;
+    void *dictionary;
+} ModelSetContext;
+
+static void ModelSetWithDictionaryFunction(const void *_key, const void *_value, void *_context) {
+    ModelSetContext *context = _context;
+    _HXYModelMeta *meta = (__bridge _HXYModelMeta *)(context->modelMeta);
+    _HXYModelPropertyMeta *propertyMeta = [meta->_mapper objectForKey:(__bridge id)(_key)];
+    id model = (__bridge id)(context->model);
+    while (propertyMeta) {
+        if (propertyMeta->_setter) {
+            ModelSetValueForProperty(model, (__bridge id)_value, propertyMeta);
+        }
+        propertyMeta = propertyMeta->_next;
+    }
+}
+
+static void ModelSetWithPropertyMetaArrayFunction(const void *_propertyMeta, void *_context) {
+    ModelSetContext *context = _context;
+    __unsafe_unretained NSDictionary *dictionary = (__bridge NSDictionary *)(context->dictionary);
+    __unsafe_unretained _HXYModelPropertyMeta *propertyMeta = (__bridge _HXYModelPropertyMeta *)(_propertyMeta);
+    if (!propertyMeta->_setter) return;
+    id value = nil;
+
+    if (propertyMeta->_mappedToKeyArray) {
+        value = HXYValueForMultiKeys(dictionary, propertyMeta->_mappedToKeyArray);
+    } else if (propertyMeta->_mappedToKeyPath) {
+        value = HXYValueForKeyPath(dictionary, propertyMeta->_mappedToKeyPath);
+    } else {
+        value = [dictionary objectForKey:propertyMeta->_mappedToKey];
     }
 
+    if (value) {
+        __unsafe_unretained id model = (__bridge id)(context->model);
+        ModelSetValueForProperty(model, value, propertyMeta);
+    }
 }
+
+
 
 @implementation NSObject(HXYModel)
 

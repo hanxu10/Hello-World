@@ -17,6 +17,7 @@
 #import "HXYSlidingController/AWESlidingTabbarView.h"
 #import "HXYViewControllerBlue.h"
 #import "HXYViewControllerRed.h"
+#import "HXYTextKitViewController.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) AVAssetImageGenerator *gen;
@@ -25,10 +26,18 @@
 
 @property (nonatomic, strong) HXYViewControllerBlue *blueVc;
 @property (nonatomic, strong) HXYViewControllerRed *redVc;
+@property (nonatomic, strong) HXYTextKitViewController *textKitVc;
 
 @end
 
 @implementation ViewController
+
+- (HXYTextKitViewController *)textKitVc {
+    if (!_textKitVc) {
+        _textKitVc = [[HXYTextKitViewController alloc] init];
+    }
+    return _textKitVc;
+}
 
 - (AWESlidingViewController *)slidingViewController
 {
@@ -45,7 +54,7 @@
 - (AWESlidingTabbarView *)slidingTabView
 {
     if (!_slidingTabView) {
-        _slidingTabView = [[AWESlidingTabbarView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40) buttonStyle:AWESlidingTabButtonStyleIrregularText scrollEnabled:NO dataArray:@[@"视频", @"照片"] selectedDataArray:@[@"视频", @"照片"]];
+        _slidingTabView = [[AWESlidingTabbarView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40) buttonStyle:AWESlidingTabButtonStyleIrregularText scrollEnabled:NO dataArray:@[@"textkit", @"视频", @"照片"] selectedDataArray:@[@"textkit", @"视频", @"照片"]];
         _slidingTabView.backgroundColor = [UIColor purpleColor];
         [_slidingTabView configureButtonTextColor:[UIColor redColor] selectedTextColor:[UIColor greenColor]];
     }
@@ -70,13 +79,17 @@
 
 - (NSInteger)numberOfControllers:(AWESlidingViewController *)slidingController
 {
-    return 2;
+    return 3;
 }
 
 - (UIViewController *)slidingViewController:(AWESlidingViewController *)slidingViewController viewControllerAtIndex:(NSInteger)index
 {
     if (index == 0) {
+        return self.textKitVc;
+        
+    } else if (index == 1) {
         return self.redVc;
+        
     } else {
         return self.blueVc;
     }
@@ -102,6 +115,8 @@
     self.slidingViewController.view.frame = CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height - 40);
     self.slidingViewController.selectedIndex = 0;
    
+    
+    return;
     
     NSString *keyPath = @".a.b.c.";
     NSArray *keyPathArray = [keyPath componentsSeparatedByString:@"."];
@@ -391,11 +406,11 @@
     
     
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"info.json" ofType:nil];
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-    NSURL *xxsdf = [NSURL URLWithString:@"/Users/zhangfeng/Desktop/jsonGENModel"];
-    [ZZJsonToModel zz_createYYModelWithJson:json fileName:@"InfoModel" extensionName:@"json" fileURL:xxsdf error:nil];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"info.json" ofType:nil];
+//    NSData *data = [NSData dataWithContentsOfFile:path];
+//    id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+//    NSURL *xxsdf = [NSURL URLWithString:@"/Users/zhangfeng/Desktop/jsonGENModel"];
+//    [ZZJsonToModel zz_createYYModelWithJson:json fileName:@"InfoModel" extensionName:@"json" fileURL:xxsdf error:nil];
 }
 
 - (void)pdf {

@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3852B757E8BBB44AC79D1D32 /* NSArray+HXYBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 3852BE3532439CADA2896B92 /* NSArray+HXYBlocks.m */; };
 		3852BF57EB485F39E11C6D39 /* NSObject+HXYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3852B9AB92D1FCC3F41CA1ED /* NSObject+HXYModel.m */; };
+		3852BFE5FFE17B7C203BDB7A /* HXYTextKitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3852B4BC9C3F840290F9E015 /* HXYTextKitViewController.m */; };
 		7A2D247122DEAB8F00B99E7D /* HXYDrawingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2D247022DEAB8F00B99E7D /* HXYDrawingUtil.m */; };
 		7A3AB81D22E478B2001323FD /* text.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7A3AB81C22E478B1001323FD /* text.pdf */; };
 		7A3AB82722E59744001323FD /* test.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = 7A3AB82622E59744001323FD /* test.MP4 */; };
@@ -23,6 +25,7 @@
 		7A96086A22F1E8E700E1C2B5 /* ZZJsonToModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A96086522F1E8E700E1C2B5 /* ZZJsonToModel.m */; };
 		7A96086C22F1E8E700E1C2B5 /* NSString+ZZFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A96086922F1E8E700E1C2B5 /* NSString+ZZFormat.m */; };
 		7A96086E22F1E97900E1C2B5 /* info.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A96086D22F1E97900E1C2B5 /* info.json */; };
+		C3C55D2B23006CF50054BF73 /* HXYSyntaxHighlightTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C55D2A23006CF50054BF73 /* HXYSyntaxHighlightTextStorage.m */; };
 		C3DC5EAB22DCD30800FE7FF3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC5EAA22DCD30800FE7FF3 /* AppDelegate.m */; };
 		C3DC5EAE22DCD30800FE7FF3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC5EAD22DCD30800FE7FF3 /* ViewController.m */; };
 		C3DC5EB122DCD30800FE7FF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3DC5EAF22DCD30800FE7FF3 /* Main.storyboard */; };
@@ -34,7 +37,11 @@
 
 /* Begin PBXFileReference section */
 		3852B367CB2EE29FE2A1C7ED /* NSObject+HXYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+HXYModel.h"; sourceTree = "<group>"; };
+		3852B4BC9C3F840290F9E015 /* HXYTextKitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYTextKitViewController.m; sourceTree = "<group>"; };
+		3852B559956EE1C0104E0346 /* HXYTextKitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYTextKitViewController.h; sourceTree = "<group>"; };
 		3852B9AB92D1FCC3F41CA1ED /* NSObject+HXYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HXYModel.m"; sourceTree = "<group>"; };
+		3852BD7D9B20843F84C2A342 /* NSArray+HXYBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+HXYBlocks.h"; sourceTree = "<group>"; };
+		3852BE3532439CADA2896B92 /* NSArray+HXYBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+HXYBlocks.m"; sourceTree = "<group>"; };
 		7A2D246F22DEAB8F00B99E7D /* HXYDrawingUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYDrawingUtil.h; sourceTree = "<group>"; };
 		7A2D247022DEAB8F00B99E7D /* HXYDrawingUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYDrawingUtil.m; sourceTree = "<group>"; };
 		7A3AB81C22E478B1001323FD /* text.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = text.pdf; sourceTree = "<group>"; };
@@ -64,6 +71,8 @@
 		7A96086722F1E8E700E1C2B5 /* ZZJsonToModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZJsonToModel.h; sourceTree = "<group>"; };
 		7A96086922F1E8E700E1C2B5 /* NSString+ZZFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZZFormat.m"; sourceTree = "<group>"; };
 		7A96086D22F1E97900E1C2B5 /* info.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = info.json; sourceTree = "<group>"; };
+		C3C55D2923006CF50054BF73 /* HXYSyntaxHighlightTextStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYSyntaxHighlightTextStorage.h; sourceTree = "<group>"; };
+		C3C55D2A23006CF50054BF73 /* HXYSyntaxHighlightTextStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYSyntaxHighlightTextStorage.m; sourceTree = "<group>"; };
 		C3DC5EA622DCD30800FE7FF3 /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3DC5EA922DCD30800FE7FF3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C3DC5EAA22DCD30800FE7FF3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -89,6 +98,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3852B1EADB473A155684B380 /* BlocksKit */ = {
+			isa = PBXGroup;
+			children = (
+				3852BE3532439CADA2896B92 /* NSArray+HXYBlocks.m */,
+				3852BD7D9B20843F84C2A342 /* NSArray+HXYBlocks.h */,
+			);
+			path = BlocksKit;
+			sourceTree = "<group>";
+		};
+		3852BDB45F223AE08A60A32F /* TextKit */ = {
+			isa = PBXGroup;
+			children = (
+				3852B559956EE1C0104E0346 /* HXYTextKitViewController.h */,
+				3852B4BC9C3F840290F9E015 /* HXYTextKitViewController.m */,
+				C3C55D2923006CF50054BF73 /* HXYSyntaxHighlightTextStorage.h */,
+				C3C55D2A23006CF50054BF73 /* HXYSyntaxHighlightTextStorage.m */,
+			);
+			path = TextKit;
+			sourceTree = "<group>";
+		};
 		7A2D246E22DEAB7400B99E7D /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +218,8 @@
 				C3DC5EB822DCD30900FE7FF3 /* main.m */,
 				7A9152CA22F7EF18005A9757 /* Person.h */,
 				7A9152CB22F7EF18005A9757 /* Person.m */,
+				3852B1EADB473A155684B380 /* BlocksKit */,
+				3852BDB45F223AE08A60A32F /* TextKit */,
 			);
 			path = HelloWorld;
 			sourceTree = "<group>";
@@ -292,7 +323,10 @@
 				7A96086A22F1E8E700E1C2B5 /* ZZJsonToModel.m in Sources */,
 				7A9152C522F73780005A9757 /* YYClassInfo.m in Sources */,
 				C3DC5EC222DCD4BC00FE7FF3 /* MBProgressHUD.m in Sources */,
+				C3C55D2B23006CF50054BF73 /* HXYSyntaxHighlightTextStorage.m in Sources */,
 				3852BF57EB485F39E11C6D39 /* NSObject+HXYModel.m in Sources */,
+				3852B757E8BBB44AC79D1D32 /* NSArray+HXYBlocks.m in Sources */,
+				3852BFE5FFE17B7C203BDB7A /* HXYTextKitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
