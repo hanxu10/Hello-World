@@ -9,6 +9,7 @@
 #import "HXYViewControllerRed.h"
 #import "Person.h"
 #import <objc/message.h>
+#import <Masonry/Masonry.h>
 
 @interface HXYViewControllerRed ()
 
@@ -21,10 +22,15 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor redColor];
     
-    
-    UIImageView *xx = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"album_icon_pic_check_m_normal"]];
+    UIImage *image = [[UIImage imageNamed:@"big"] imageWithAlignmentRectInsets:UIEdgeInsetsMake(0, 0, 0, 196)];
+    UIImageView *xx = [[UIImageView alloc] initWithImage:image];
     [self.view addSubview:xx];
-    xx.center = CGPointMake(100, 100);
+    [xx mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view);
+    }];
+//    xx.center = CGPointMake(self.view.bounds.size.width * 0.5, self.view.bounds.size.height * 0.5);
+    
+    
     
     {
         UIImageView *xx = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"album_icon_pic_check_m_normal-1"]];

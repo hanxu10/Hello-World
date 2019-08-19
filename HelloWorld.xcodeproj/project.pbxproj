@@ -3,16 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E6F99C0F3277B3142B49908 /* Pods_HelloWorld.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30AA13A83FB6870CDA3361C1 /* Pods_HelloWorld.framework */; };
 		3852B757E8BBB44AC79D1D32 /* NSArray+HXYBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 3852BE3532439CADA2896B92 /* NSArray+HXYBlocks.m */; };
 		3852BF57EB485F39E11C6D39 /* NSObject+HXYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3852B9AB92D1FCC3F41CA1ED /* NSObject+HXYModel.m */; };
 		3852BFE5FFE17B7C203BDB7A /* HXYTextKitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3852B4BC9C3F840290F9E015 /* HXYTextKitViewController.m */; };
+		7A172594230A80A70071BD6B /* HXYCollectionViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A172593230A80A70071BD6B /* HXYCollectionViewViewController.m */; };
+		7A172597230A97590071BD6B /* HXYDrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A172596230A97590071BD6B /* HXYDrawViewController.m */; };
 		7A2D247122DEAB8F00B99E7D /* HXYDrawingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2D247022DEAB8F00B99E7D /* HXYDrawingUtil.m */; };
 		7A3AB81D22E478B2001323FD /* text.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7A3AB81C22E478B1001323FD /* text.pdf */; };
 		7A3AB82722E59744001323FD /* test.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = 7A3AB82622E59744001323FD /* test.MP4 */; };
+		7A8187E92307F448005AB532 /* HXYThreadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8187E82307F448005AB532 /* HXYThreadViewController.m */; };
+		7A8187EE23080861005AB532 /* HXYNSConditionLockTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8187ED23080861005AB532 /* HXYNSConditionLockTest.m */; };
 		7A9152C422F73780005A9757 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9152C122F73780005A9757 /* NSObject+YYModel.m */; };
 		7A9152C522F73780005A9757 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9152C222F73780005A9757 /* YYClassInfo.m */; };
 		7A9152CC22F7EF18005A9757 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9152CB22F7EF18005A9757 /* Person.m */; };
@@ -25,6 +30,14 @@
 		7A96086A22F1E8E700E1C2B5 /* ZZJsonToModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A96086522F1E8E700E1C2B5 /* ZZJsonToModel.m */; };
 		7A96086C22F1E8E700E1C2B5 /* NSString+ZZFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A96086922F1E8E700E1C2B5 /* NSString+ZZFormat.m */; };
 		7A96086E22F1E97900E1C2B5 /* info.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A96086D22F1E97900E1C2B5 /* info.json */; };
+		7AC177C6230A9F3E00A54F0D /* UIBezierPath+HXYHandyUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC177C5230A9F3E00A54F0D /* UIBezierPath+HXYHandyUtilities.m */; };
+		7AF244722302CE0C007C5BC9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF244712302CE0C007C5BC9 /* User.m */; };
+		A8E4010A9B6AE9A94FB2EB2C /* HXYTask.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E409D27F69BAC7B532D3E8 /* HXYTask.m */; };
+		A8E401A8B07062CF4DDEBAEE /* HXYTaskCompletionSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E407725C37DD2742D215C1 /* HXYTaskCompletionSource.m */; };
+		A8E401AF3D16472BF5774D10 /* HXYExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E406C4ED46E06782FEEC9C /* HXYExecutor.m */; };
+		A8E4063A211910CC6B9888E5 /* HXYCancellationTokenSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E401C3D3B9B1B99A55FF72 /* HXYCancellationTokenSource.m */; };
+		A8E40AAB886B6D89EB91418F /* HXYCancellationToken.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E40B8E451E3D9A29151089 /* HXYCancellationToken.m */; };
+		A8E40DB3D5626FB558F484DB /* HXYCancellationTokenRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E40DDC4BA462F89029DEB8 /* HXYCancellationTokenRegistration.m */; };
 		C3C55D2B23006CF50054BF73 /* HXYSyntaxHighlightTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C55D2A23006CF50054BF73 /* HXYSyntaxHighlightTextStorage.m */; };
 		C3DC5EAB22DCD30800FE7FF3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC5EAA22DCD30800FE7FF3 /* AppDelegate.m */; };
 		C3DC5EAE22DCD30800FE7FF3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC5EAD22DCD30800FE7FF3 /* ViewController.m */; };
@@ -36,16 +49,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30AA13A83FB6870CDA3361C1 /* Pods_HelloWorld.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloWorld.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		33EA87B23B0A6FB3580612DF /* Pods-HelloWorld.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloWorld.debug.xcconfig"; path = "Target Support Files/Pods-HelloWorld/Pods-HelloWorld.debug.xcconfig"; sourceTree = "<group>"; };
 		3852B367CB2EE29FE2A1C7ED /* NSObject+HXYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+HXYModel.h"; sourceTree = "<group>"; };
 		3852B4BC9C3F840290F9E015 /* HXYTextKitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYTextKitViewController.m; sourceTree = "<group>"; };
 		3852B559956EE1C0104E0346 /* HXYTextKitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYTextKitViewController.h; sourceTree = "<group>"; };
 		3852B9AB92D1FCC3F41CA1ED /* NSObject+HXYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HXYModel.m"; sourceTree = "<group>"; };
 		3852BD7D9B20843F84C2A342 /* NSArray+HXYBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+HXYBlocks.h"; sourceTree = "<group>"; };
 		3852BE3532439CADA2896B92 /* NSArray+HXYBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+HXYBlocks.m"; sourceTree = "<group>"; };
+		7A172592230A80A70071BD6B /* HXYCollectionViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYCollectionViewViewController.h; sourceTree = "<group>"; };
+		7A172593230A80A70071BD6B /* HXYCollectionViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYCollectionViewViewController.m; sourceTree = "<group>"; };
+		7A172595230A97590071BD6B /* HXYDrawViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYDrawViewController.h; sourceTree = "<group>"; };
+		7A172596230A97590071BD6B /* HXYDrawViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYDrawViewController.m; sourceTree = "<group>"; };
 		7A2D246F22DEAB8F00B99E7D /* HXYDrawingUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYDrawingUtil.h; sourceTree = "<group>"; };
 		7A2D247022DEAB8F00B99E7D /* HXYDrawingUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYDrawingUtil.m; sourceTree = "<group>"; };
 		7A3AB81C22E478B1001323FD /* text.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = text.pdf; sourceTree = "<group>"; };
 		7A3AB82622E59744001323FD /* test.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.MP4; sourceTree = "<group>"; };
+		7A8187E72307F448005AB532 /* HXYThreadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYThreadViewController.h; sourceTree = "<group>"; };
+		7A8187E82307F448005AB532 /* HXYThreadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYThreadViewController.m; sourceTree = "<group>"; };
+		7A8187EC23080861005AB532 /* HXYNSConditionLockTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYNSConditionLockTest.h; sourceTree = "<group>"; };
+		7A8187ED23080861005AB532 /* HXYNSConditionLockTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYNSConditionLockTest.m; sourceTree = "<group>"; };
 		7A9152BF22F73780005A9757 /* YYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYClassInfo.h; sourceTree = "<group>"; };
 		7A9152C022F73780005A9757 /* YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYModel.h; sourceTree = "<group>"; };
 		7A9152C122F73780005A9757 /* NSObject+YYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYModel.m"; sourceTree = "<group>"; };
@@ -71,6 +94,24 @@
 		7A96086722F1E8E700E1C2B5 /* ZZJsonToModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZJsonToModel.h; sourceTree = "<group>"; };
 		7A96086922F1E8E700E1C2B5 /* NSString+ZZFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZZFormat.m"; sourceTree = "<group>"; };
 		7A96086D22F1E97900E1C2B5 /* info.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = info.json; sourceTree = "<group>"; };
+		7AC177C4230A9F3E00A54F0D /* UIBezierPath+HXYHandyUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+HXYHandyUtilities.h"; sourceTree = "<group>"; };
+		7AC177C5230A9F3E00A54F0D /* UIBezierPath+HXYHandyUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+HXYHandyUtilities.m"; sourceTree = "<group>"; };
+		7AF244702302CE0C007C5BC9 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		7AF244712302CE0C007C5BC9 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		7B439EDB2F5E7ED47DB10AFC /* Pods-HelloWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloWorld.release.xcconfig"; path = "Target Support Files/Pods-HelloWorld/Pods-HelloWorld.release.xcconfig"; sourceTree = "<group>"; };
+		A8E401C3D3B9B1B99A55FF72 /* HXYCancellationTokenSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYCancellationTokenSource.m; sourceTree = "<group>"; };
+		A8E404AF1CE523D0AB69BDEA /* HXYTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYTask.h; sourceTree = "<group>"; };
+		A8E405E7948A3AC3C94938D9 /* HXYCancellationToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYCancellationToken.h; sourceTree = "<group>"; };
+		A8E406C4ED46E06782FEEC9C /* HXYExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYExecutor.m; sourceTree = "<group>"; };
+		A8E407725C37DD2742D215C1 /* HXYTaskCompletionSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYTaskCompletionSource.m; sourceTree = "<group>"; };
+		A8E40969E15BA3E036F221D5 /* HXYGeneric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYGeneric.h; sourceTree = "<group>"; };
+		A8E409D27F69BAC7B532D3E8 /* HXYTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYTask.m; sourceTree = "<group>"; };
+		A8E40B31D79FB61DE2961D56 /* HXYCancellationTokenSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYCancellationTokenSource.h; sourceTree = "<group>"; };
+		A8E40B8E451E3D9A29151089 /* HXYCancellationToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYCancellationToken.m; sourceTree = "<group>"; };
+		A8E40B960F3333D35EC65BD7 /* HXYExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYExecutor.h; sourceTree = "<group>"; };
+		A8E40D2E71A65579D019EA78 /* HXYTaskCompletionSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYTaskCompletionSource.h; sourceTree = "<group>"; };
+		A8E40DDC4BA462F89029DEB8 /* HXYCancellationTokenRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYCancellationTokenRegistration.m; sourceTree = "<group>"; };
+		A8E40F08A7E75949BD8C6B8A /* HXYCancellationTokenRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYCancellationTokenRegistration.h; sourceTree = "<group>"; };
 		C3C55D2923006CF50054BF73 /* HXYSyntaxHighlightTextStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYSyntaxHighlightTextStorage.h; sourceTree = "<group>"; };
 		C3C55D2A23006CF50054BF73 /* HXYSyntaxHighlightTextStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYSyntaxHighlightTextStorage.m; sourceTree = "<group>"; };
 		C3DC5EA622DCD30800FE7FF3 /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E6F99C0F3277B3142B49908 /* Pods_HelloWorld.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,13 +160,34 @@
 			path = TextKit;
 			sourceTree = "<group>";
 		};
+		625076C189812E384AB821DB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				30AA13A83FB6870CDA3361C1 /* Pods_HelloWorld.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7A2D246E22DEAB7400B99E7D /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
 				7A2D246F22DEAB8F00B99E7D /* HXYDrawingUtil.h */,
 				7A2D247022DEAB8F00B99E7D /* HXYDrawingUtil.m */,
+				7AC177C4230A9F3E00A54F0D /* UIBezierPath+HXYHandyUtilities.h */,
+				7AC177C5230A9F3E00A54F0D /* UIBezierPath+HXYHandyUtilities.m */,
 			);
 			path = Drawing;
+			sourceTree = "<group>";
+		};
+		7A8187EB23080840005AB532 /* Thread */ = {
+			isa = PBXGroup;
+			children = (
+				7A8187E72307F448005AB532 /* HXYThreadViewController.h */,
+				7A8187E82307F448005AB532 /* HXYThreadViewController.m */,
+				7A8187EC23080861005AB532 /* HXYNSConditionLockTest.h */,
+				7A8187ED23080861005AB532 /* HXYNSConditionLockTest.m */,
+			);
+			path = Thread;
 			sourceTree = "<group>";
 		};
 		7A9152BE22F73780005A9757 /* YYModel */ = {
@@ -176,11 +239,33 @@
 			path = ZZJsonToModel;
 			sourceTree = "<group>";
 		};
+		A8E40EBB65FEF4422F220A48 /* HXYTask */ = {
+			isa = PBXGroup;
+			children = (
+				A8E405E7948A3AC3C94938D9 /* HXYCancellationToken.h */,
+				A8E40B8E451E3D9A29151089 /* HXYCancellationToken.m */,
+				A8E40F08A7E75949BD8C6B8A /* HXYCancellationTokenRegistration.h */,
+				A8E40DDC4BA462F89029DEB8 /* HXYCancellationTokenRegistration.m */,
+				A8E401C3D3B9B1B99A55FF72 /* HXYCancellationTokenSource.m */,
+				A8E40B31D79FB61DE2961D56 /* HXYCancellationTokenSource.h */,
+				A8E406C4ED46E06782FEEC9C /* HXYExecutor.m */,
+				A8E40B960F3333D35EC65BD7 /* HXYExecutor.h */,
+				A8E409D27F69BAC7B532D3E8 /* HXYTask.m */,
+				A8E404AF1CE523D0AB69BDEA /* HXYTask.h */,
+				A8E40969E15BA3E036F221D5 /* HXYGeneric.h */,
+				A8E407725C37DD2742D215C1 /* HXYTaskCompletionSource.m */,
+				A8E40D2E71A65579D019EA78 /* HXYTaskCompletionSource.h */,
+			);
+			path = HXYTask;
+			sourceTree = "<group>";
+		};
 		C3DC5E9D22DCD30800FE7FF3 = {
 			isa = PBXGroup;
 			children = (
 				C3DC5EA822DCD30800FE7FF3 /* HelloWorld */,
 				C3DC5EA722DCD30800FE7FF3 /* Products */,
+				C3FFA6DA9A2DE7194AD07F15 /* Pods */,
+				625076C189812E384AB821DB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -211,6 +296,11 @@
 				7A9152E422F958DE005A9757 /* HXYViewControllerRed.m */,
 				7A9152E622F958E6005A9757 /* HXYViewControllerBlue.h */,
 				7A9152E722F958E6005A9757 /* HXYViewControllerBlue.m */,
+				7A172592230A80A70071BD6B /* HXYCollectionViewViewController.h */,
+				7A172593230A80A70071BD6B /* HXYCollectionViewViewController.m */,
+				7A172595230A97590071BD6B /* HXYDrawViewController.h */,
+				7A172596230A97590071BD6B /* HXYDrawViewController.m */,
+				7A8187EB23080840005AB532 /* Thread */,
 				C3DC5EAF22DCD30800FE7FF3 /* Main.storyboard */,
 				C3DC5EB222DCD30900FE7FF3 /* Assets.xcassets */,
 				C3DC5EB422DCD30900FE7FF3 /* LaunchScreen.storyboard */,
@@ -218,8 +308,11 @@
 				C3DC5EB822DCD30900FE7FF3 /* main.m */,
 				7A9152CA22F7EF18005A9757 /* Person.h */,
 				7A9152CB22F7EF18005A9757 /* Person.m */,
+				7AF244702302CE0C007C5BC9 /* User.h */,
+				7AF244712302CE0C007C5BC9 /* User.m */,
 				3852B1EADB473A155684B380 /* BlocksKit */,
 				3852BDB45F223AE08A60A32F /* TextKit */,
+				A8E40EBB65FEF4422F220A48 /* HXYTask */,
 			);
 			path = HelloWorld;
 			sourceTree = "<group>";
@@ -233,6 +326,15 @@
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
+		C3FFA6DA9A2DE7194AD07F15 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				33EA87B23B0A6FB3580612DF /* Pods-HelloWorld.debug.xcconfig */,
+				7B439EDB2F5E7ED47DB10AFC /* Pods-HelloWorld.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -240,9 +342,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C3DC5EBC22DCD30900FE7FF3 /* Build configuration list for PBXNativeTarget "HelloWorld" */;
 			buildPhases = (
+				29E8D2E4E3173AFC6BEAECB4 /* [CP] Check Pods Manifest.lock */,
 				C3DC5EA222DCD30800FE7FF3 /* Sources */,
 				C3DC5EA322DCD30800FE7FF3 /* Frameworks */,
 				C3DC5EA422DCD30800FE7FF3 /* Resources */,
+				A0E38B5899603A42B277FEB4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -302,11 +406,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		29E8D2E4E3173AFC6BEAECB4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HelloWorld-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0E38B5899603A42B277FEB4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HelloWorld/Pods-HelloWorld-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HelloWorld/Pods-HelloWorld-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HelloWorld/Pods-HelloWorld-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C3DC5EA222DCD30800FE7FF3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A8187E92307F448005AB532 /* HXYThreadViewController.m in Sources */,
 				7A9152DE22F9567C005A9757 /* AWESlidingTabbarView.m in Sources */,
 				C3DC5EAE22DCD30800FE7FF3 /* ViewController.m in Sources */,
 				7A9152E822F958E6005A9757 /* HXYViewControllerBlue.m in Sources */,
@@ -314,7 +461,10 @@
 				7A9152E522F958DE005A9757 /* HXYViewControllerRed.m in Sources */,
 				7A9152CC22F7EF18005A9757 /* Person.m in Sources */,
 				7A9152D022F7F2E4005A9757 /* HXYClassInfo.m in Sources */,
+				7A172597230A97590071BD6B /* HXYDrawViewController.m in Sources */,
 				7A96086C22F1E8E700E1C2B5 /* NSString+ZZFormat.m in Sources */,
+				7A8187EE23080861005AB532 /* HXYNSConditionLockTest.m in Sources */,
+				7AF244722302CE0C007C5BC9 /* User.m in Sources */,
 				7A9152C422F73780005A9757 /* NSObject+YYModel.m in Sources */,
 				7A9152DF22F9567C005A9757 /* AWESlidingViewController.m in Sources */,
 				7A9152DD22F9567C005A9757 /* AWESlidingScrollView.m in Sources */,
@@ -325,8 +475,16 @@
 				C3DC5EC222DCD4BC00FE7FF3 /* MBProgressHUD.m in Sources */,
 				C3C55D2B23006CF50054BF73 /* HXYSyntaxHighlightTextStorage.m in Sources */,
 				3852BF57EB485F39E11C6D39 /* NSObject+HXYModel.m in Sources */,
+				7AC177C6230A9F3E00A54F0D /* UIBezierPath+HXYHandyUtilities.m in Sources */,
 				3852B757E8BBB44AC79D1D32 /* NSArray+HXYBlocks.m in Sources */,
 				3852BFE5FFE17B7C203BDB7A /* HXYTextKitViewController.m in Sources */,
+				7A172594230A80A70071BD6B /* HXYCollectionViewViewController.m in Sources */,
+				A8E40AAB886B6D89EB91418F /* HXYCancellationToken.m in Sources */,
+				A8E40DB3D5626FB558F484DB /* HXYCancellationTokenRegistration.m in Sources */,
+				A8E4063A211910CC6B9888E5 /* HXYCancellationTokenSource.m in Sources */,
+				A8E401AF3D16472BF5774D10 /* HXYExecutor.m in Sources */,
+				A8E4010A9B6AE9A94FB2EB2C /* HXYTask.m in Sources */,
+				A8E401A8B07062CF4DDEBAEE /* HXYTaskCompletionSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +624,7 @@
 		};
 		C3DC5EBD22DCD30900FE7FF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33EA87B23B0A6FB3580612DF /* Pods-HelloWorld.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -483,6 +642,7 @@
 		};
 		C3DC5EBE22DCD30900FE7FF3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B439EDB2F5E7ED47DB10AFC /* Pods-HelloWorld.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
