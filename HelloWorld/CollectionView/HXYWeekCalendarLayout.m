@@ -112,7 +112,6 @@ static const CGFloat HourHeaderWidth = 100;
     return hourIndex;
 }
 
-
 - (NSArray *)indexPathsOfDayHeaderViewsInRect:(CGRect)rect {
     if (CGRectGetMinY(rect) > DayHeaderHeight) {
         return [NSArray array];
