@@ -22,6 +22,7 @@
 #import "User.h"
 #import "HXYThreadViewController.h"
 #import "HXYDrawViewController.h"
+#import "HXYCalendarCollectionViewViewController.h"
 
 @interface ViewController () <AWESlidingViewControllerDelegate>
 @property (nonatomic, strong) AVAssetImageGenerator *gen;
@@ -48,6 +49,7 @@
     static NSArray *xx = nil;
     if (!xx) {
         xx = @[
+               [HXYCalendarCollectionViewViewController class],
                [HXYDrawViewController class],
                [HXYViewControllerRed class],
                [HXYViewControllerBlue class],
@@ -55,7 +57,7 @@
                [HXYThreadViewController class],
                ];
     }
-    
+
     return xx;
 }
 
@@ -63,12 +65,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.vcs = [@[] mutableCopy];
     for (Class c in [self classes]) {
         [self.vcs addObject:[[c alloc] init]];
     }
-    
+
     NSDictionary *dict = @{
                            @"name" : @"Jack",
                            @"icon" : @"lufy.png",
@@ -80,34 +82,34 @@
                            //   @"gay" : @"1"
                            //   @"gay" : @"NO"
                            };
-    
+
     // JSON -> User
     User *user = [User mj_objectWithKeyValues:dict];
-    
+
 
     [self.view addSubview:self.slidingTabView];
     self.slidingTabView.frame = CGRectMake(0, 0, self.view.frame.size.width, 40);
-    
+
     [self addChildViewController:self.slidingViewController];
     [self.slidingViewController didMoveToParentViewController:self];
     [self.view addSubview:self.slidingViewController.view];
     self.slidingViewController.view.frame = CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height - 40);
     self.slidingViewController.selectedIndex = 0;
-   
-    
+
+
     return;
-    
+
     NSString *keyPath = @".a.b.c.";
     NSArray *keyPathArray = [keyPath componentsSeparatedByString:@"."];
-    
-    
-    
+
+
+
     struct example {
         id   anObject;
         char *aString;
         int  anInt;
     };
-    
+
     char *buf2 = @encode(struct example);
     char *buf3 = @encode(CGPoint);
     char *buf4 = @encode(CGRect);
@@ -115,12 +117,12 @@
     char *buf6 = @encode(id);
     char *buf7 = @encode(Person);
     char *buf8 = @encode(Class);
-    
+
     Person *p = [Person yy_modelWithJSON:@{
                                            @"name" : @"zhangfeng",
                                            @"address" : @"中国",
                                            }];
-    
+
     NSURL *url = [[NSBundle mainBundle] URLForResource:@"test.MP4" withExtension:nil];
     AVURLAsset *asset = [AVURLAsset assetWithURL:url];
     AVAssetImageGenerator *gen = [[AVAssetImageGenerator alloc] initWithAsset:asset];
@@ -129,13 +131,13 @@
     NSValue *time = [NSValue valueWithCMTime:kCMTimeZero];
     NSTimeInterval currentTime = CACurrentMediaTime();
     [gen generateCGImagesAsynchronouslyForTimes:@[time] completionHandler:^(CMTime requestedTime, CGImageRef  _Nullable image, CMTime actualTime, AVAssetImageGeneratorResult result, NSError * _Nullable error) {
-        
+
         if (result == AVAssetImageGeneratorSucceeded) {
             UIImage *xximage = [[UIImage alloc]initWithCGImage:image];
             NSLog(@"xxxx %f", CACurrentMediaTime() - currentTime);
         }
     }];
-    
+
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         // Do something...
         sleep(4);
@@ -143,9 +145,9 @@
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         });
     });
-    
-    
-    
+
+
+
 //    NSString *path = [[NSBundle mainBundle] pathForResource:@"info.json" ofType:nil];
 //    NSData *data = [NSData dataWithContentsOfFile:path];
 //    id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -156,9 +158,9 @@
 - (void)pdf {
     NSString *pdfPath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"pdf"];
     CGPDFDocumentRef pdfRef = CGPDFDocumentCreateWithURL((__bridge CFURLRef)[NSURL fileURLWithPath:pdfPath]);
-    
-    
-    
+
+
+
     CGPDFDocumentRelease(pdfRef);
 }
 
@@ -205,7 +207,7 @@
 
 - (void)slidingViewController:(AWESlidingViewController *)slidingViewController didSelectIndex:(NSInteger)index
 {
-    
+
 }
 
 @end

@@ -35,9 +35,15 @@
 		A8E4010A9B6AE9A94FB2EB2C /* HXYTask.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E409D27F69BAC7B532D3E8 /* HXYTask.m */; };
 		A8E401A8B07062CF4DDEBAEE /* HXYTaskCompletionSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E407725C37DD2742D215C1 /* HXYTaskCompletionSource.m */; };
 		A8E401AF3D16472BF5774D10 /* HXYExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E406C4ED46E06782FEEC9C /* HXYExecutor.m */; };
+		A8E401FFC098CC38028A1D52 /* HXYCalendarEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E40335830E2DC18995BC87 /* HXYCalendarEventCell.m */; };
+		A8E402995C3283BB9A5488F9 /* HXYCalendarCollectionViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E40A452A17814DD0EBD182 /* HXYCalendarCollectionViewViewController.m */; };
 		A8E4063A211910CC6B9888E5 /* HXYCancellationTokenSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E401C3D3B9B1B99A55FF72 /* HXYCancellationTokenSource.m */; };
+		A8E40672755EAFDF97A27A87 /* HXYCalendarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E400560A69076C383013A5 /* HXYCalendarHeaderView.m */; };
+		A8E40934747A9BFA8A5A1B53 /* HXYCalendarDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E40AA2D1952B0ADB4CE37A /* HXYCalendarDataSource.m */; };
 		A8E40AAB886B6D89EB91418F /* HXYCancellationToken.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E40B8E451E3D9A29151089 /* HXYCancellationToken.m */; };
+		A8E40CB5C7D7DE2CD42E780D /* HXYSampleCalendarEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E40005562F7E42554DCB01 /* HXYSampleCalendarEvent.m */; };
 		A8E40DB3D5626FB558F484DB /* HXYCancellationTokenRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E40DDC4BA462F89029DEB8 /* HXYCancellationTokenRegistration.m */; };
+		A8E40F4ACB2316F074AA6D08 /* HXYWeekCalendarLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E40E839F867BE1B182912C /* HXYWeekCalendarLayout.m */; };
 		C3C55D2B23006CF50054BF73 /* HXYSyntaxHighlightTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C55D2A23006CF50054BF73 /* HXYSyntaxHighlightTextStorage.m */; };
 		C3DC5EAB22DCD30800FE7FF3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC5EAA22DCD30800FE7FF3 /* AppDelegate.m */; };
 		C3DC5EAE22DCD30800FE7FF3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC5EAD22DCD30800FE7FF3 /* ViewController.m */; };
@@ -99,18 +105,31 @@
 		7AF244702302CE0C007C5BC9 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		7AF244712302CE0C007C5BC9 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		7B439EDB2F5E7ED47DB10AFC /* Pods-HelloWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloWorld.release.xcconfig"; path = "Target Support Files/Pods-HelloWorld/Pods-HelloWorld.release.xcconfig"; sourceTree = "<group>"; };
+		A8E40005562F7E42554DCB01 /* HXYSampleCalendarEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYSampleCalendarEvent.m; sourceTree = "<group>"; };
+		A8E400560A69076C383013A5 /* HXYCalendarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYCalendarHeaderView.m; sourceTree = "<group>"; };
 		A8E401C3D3B9B1B99A55FF72 /* HXYCancellationTokenSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYCancellationTokenSource.m; sourceTree = "<group>"; };
+		A8E4027D42F7A877A7B6A64E /* HXYCalendarDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYCalendarDataSource.h; sourceTree = "<group>"; };
+		A8E40335830E2DC18995BC87 /* HXYCalendarEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYCalendarEventCell.m; sourceTree = "<group>"; };
 		A8E404AF1CE523D0AB69BDEA /* HXYTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYTask.h; sourceTree = "<group>"; };
+		A8E405CA029CD15BB17DCDCB /* HXYWeekCalendarLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYWeekCalendarLayout.h; sourceTree = "<group>"; };
 		A8E405E7948A3AC3C94938D9 /* HXYCancellationToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYCancellationToken.h; sourceTree = "<group>"; };
 		A8E406C4ED46E06782FEEC9C /* HXYExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYExecutor.m; sourceTree = "<group>"; };
 		A8E407725C37DD2742D215C1 /* HXYTaskCompletionSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYTaskCompletionSource.m; sourceTree = "<group>"; };
+		A8E407D15264D66E1839ECCF /* HXYCalendarHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYCalendarHeaderView.h; sourceTree = "<group>"; };
+		A8E408D6941F4291324058BC /* HXYCalendarEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYCalendarEventCell.h; sourceTree = "<group>"; };
 		A8E40969E15BA3E036F221D5 /* HXYGeneric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYGeneric.h; sourceTree = "<group>"; };
 		A8E409D27F69BAC7B532D3E8 /* HXYTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYTask.m; sourceTree = "<group>"; };
+		A8E40A452A17814DD0EBD182 /* HXYCalendarCollectionViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYCalendarCollectionViewViewController.m; sourceTree = "<group>"; };
+		A8E40AA2D1952B0ADB4CE37A /* HXYCalendarDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYCalendarDataSource.m; sourceTree = "<group>"; };
 		A8E40B31D79FB61DE2961D56 /* HXYCancellationTokenSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYCancellationTokenSource.h; sourceTree = "<group>"; };
+		A8E40B8CCBB484471326D85B /* HXYCalendarCollectionViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYCalendarCollectionViewViewController.h; sourceTree = "<group>"; };
 		A8E40B8E451E3D9A29151089 /* HXYCancellationToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYCancellationToken.m; sourceTree = "<group>"; };
 		A8E40B960F3333D35EC65BD7 /* HXYExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYExecutor.h; sourceTree = "<group>"; };
+		A8E40D0B2B2AC1B6B4F6768E /* HXYSampleCalendarEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYSampleCalendarEvent.h; sourceTree = "<group>"; };
 		A8E40D2E71A65579D019EA78 /* HXYTaskCompletionSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYTaskCompletionSource.h; sourceTree = "<group>"; };
+		A8E40DD7AF97442D9CF5F9A6 /* HXYCalendarEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYCalendarEvent.h; sourceTree = "<group>"; };
 		A8E40DDC4BA462F89029DEB8 /* HXYCancellationTokenRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYCancellationTokenRegistration.m; sourceTree = "<group>"; };
+		A8E40E839F867BE1B182912C /* HXYWeekCalendarLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYWeekCalendarLayout.m; sourceTree = "<group>"; };
 		A8E40F08A7E75949BD8C6B8A /* HXYCancellationTokenRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXYCancellationTokenRegistration.h; sourceTree = "<group>"; };
 		C3C55D2923006CF50054BF73 /* HXYSyntaxHighlightTextStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYSyntaxHighlightTextStorage.h; sourceTree = "<group>"; };
 		C3C55D2A23006CF50054BF73 /* HXYSyntaxHighlightTextStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYSyntaxHighlightTextStorage.m; sourceTree = "<group>"; };
@@ -239,6 +258,26 @@
 			path = ZZJsonToModel;
 			sourceTree = "<group>";
 		};
+		A8E404BABCA1DA91EC45164C /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				A8E40B8CCBB484471326D85B /* HXYCalendarCollectionViewViewController.h */,
+				A8E40A452A17814DD0EBD182 /* HXYCalendarCollectionViewViewController.m */,
+				A8E4027D42F7A877A7B6A64E /* HXYCalendarDataSource.h */,
+				A8E40AA2D1952B0ADB4CE37A /* HXYCalendarDataSource.m */,
+				A8E40DD7AF97442D9CF5F9A6 /* HXYCalendarEvent.h */,
+				A8E408D6941F4291324058BC /* HXYCalendarEventCell.h */,
+				A8E40335830E2DC18995BC87 /* HXYCalendarEventCell.m */,
+				A8E407D15264D66E1839ECCF /* HXYCalendarHeaderView.h */,
+				A8E400560A69076C383013A5 /* HXYCalendarHeaderView.m */,
+				A8E40D0B2B2AC1B6B4F6768E /* HXYSampleCalendarEvent.h */,
+				A8E40005562F7E42554DCB01 /* HXYSampleCalendarEvent.m */,
+				A8E405CA029CD15BB17DCDCB /* HXYWeekCalendarLayout.h */,
+				A8E40E839F867BE1B182912C /* HXYWeekCalendarLayout.m */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
 		A8E40EBB65FEF4422F220A48 /* HXYTask */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +319,10 @@
 		C3DC5EA822DCD30800FE7FF3 /* HelloWorld */ = {
 			isa = PBXGroup;
 			children = (
+				3852B1EADB473A155684B380 /* BlocksKit */,
+				3852BDB45F223AE08A60A32F /* TextKit */,
+				A8E40EBB65FEF4422F220A48 /* HXYTask */,
+				A8E404BABCA1DA91EC45164C /* CollectionView */,
 				7A9152D522F9567C005A9757 /* HXYSlidingController */,
 				7A9152CD22F7F2C6005A9757 /* HXYModel */,
 				7A9152BE22F73780005A9757 /* YYModel */,
@@ -310,9 +353,6 @@
 				7A9152CB22F7EF18005A9757 /* Person.m */,
 				7AF244702302CE0C007C5BC9 /* User.h */,
 				7AF244712302CE0C007C5BC9 /* User.m */,
-				3852B1EADB473A155684B380 /* BlocksKit */,
-				3852BDB45F223AE08A60A32F /* TextKit */,
-				A8E40EBB65FEF4422F220A48 /* HXYTask */,
 			);
 			path = HelloWorld;
 			sourceTree = "<group>";
@@ -485,6 +525,12 @@
 				A8E401AF3D16472BF5774D10 /* HXYExecutor.m in Sources */,
 				A8E4010A9B6AE9A94FB2EB2C /* HXYTask.m in Sources */,
 				A8E401A8B07062CF4DDEBAEE /* HXYTaskCompletionSource.m in Sources */,
+				A8E402995C3283BB9A5488F9 /* HXYCalendarCollectionViewViewController.m in Sources */,
+				A8E40934747A9BFA8A5A1B53 /* HXYCalendarDataSource.m in Sources */,
+				A8E40672755EAFDF97A27A87 /* HXYCalendarHeaderView.m in Sources */,
+				A8E40CB5C7D7DE2CD42E780D /* HXYSampleCalendarEvent.m in Sources */,
+				A8E401FFC098CC38028A1D52 /* HXYCalendarEventCell.m in Sources */,
+				A8E40F4ACB2316F074AA6D08 /* HXYWeekCalendarLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
