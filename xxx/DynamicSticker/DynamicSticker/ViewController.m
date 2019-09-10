@@ -130,6 +130,16 @@
                     
                     [self cmd:cmdString completion:^(BOOL success) {
                         [[NSFileManager defaultManager] removeItemAtPath:[tempDirPath stringByAppendingPathComponent:staticImageName] error:nil];
+                        
+                        self.staticImage = nil;
+                        self.staticImageView.image = nil;
+                        self.dynamicImages = nil;
+                        self.dynamicImageNames = nil;
+                        [self.tableView reloadData];
+                        [self.framesImageView enumerateObjectsUsingBlock:^(NSImageView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                            obj.image = nil;
+                        }];
+                        
                         [self showAlert:@"生成成功" buttonTitle:@"在finder中找到文件" completionHandler:^(BOOL ok){
                             if (ok) {
                                 [[NSWorkspace sharedWorkspace] selectFile:tempDirPath inFileViewerRootedAtPath:@"xx"];
