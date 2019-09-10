@@ -10,12 +10,14 @@ PODS:
   - NVActivityIndicatorView (4.7.0):
     - NVActivityIndicatorView/Presenter (= 4.7.0)
   - NVActivityIndicatorView/Presenter (4.7.0)
+  - Reveal-SDK (24)
 
 DEPENDENCIES:
   - Bolts
   - Masonry
   - MJExtension
   - NVActivityIndicatorView
+  - Reveal-SDK
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -23,13 +25,15 @@ SPEC REPOS:
     - Masonry
     - MJExtension
     - NVActivityIndicatorView
+    - Reveal-SDK
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 6b69b3bef2864fd550ce1a184eda219e321209d2
   NVActivityIndicatorView: b19ddab2576f805cbe0fb2306cba3476e09a1dea
+  Reveal-SDK: 5d7e56b8f018c0a88b3a2c10bf68d598bbd3b071
 
-PODFILE CHECKSUM: 02a44e8366eb7de028c9148b6d564045b29b241e
+PODFILE CHECKSUM: 9e9eb47f593613fdb074814d33d0b64d9b9db67c
 
 COCOAPODS: 1.7.5

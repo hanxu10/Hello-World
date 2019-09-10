@@ -811,6 +811,56 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQC-1W-Vd8" userLabel="序列帧table">
+                                <rect key="frame" x="278" y="127" width="194" height="135"/>
+                                <clipView key="contentView" id="gsJ-FT-V41">
+                                    <rect key="frame" x="1" y="0.0" width="192" height="134"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="HxM-OI-h91" id="TOj-9d-JrA">
+                                            <rect key="frame" x="0.0" y="0.0" width="192" height="109"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn width="189" minWidth="10" maxWidth="3.4028234663852886e+38" id="35d-hJ-nPG">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="序列帧名称(点击可按照名称排序)">
+                                                        <font key="font" metaFont="system" size="11"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="uLm-H0-1QY">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                </tableColumn>
+                                            </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="XfG-lQ-9wD" id="at5-NY-6KV"/>
+                                                <outlet property="delegate" destination="XfG-lQ-9wD" id="Srs-nE-T2i"/>
+                                            </connections>
+                                        </tableView>
+                                    </subviews>
+                                </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="135" id="etd-Br-Cy8"/>
+                                </constraints>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="QmL-pO-1X0">
+                                    <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="zeK-Nh-dwt">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <tableHeaderView key="headerView" id="HxM-OI-h91">
+                                    <rect key="frame" x="0.0" y="0.0" width="192" height="25"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableHeaderView>
+                            </scrollView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="wGT-sO-qlU" customClass="XXDragDropView">
                                 <rect key="frame" x="0.0" y="0.0" width="500" height="500"/>
                                 <subviews>
@@ -824,12 +874,14 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="PpO-dB-26g" secondAttribute="trailing" constant="56" id="2Ag-Qg-SKQ"/>
+                            <constraint firstItem="LQC-1W-Vd8" firstAttribute="leading" secondItem="N1K-ow-wEh" secondAttribute="leading" constant="12" id="2bx-fL-q7n"/>
                             <constraint firstItem="wGT-sO-qlU" firstAttribute="height" secondItem="m2S-Jp-Qdl" secondAttribute="height" id="2on-gJ-ecH"/>
                             <constraint firstItem="3zg-71-g7g" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="30" id="3xc-uO-yUL"/>
                             <constraint firstItem="N1K-ow-wEh" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="60" id="5JQ-No-ZcQ"/>
                             <constraint firstItem="wGT-sO-qlU" firstAttribute="width" secondItem="m2S-Jp-Qdl" secondAttribute="width" id="6EJ-NK-S8D"/>
                             <constraint firstItem="dFa-VX-BAU" firstAttribute="centerY" secondItem="fyk-cX-cR0" secondAttribute="centerY" id="8e7-Ug-rwb"/>
                             <constraint firstItem="1Uq-dJ-miB" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="60" id="9ce-4w-Euz"/>
+                            <constraint firstItem="LQC-1W-Vd8" firstAttribute="top" secondItem="7Py-WA-cej" secondAttribute="bottom" constant="28" id="9dS-zN-QMA"/>
                             <constraint firstAttribute="bottom" secondItem="6pt-RP-kou" secondAttribute="bottom" constant="20" id="9s2-Aq-9sC"/>
                             <constraint firstItem="wGT-sO-qlU" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="Am6-SR-fl3"/>
                             <constraint firstItem="3zg-71-g7g" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="D9Y-bU-Ij9"/>
@@ -842,6 +894,7 @@
                             <constraint firstAttribute="bottom" secondItem="fyk-cX-cR0" secondAttribute="bottom" constant="16" id="QAs-HZ-9Qb"/>
                             <constraint firstItem="fyk-cX-cR0" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="Sdu-mZ-Hig"/>
                             <constraint firstAttribute="trailing" secondItem="7Py-WA-cej" secondAttribute="trailing" constant="28" id="Upk-pR-66L"/>
+                            <constraint firstAttribute="trailing" secondItem="LQC-1W-Vd8" secondAttribute="trailing" constant="28" id="ZJX-GR-oWI"/>
                             <constraint firstAttribute="trailing" secondItem="6pt-RP-kou" secondAttribute="trailing" constant="16" id="eiJ-kK-nNb"/>
                             <constraint firstItem="1Uq-dJ-miB" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="eiM-bk-d3i"/>
                             <constraint firstItem="vA8-2J-E1D" firstAttribute="centerY" secondItem="4nw-1k-SeU" secondAttribute="centerY" id="hCv-Cv-OhI"/>
@@ -860,6 +913,7 @@
                         <outlet property="frameTwoImageView" destination="PpO-dB-26g" id="PKN-sc-Skt"/>
                         <outlet property="staticImageLabel" destination="3zg-71-g7g" id="iHB-UG-5mA"/>
                         <outlet property="staticImageView" destination="1Uq-dJ-miB" id="3KC-23-uv8"/>
+                        <outlet property="tableView" destination="TOj-9d-JrA" id="Hiw-hn-0Lb"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

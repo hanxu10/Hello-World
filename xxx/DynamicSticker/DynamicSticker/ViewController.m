@@ -13,12 +13,13 @@
 #import <YYModel/YYModel.h>
 #import <SSZipArchive/SSZipArchive.h>
 
-@interface ViewController () <XXDragDropViewDelegate, NSTextFieldDelegate>
+@interface ViewController () <XXDragDropViewDelegate, NSTextFieldDelegate, NSTableViewDataSource, NSTableViewDelegate>
 @property (strong) NSArray<NSImageView *> *framesImageView;
 @property (assign) NSInteger colCount;
 @property (assign) NSInteger frameRate;
 @property (strong) NSImage *staticImage;
 @property (strong) NSArray<NSImage *> *dynamicImages;
+@property (strong) NSArray<NSString *> *dynamicImageNames;
 
 @end
 
@@ -84,9 +85,11 @@
             NSImage *bigImage = [XXImage jointedImageWithImages:self.dynamicImages colCount:self.colCount shape:&shape];
             
             NSString *staticImageName = @"static.png";
+            NSString *staticTempImageName = @"static_temp.png";
+            
             NSString *bigImageName = @"big.png";
             NSString *bigTempImageName = @"big_temp.png";
-            [XXImage saveImage:self.staticImage fileName:[tempDirPath stringByAppendingPathComponent:staticImageName]];
+            [XXImage saveImage:self.staticImage fileName:[tempDirPath stringByAppendingPathComponent:staticTempImageName]];
             //先存一个临时的大图
             [XXImage saveImage:bigImage fileName:[tempDirPath stringByAppendingPathComponent:bigTempImageName]];
             
@@ -102,23 +105,39 @@
             
             NSString *pngQuantPath = [[NSBundle mainBundle] pathForResource:@"pngquant" ofType:nil];
             NSMutableString *cmdString = [NSMutableString string];
-            [cmdString appendFormat:@"cd %@;", tempDirPath];
-            [cmdString appendFormat:@"%@ --quality=10-70 %@ --output %@", pngQuantPath, bigTempImageName, bigImageName];
+            [cmdString appendFormat:@"cd \"%@\";", tempDirPath];
+            [cmdString appendFormat:@"\"%@\" --quality=10-70 \"%@\" --output \"%@\";", pngQuantPath, bigTempImageName, bigImageName];
+            [cmdString appendFormat:@"\"%@\" --quality=10-70 \"%@\" --output \"%@\"", pngQuantPath, staticTempImageName, staticImageName];
             
 //            ./pngquant --quality=10-70 image.png
             
             [self cmd:cmdString completion:^(BOOL success) {
                 if (success) {
                     [[NSFileManager defaultManager] removeItemAtPath:[tempDirPath stringByAppendingPathComponent:bigTempImageName] error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:[tempDirPath stringByAppendingPathComponent:staticTempImageName] error:nil];
                     [SSZipArchive createZipFileAtPath:zipPath withContentsOfDirectory:tempDirPath];
                     [[NSFileManager defaultManager] removeItemAtPath:tempDirPath error:nil];
-                    [self showAlert:@"生成zip成功" buttonTitle:@"在finder中找到文件" completionHandler:^(BOOL ok){
-                        if (ok) {
-                            [[NSWorkspace sharedWorkspace] selectFile:zipPath inFileViewerRootedAtPath:@"xx"];
-                        }
+                    
+                    //此时zip生成成功了,再创建一个文件夹来装zip和150 * 150的拇指图
+                    [[NSFileManager defaultManager] createDirectoryAtPath:tempDirPath withIntermediateDirectories:YES attributes:nil error:nil];
+                    [[NSFileManager defaultManager] moveItemAtPath:zipPath toPath:[tempDirPath stringByAppendingPathComponent:zipPath.lastPathComponent] error:nil];
+
+                    //貌似不用压缩
+                    [XXImage saveImage:[XXImage fitResizeImage:self.staticImage toSize:CGSizeMake(150, 150)] fileName:[tempDirPath stringByAppendingPathComponent:staticImageName]];
+                    NSMutableString *cmdString = [NSMutableString string];
+                    [cmdString appendFormat:@"cd %@;", tempDirPath];
+                    [cmdString appendFormat:@"%@ --quality=10-70 %@ --output %@", pngQuantPath, staticImageName, [tempDirPath stringByAppendingPathComponent:@"thumb.png"]];
+                    
+                    [self cmd:cmdString completion:^(BOOL success) {
+                        [[NSFileManager defaultManager] removeItemAtPath:[tempDirPath stringByAppendingPathComponent:staticImageName] error:nil];
+                        [self showAlert:@"生成成功" buttonTitle:@"在finder中找到文件" completionHandler:^(BOOL ok){
+                            if (ok) {
+                                [[NSWorkspace sharedWorkspace] selectFile:tempDirPath inFileViewerRootedAtPath:@"xx"];
+                            }
+                        }];
                     }];
                 } else {
-                    [self showAlert:@"生成zip失败" buttonTitle:@"ok" completionHandler:nil];
+                    [self showAlert:@"生成失败" buttonTitle:@"ok" completionHandler:nil];
                 }
             }];
         }
@@ -188,31 +207,88 @@
 }
 
 - (void)dragDropFilePathList:(NSArray<NSString *> *)filePathList {
+    if (filePathList.count == 1) {
+        [self updateStaticImageInfoWithFile:filePathList.firstObject];
+    } else if (filePathList.count > 1) {
+        [self updateDynamicImageInfoWithFiles:filePathList];
+    }
+}
+
+- (void)updateStaticImageInfoWithFile:(NSString *)filePath {
+    NSImage *image = [[NSImage alloc] initWithContentsOfFile:filePath];
+    NSBitmapImageRep *rep = [NSBitmapImageRep imageRepWithData:[image TIFFRepresentation]];
+    image.size = NSMakeSize(rep.pixelsWide, rep.pixelsHigh);
+    self.staticImage = image;
+    self.staticImageLabel.hidden = NO;
+    self.staticImageView.image = image;
+}
+
+- (void)updateDynamicImageInfoWithFiles:(NSArray *)filePathList {
+    self.dynamicImageNames = filePathList;
+    
     NSArray<NSImage *> *images = [filePathList bk_map:^id(NSString *filePath) {
         NSImage *image = [[NSImage alloc] initWithContentsOfFile:filePath];
         NSBitmapImageRep *rep = [NSBitmapImageRep imageRepWithData:[image TIFFRepresentation]];
         image.size = NSMakeSize(rep.pixelsWide, rep.pixelsHigh);
         return image;
     }];
-
-    if (images.count == 1) {
-        self.staticImage = images.firstObject;
-        self.staticImageLabel.hidden = NO;
-        self.staticImageView.image = images.firstObject;
-    } else if (images.count > 1) {
-        self.dynamicImages = images;
-        for (NSInteger i = 0; i < images.count; i++) {
-            if (i < self.framesImageView.count) {
-                self.framesImageView[i].image = images[i];
-            } else {
-                break;
-            }
+    
+    self.dynamicImages = images;
+    
+    [self.framesImageView enumerateObjectsUsingBlock:^(NSImageView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.image = nil;
+    }];
+    for (NSInteger i = 0; i < images.count; i++) {
+        if (i < self.framesImageView.count) {
+            self.framesImageView[i].image = images[i];
+        } else {
+            break;
         }
     }
+    [self.tableView reloadData];
 }
 
 - (void)mouseDown:(NSEvent *)event{
     [[NSApp mainWindow] makeFirstResponder:nil];
+}
+
+#pragma mark -
+
+//返回行数
+-(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{
+    return self.dynamicImages.count;
+}
+
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    return [self.dynamicImageNames[row] lastPathComponent];
+}
+
+#pragma mark - 行高
+-(CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row{
+    return 20;
+}
+
+- (void)tableView:(NSTableView *)tableView didClickTableColumn:(NSTableColumn *)tableColumn {
+    //按照名称排序
+    if (!self.dynamicImageNames.count) {
+        return;
+    }
+    NSArray *tempNames = [self.dynamicImageNames copy];
+    static BOOL flag = NO;
+    NSArray *sortedArray = [tempNames sortedArrayUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+        NSComparisonResult ret = [obj1 compare:obj2 options:NSNumericSearch];
+        return flag ? (ret > 0) : (ret < 0);
+    }];
+    flag = !flag;
+    [self updateDynamicImageInfoWithFiles:sortedArray];
+}
+
+////选中的响应
+-(void)tableViewSelectionDidChange:(nonnull NSNotification *)notification{
+
+    NSTableView* tableView = notification.object;
+
+    NSLog(@"didSelect：%@",notification);
 }
 
 @end

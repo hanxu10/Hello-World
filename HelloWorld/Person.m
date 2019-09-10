@@ -76,4 +76,8 @@ void doitFunc(id self, SEL _cmd)
     
 }
 
+- (void)dealloc {
+    NSLog(@"person 释放");
+}
+
 @end

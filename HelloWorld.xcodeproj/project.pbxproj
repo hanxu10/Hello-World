@@ -11,7 +11,7 @@
 		3852B757E8BBB44AC79D1D32 /* NSArray+HXYBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 3852BE3532439CADA2896B92 /* NSArray+HXYBlocks.m */; };
 		3852BF57EB485F39E11C6D39 /* NSObject+HXYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3852B9AB92D1FCC3F41CA1ED /* NSObject+HXYModel.m */; };
 		3852BFE5FFE17B7C203BDB7A /* HXYTextKitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3852B4BC9C3F840290F9E015 /* HXYTextKitViewController.m */; };
-		7A172594230A80A70071BD6B /* HXYCollectionViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A172593230A80A70071BD6B /* HXYCollectionViewViewController.m */; };
+		7A172594230A80A70071BD6B /* HXYGradientViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A172593230A80A70071BD6B /* HXYGradientViewViewController.m */; };
 		7A172597230A97590071BD6B /* HXYDrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A172596230A97590071BD6B /* HXYDrawViewController.m */; };
 		7A2D247122DEAB8F00B99E7D /* HXYDrawingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2D247022DEAB8F00B99E7D /* HXYDrawingUtil.m */; };
 		7A3AB81D22E478B2001323FD /* text.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7A3AB81C22E478B1001323FD /* text.pdf */; };
@@ -30,8 +30,14 @@
 		7A96086A22F1E8E700E1C2B5 /* ZZJsonToModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A96086522F1E8E700E1C2B5 /* ZZJsonToModel.m */; };
 		7A96086C22F1E8E700E1C2B5 /* NSString+ZZFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A96086922F1E8E700E1C2B5 /* NSString+ZZFormat.m */; };
 		7A96086E22F1E97900E1C2B5 /* info.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A96086D22F1E97900E1C2B5 /* info.json */; };
+		7ABC0DA1231FE840005B2E8D /* HXYTextContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABC0DA0231FE840005B2E8D /* HXYTextContainer.m */; };
+		7ABC0DA4231FEB6B005B2E8D /* HXYLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABC0DA3231FEB6B005B2E8D /* HXYLayoutManager.m */; };
+		7ABC21BA23262F84005B2E8D /* UIImage+HXY3D.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABC21B923262F83005B2E8D /* UIImage+HXY3D.m */; };
 		7AC177C6230A9F3E00A54F0D /* UIBezierPath+HXYHandyUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC177C5230A9F3E00A54F0D /* UIBezierPath+HXYHandyUtilities.m */; };
 		7AF244722302CE0C007C5BC9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF244712302CE0C007C5BC9 /* User.m */; };
+		7AF6E27E2316776200144350 /* HXYTransitionDemo1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF6E27D2316776200144350 /* HXYTransitionDemo1ViewController.m */; };
+		7AF6E2812316777B00144350 /* HXYTransitionDemo2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF6E2802316777B00144350 /* HXYTransitionDemo2ViewController.m */; };
+		7AF6E2852316791400144350 /* HXYTransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF6E2842316791400144350 /* HXYTransitionDelegate.m */; };
 		A8E4010A9B6AE9A94FB2EB2C /* HXYTask.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E409D27F69BAC7B532D3E8 /* HXYTask.m */; };
 		A8E401A8B07062CF4DDEBAEE /* HXYTaskCompletionSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E407725C37DD2742D215C1 /* HXYTaskCompletionSource.m */; };
 		A8E401AF3D16472BF5774D10 /* HXYExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E406C4ED46E06782FEEC9C /* HXYExecutor.m */; };
@@ -63,8 +69,8 @@
 		3852B9AB92D1FCC3F41CA1ED /* NSObject+HXYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HXYModel.m"; sourceTree = "<group>"; };
 		3852BD7D9B20843F84C2A342 /* NSArray+HXYBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+HXYBlocks.h"; sourceTree = "<group>"; };
 		3852BE3532439CADA2896B92 /* NSArray+HXYBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+HXYBlocks.m"; sourceTree = "<group>"; };
-		7A172592230A80A70071BD6B /* HXYCollectionViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYCollectionViewViewController.h; sourceTree = "<group>"; };
-		7A172593230A80A70071BD6B /* HXYCollectionViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYCollectionViewViewController.m; sourceTree = "<group>"; };
+		7A172592230A80A70071BD6B /* HXYGradientViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYGradientViewViewController.h; sourceTree = "<group>"; };
+		7A172593230A80A70071BD6B /* HXYGradientViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYGradientViewViewController.m; sourceTree = "<group>"; };
 		7A172595230A97590071BD6B /* HXYDrawViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYDrawViewController.h; sourceTree = "<group>"; };
 		7A172596230A97590071BD6B /* HXYDrawViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYDrawViewController.m; sourceTree = "<group>"; };
 		7A2D246F22DEAB8F00B99E7D /* HXYDrawingUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYDrawingUtil.h; sourceTree = "<group>"; };
@@ -100,10 +106,22 @@
 		7A96086722F1E8E700E1C2B5 /* ZZJsonToModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZJsonToModel.h; sourceTree = "<group>"; };
 		7A96086922F1E8E700E1C2B5 /* NSString+ZZFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZZFormat.m"; sourceTree = "<group>"; };
 		7A96086D22F1E97900E1C2B5 /* info.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = info.json; sourceTree = "<group>"; };
+		7ABC0D9F231FE840005B2E8D /* HXYTextContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYTextContainer.h; sourceTree = "<group>"; };
+		7ABC0DA0231FE840005B2E8D /* HXYTextContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYTextContainer.m; sourceTree = "<group>"; };
+		7ABC0DA2231FEB6B005B2E8D /* HXYLayoutManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYLayoutManager.h; sourceTree = "<group>"; };
+		7ABC0DA3231FEB6B005B2E8D /* HXYLayoutManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYLayoutManager.m; sourceTree = "<group>"; };
+		7ABC21B823262F83005B2E8D /* UIImage+HXY3D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+HXY3D.h"; sourceTree = "<group>"; };
+		7ABC21B923262F83005B2E8D /* UIImage+HXY3D.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HXY3D.m"; sourceTree = "<group>"; };
 		7AC177C4230A9F3E00A54F0D /* UIBezierPath+HXYHandyUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+HXYHandyUtilities.h"; sourceTree = "<group>"; };
 		7AC177C5230A9F3E00A54F0D /* UIBezierPath+HXYHandyUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+HXYHandyUtilities.m"; sourceTree = "<group>"; };
 		7AF244702302CE0C007C5BC9 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		7AF244712302CE0C007C5BC9 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		7AF6E27C2316776200144350 /* HXYTransitionDemo1ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYTransitionDemo1ViewController.h; sourceTree = "<group>"; };
+		7AF6E27D2316776200144350 /* HXYTransitionDemo1ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYTransitionDemo1ViewController.m; sourceTree = "<group>"; };
+		7AF6E27F2316777B00144350 /* HXYTransitionDemo2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYTransitionDemo2ViewController.h; sourceTree = "<group>"; };
+		7AF6E2802316777B00144350 /* HXYTransitionDemo2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYTransitionDemo2ViewController.m; sourceTree = "<group>"; };
+		7AF6E2832316791400144350 /* HXYTransitionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXYTransitionDelegate.h; sourceTree = "<group>"; };
+		7AF6E2842316791400144350 /* HXYTransitionDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXYTransitionDelegate.m; sourceTree = "<group>"; };
 		7B439EDB2F5E7ED47DB10AFC /* Pods-HelloWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloWorld.release.xcconfig"; path = "Target Support Files/Pods-HelloWorld/Pods-HelloWorld.release.xcconfig"; sourceTree = "<group>"; };
 		A8E40005562F7E42554DCB01 /* HXYSampleCalendarEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYSampleCalendarEvent.m; sourceTree = "<group>"; };
 		A8E400560A69076C383013A5 /* HXYCalendarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXYCalendarHeaderView.m; sourceTree = "<group>"; };
@@ -175,6 +193,10 @@
 				3852B4BC9C3F840290F9E015 /* HXYTextKitViewController.m */,
 				C3C55D2923006CF50054BF73 /* HXYSyntaxHighlightTextStorage.h */,
 				C3C55D2A23006CF50054BF73 /* HXYSyntaxHighlightTextStorage.m */,
+				7ABC0D9F231FE840005B2E8D /* HXYTextContainer.h */,
+				7ABC0DA0231FE840005B2E8D /* HXYTextContainer.m */,
+				7ABC0DA2231FEB6B005B2E8D /* HXYLayoutManager.h */,
+				7ABC0DA3231FEB6B005B2E8D /* HXYLayoutManager.m */,
 			);
 			path = TextKit;
 			sourceTree = "<group>";
@@ -194,6 +216,8 @@
 				7A2D247022DEAB8F00B99E7D /* HXYDrawingUtil.m */,
 				7AC177C4230A9F3E00A54F0D /* UIBezierPath+HXYHandyUtilities.h */,
 				7AC177C5230A9F3E00A54F0D /* UIBezierPath+HXYHandyUtilities.m */,
+				7ABC21B823262F83005B2E8D /* UIImage+HXY3D.h */,
+				7ABC21B923262F83005B2E8D /* UIImage+HXY3D.m */,
 			);
 			path = Drawing;
 			sourceTree = "<group>";
@@ -258,6 +282,27 @@
 			path = ZZJsonToModel;
 			sourceTree = "<group>";
 		};
+		7AF6E27B2316771A00144350 /* transition */ = {
+			isa = PBXGroup;
+			children = (
+				7AF6E27C2316776200144350 /* HXYTransitionDemo1ViewController.h */,
+				7AF6E27D2316776200144350 /* HXYTransitionDemo1ViewController.m */,
+				7AF6E27F2316777B00144350 /* HXYTransitionDemo2ViewController.h */,
+				7AF6E2802316777B00144350 /* HXYTransitionDemo2ViewController.m */,
+				7AF6E282231678E200144350 /* UIViewControllerTransitioningDelegate */,
+			);
+			path = transition;
+			sourceTree = "<group>";
+		};
+		7AF6E282231678E200144350 /* UIViewControllerTransitioningDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				7AF6E2832316791400144350 /* HXYTransitionDelegate.h */,
+				7AF6E2842316791400144350 /* HXYTransitionDelegate.m */,
+			);
+			path = UIViewControllerTransitioningDelegate;
+			sourceTree = "<group>";
+		};
 		A8E404BABCA1DA91EC45164C /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,6 +364,7 @@
 		C3DC5EA822DCD30800FE7FF3 /* HelloWorld */ = {
 			isa = PBXGroup;
 			children = (
+				7AF6E27B2316771A00144350 /* transition */,
 				3852B1EADB473A155684B380 /* BlocksKit */,
 				3852BDB45F223AE08A60A32F /* TextKit */,
 				A8E40EBB65FEF4422F220A48 /* HXYTask */,
@@ -339,8 +385,8 @@
 				7A9152E422F958DE005A9757 /* HXYViewControllerRed.m */,
 				7A9152E622F958E6005A9757 /* HXYViewControllerBlue.h */,
 				7A9152E722F958E6005A9757 /* HXYViewControllerBlue.m */,
-				7A172592230A80A70071BD6B /* HXYCollectionViewViewController.h */,
-				7A172593230A80A70071BD6B /* HXYCollectionViewViewController.m */,
+				7A172592230A80A70071BD6B /* HXYGradientViewViewController.h */,
+				7A172593230A80A70071BD6B /* HXYGradientViewViewController.m */,
 				7A172595230A97590071BD6B /* HXYDrawViewController.h */,
 				7A172596230A97590071BD6B /* HXYDrawViewController.m */,
 				7A8187EB23080840005AB532 /* Thread */,
@@ -514,22 +560,28 @@
 				7A9152C522F73780005A9757 /* YYClassInfo.m in Sources */,
 				C3DC5EC222DCD4BC00FE7FF3 /* MBProgressHUD.m in Sources */,
 				C3C55D2B23006CF50054BF73 /* HXYSyntaxHighlightTextStorage.m in Sources */,
+				7AF6E27E2316776200144350 /* HXYTransitionDemo1ViewController.m in Sources */,
 				3852BF57EB485F39E11C6D39 /* NSObject+HXYModel.m in Sources */,
+				7ABC0DA4231FEB6B005B2E8D /* HXYLayoutManager.m in Sources */,
 				7AC177C6230A9F3E00A54F0D /* UIBezierPath+HXYHandyUtilities.m in Sources */,
 				3852B757E8BBB44AC79D1D32 /* NSArray+HXYBlocks.m in Sources */,
 				3852BFE5FFE17B7C203BDB7A /* HXYTextKitViewController.m in Sources */,
-				7A172594230A80A70071BD6B /* HXYCollectionViewViewController.m in Sources */,
+				7A172594230A80A70071BD6B /* HXYGradientViewViewController.m in Sources */,
+				7AF6E2812316777B00144350 /* HXYTransitionDemo2ViewController.m in Sources */,
 				A8E40AAB886B6D89EB91418F /* HXYCancellationToken.m in Sources */,
 				A8E40DB3D5626FB558F484DB /* HXYCancellationTokenRegistration.m in Sources */,
 				A8E4063A211910CC6B9888E5 /* HXYCancellationTokenSource.m in Sources */,
 				A8E401AF3D16472BF5774D10 /* HXYExecutor.m in Sources */,
+				7ABC0DA1231FE840005B2E8D /* HXYTextContainer.m in Sources */,
 				A8E4010A9B6AE9A94FB2EB2C /* HXYTask.m in Sources */,
+				7AF6E2852316791400144350 /* HXYTransitionDelegate.m in Sources */,
 				A8E401A8B07062CF4DDEBAEE /* HXYTaskCompletionSource.m in Sources */,
 				A8E402995C3283BB9A5488F9 /* HXYCalendarCollectionViewViewController.m in Sources */,
 				A8E40934747A9BFA8A5A1B53 /* HXYCalendarDataSource.m in Sources */,
 				A8E40672755EAFDF97A27A87 /* HXYCalendarHeaderView.m in Sources */,
 				A8E40CB5C7D7DE2CD42E780D /* HXYSampleCalendarEvent.m in Sources */,
 				A8E401FFC098CC38028A1D52 /* HXYCalendarEventCell.m in Sources */,
+				7ABC21BA23262F84005B2E8D /* UIImage+HXY3D.m in Sources */,
 				A8E40F4ACB2316F074AA6D08 /* HXYWeekCalendarLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

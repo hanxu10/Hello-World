@@ -9,6 +9,7 @@
 #import "HXYDrawViewController.h"
 #import "HXYDrawingUtil.h"
 #import "UIBezierPath+HXYHandyUtilities.h"
+#import "UIImage+HXY3D.h"
 
 @interface HXYDrawViewController ()
 
@@ -204,7 +205,28 @@
             [string drawInRect:smallRect withFont:font];
         }];
     }
-    
+   
+    {
+        CGRect rect = CGRectMake(0, 0, 300, 300);
+        UIImage *centerAStringImage = [HXYDrawingUtil drawImageWithSize:rect.size drawBlock:^(CGContextRef context, CGSize size) {
+            
+            NSString *string = @"Hello World \n Hello";
+            UIFont *font = [UIFont fontWithName:@"HelveticaNeue" size:48];
+            
+            CGSize stringSize = [string sizeWithAttributes:@{NSFontAttributeName : font}];
+            CGRect target = RectAroundCenter(RectGetCenter(rect), stringSize);
+            
+            [[UIColor redColor] set];
+            
+            CGContextStrokeRect(context, target);
+            
+            [[UIColor greenColor] set];
+            CGRect smallRect = target;
+            smallRect.size.width -= 0;
+            [string drawInRect:smallRect withFont:font];
+        }];
+        NSLog(@"");
+    }
     {
         UIImage *colorImage = [HXYDrawingUtil imageWithColor:[UIColor greenColor] size:CGSizeMake(100, 200)];
     }

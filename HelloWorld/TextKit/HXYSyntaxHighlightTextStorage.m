@@ -53,5 +53,25 @@
     [self endEditing];
 }
 
+- (void)processEditing {
+    [self applyStylesToToRange:NSMakeRange(0, self.backingStore.length - 1)];
+    [super processEditing];
+    
+}
+
+- (void)applyStylesToToRange:(NSRange)searchRange {
+    
+//    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\~\\w+(\\s*\\w+)*\\s*\\~)" options:0 error:NULL];
+//    //去除当前段落的颜色属性
+//    NSRange paragaphRange = [self.string paragraphRangeForRange:self.editedRange];
+//    [self removeAttribute:NSForegroundColorAttributeName range:paragaphRange];
+//    //根据正则匹配，添加新属性
+//    [regex enumerateMatchesInString:self.string options:NSMatchingReportProgress range:paragaphRange usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+//        [self addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:result.range];
+//    }];
+    
+    [self setAttributes:@{NSBackgroundColorAttributeName : [UIColor redColor]} range:searchRange];
+    
+}
 
 @end

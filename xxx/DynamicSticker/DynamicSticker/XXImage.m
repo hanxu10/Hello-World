@@ -69,53 +69,6 @@
 }
 
 #pragma mark - 修改图片尺寸
-// 完全填充
-+ (NSImage *)resizeImage:(NSImage*)sourceImage forSize:(NSSize)size {
-    NSRect targetFrame = NSMakeRect(0, 0, size.width, size.height);
-    
-    NSImageRep *sourceImageRep = [sourceImage bestRepresentationForRect:targetFrame context:nil hints:nil];
-    
-    NSImage *targetImage = [[NSImage alloc] initWithSize:size];
-    
-    [targetImage lockFocus];
-    [sourceImageRep drawInRect: targetFrame];
-    [targetImage unlockFocus];
-    
-    return targetImage;
-}
-// 将图像居中缩放截取targetsize
-+ (NSImage*)resizeImage1:(NSImage*)sourceImage forSize:(NSSize)targetSize {
-    
-    CGSize imageSize = sourceImage.size;
-    CGFloat width = imageSize.width;
-    CGFloat height = imageSize.height;
-    CGFloat targetWidth = targetSize.width;
-    CGFloat targetHeight = targetSize.height;
-    CGFloat scaleFactor = 0.0;
-    
-    
-    CGFloat widthFactor = targetWidth / width;
-    CGFloat heightFactor = targetHeight / height;
-    scaleFactor = (widthFactor>heightFactor)?widthFactor:heightFactor;
-    
-    CGFloat readHeight = targetHeight/scaleFactor; // 需要读取的源图像的高度或宽度
-    CGFloat readWidth = targetWidth/scaleFactor;
-    CGPoint readPoint = CGPointMake(
-                                    widthFactor>heightFactor?0:(width-readWidth)*0.5,
-                                    widthFactor<heightFactor?0:(height-readHeight)*0.5);
-    
-    
-    
-    NSImage *newImage = [[NSImage alloc] initWithSize:targetSize];
-    CGRect thumbnailRect = {{0.0, 0.0}, targetSize};
-    NSRect imageRect = {readPoint, {readWidth, readHeight}};
-    
-    [newImage lockFocus];
-    [sourceImage drawInRect:thumbnailRect fromRect:imageRect operation:NSCompositeCopy fraction:1.0];
-    [newImage unlockFocus];
-    
-    return newImage;
-}
 
 // 等比缩放
 + (NSImage*)resizeImage2:(NSImage*)sourceImage forSize:(CGSize)targetSize {
@@ -155,45 +108,30 @@
     [sourceImage drawInRect:thumbnailRect fromRect:imageRect operation:NSCompositeCopy fraction:1.0];
     [newImage unlockFocus];
     
-    //     UIGraphicsBeginImageContext(targetSize); // this will crop
-    //
-    //     CGRect thumbnailRect = CGRectZero;
-    //     thumbnailRect.origin = thumbnailPoint;
-    //     thumbnailRect.size.width  = scaledWidth;
-    //     thumbnailRect.size.height = scaledHeight;
-    //     [sourceImage drawInRect:thumbnailRect fromRect:NSZeroRect operation:NSCompositeCopy fraction:1.0];
-    //     //[sourceImage drawInRect:thumbnailRect];
-    //
-    //     newImage = UIGraphicsGetImageFromCurrentImageContext();
-    //     if(newImage == nil)
-    //     NSLog(@"could not scale image");
-    //
-    //     //pop the context to get back to the default
-    //     UIGraphicsEndImageContext();
-    
-    
     return newImage;
 }
 
-
-#pragma mark - 将图片压缩到指定大小（KB）
-+ (NSData *)compressImgData:(NSData *)imgData toAimKB:(NSInteger)aimKB {
-    if (!imgData) {
-        return nil;
-    }
++ (NSImage *)fitResizeImage:(NSImage *)sourceImage toSize:(CGSize)targetSize {
+    CGFloat imgW = targetSize.width;
+    CGFloat imgH = targetSize.height;
     
-    CGFloat aimRate = (CGFloat)(aimKB * 1000) / imgData.length;
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGContextRef context = CGBitmapContextCreate(NULL, imgW, imgH, 8, imgW * 4, colorSpace, kCGImageAlphaPremultipliedFirst);
+    CGColorSpaceRelease(colorSpace);
     
-    NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:imgData];
-    NSDictionary *imageProps = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:aimRate] forKey:NSImageCompressionFactor];
-    NSData *data = [imageRep representationUsingType:NSJPEGFileType properties:imageProps];
+    CGImageRef imageRef = [self getCGImageRefFromNSImage:sourceImage];
+    CGContextDrawImage(context, NSMakeRect(0, 0, imgW, imgH), imageRef);
     
-    NSLog(@"数据最终大小：%g， 压缩比率：%g",(CGFloat)data.length/1000, (CGFloat)data.length/imgData.length);
+    CGImageRef cgImage = CGBitmapContextCreateImage(context);
+    NSImage *togetherImg = [[NSImage alloc] initWithCGImage:cgImage size:CGSizeMake(imgW, imgH)];
+    //    [togetherImg unlockFocus];
     
-    return data;
+    CGContextRelease(context);
+    return togetherImg;
 }
 
 #pragma mark - 组合图片
+
 + (NSImage *)jointedImageWithImages:(NSArray *)imgArray colCount:(NSInteger)colCount shape:(ShapesJson **)retShape {
     NSInteger imageCount = imgArray.count;
     NSImage *firstImage = imgArray.firstObject;
@@ -293,6 +231,7 @@
     return imageRef;
 }
 #pragma mark -  CGImageRef转NSImage
+
 + (NSImage *)getNSImageWithCGImageRef:(CGImageRef)imageRef{
     
     NSRect imageRect = NSMakeRect(0.0, 0.0, 0.0, 0.0);
@@ -315,6 +254,7 @@
     return newImage;
 }
 #pragma mark -  NSImage转CIImage
+
 + (CIImage *)getCIImageWithNSImage:(NSImage *)myImage {
     
     // convert NSImage to bitmap
@@ -376,6 +316,24 @@
     //    [imageData writeToFile:[[[NSString alloc] initWithFormat:@"~/Documents/test%d.jpg",1] stringByExpandingTildeInPath]atomically:YES];    //保存的文件路径一定要是绝对路径，相对路径不行    //保存的文件路径一定要是绝对路径，相对路径不行
     
     return [[XXImage alloc] initWithData:imageData];
+}
+
+#pragma mark - 将图片压缩到指定大小（KB）
+
++ (NSData *)compressImgData:(NSData *)imgData toAimKB:(NSInteger)aimKB {
+    if (!imgData) {
+        return nil;
+    }
+    
+    CGFloat aimRate = (CGFloat)(aimKB * 1000) / imgData.length;
+    
+    NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:imgData];
+    NSDictionary *imageProps = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:aimRate] forKey:NSImageCompressionFactor];
+    NSData *data = [imageRep representationUsingType:NSJPEGFileType properties:imageProps];
+    
+    NSLog(@"数据最终大小：%g， 压缩比率：%g",(CGFloat)data.length/1000, (CGFloat)data.length/imgData.length);
+    
+    return data;
 }
 
 @end

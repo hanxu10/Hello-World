@@ -19,6 +19,7 @@
 @property (weak) IBOutlet NSImageView *frameThreeImageView;
 @property (weak) IBOutlet NSTextField *colCountTextField;
 @property (weak) IBOutlet NSTextField *frameRateTextField;
+@property (weak) IBOutlet NSTableView *tableView;
 
 
 @end

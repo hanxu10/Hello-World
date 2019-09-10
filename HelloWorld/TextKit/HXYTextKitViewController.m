@@ -5,6 +5,8 @@
 
 #import "HXYTextKitViewController.h"
 #import "HXYSyntaxHighlightTextStorage.h"
+#import "HXYTextContainer.h"
+#import "HXYLayoutManager.h"
 
 @implementation HXYTextKitViewController
 
@@ -21,8 +23,8 @@
 
 - (void)test2
 {
-    NSTextContainer * container1 = [[NSTextContainer alloc] initWithSize:CGSizeMake(150, 150)];
-    NSLayoutManager * layoutManager = [[NSLayoutManager alloc] init];
+    NSTextContainer * container1 = [[HXYTextContainer alloc] initWithSize:CGSizeMake(150, 150)];
+    NSLayoutManager * layoutManager = [[HXYLayoutManager alloc] init];
     [layoutManager addTextContainer:container1];
     
     NSAttributedString *attrs = [[NSAttributedString alloc] initWithString:@"时代峰峻流口水耳机" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16]}];

@@ -23,6 +23,8 @@
 #import "HXYThreadViewController.h"
 #import "HXYDrawViewController.h"
 #import "HXYCalendarCollectionViewViewController.h"
+#import "HXYGradientViewViewController.h"
+#import "HXYTransitionDemo1ViewController.h"
 
 @interface ViewController () <AWESlidingViewControllerDelegate>
 @property (nonatomic, strong) AVAssetImageGenerator *gen;
@@ -30,6 +32,7 @@
 @property (nonatomic, strong) AWESlidingViewController *slidingViewController;
 
 @property (nonatomic, strong) NSMutableArray *vcs;
+@property (nonatomic, weak) Person *p;
 
 @end
 
@@ -49,11 +52,13 @@
     static NSArray *xx = nil;
     if (!xx) {
         xx = @[
+               [HXYTextKitViewController class],
+               [HXYTransitionDemo1ViewController class],
+               [HXYGradientViewViewController class],
                [HXYCalendarCollectionViewViewController class],
                [HXYDrawViewController class],
                [HXYViewControllerRed class],
                [HXYViewControllerBlue class],
-               [HXYTextKitViewController class],
                [HXYThreadViewController class],
                ];
     }
@@ -66,6 +71,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self testPerson];
+    
     self.vcs = [@[] mutableCopy];
     for (Class c in [self classes]) {
         [self.vcs addObject:[[c alloc] init]];
@@ -183,7 +190,7 @@
     if (!_slidingTabView) {
         _slidingTabView = [[AWESlidingTabbarView alloc]
                            initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40)
-                           buttonStyle:AWESlidingTabButtonStyleIrregularText scrollEnabled:NO
+                           buttonStyle:AWESlidingTabButtonStyleIrregularText scrollEnabled:YES
                            dataArray:[self tabNames]
                            selectedDataArray:[self tabNames]];
         _slidingTabView.backgroundColor = [UIColor purpleColor];
@@ -192,6 +199,12 @@
     return _slidingTabView;
 }
 
+#pragma mark -
+
+- (void)testPerson {
+    self.p = [[Person alloc] init];
+    NSLog(@"testPerson finish");
+}
 
 #pragma mark - AWESlidingViewControllerDelegate
 

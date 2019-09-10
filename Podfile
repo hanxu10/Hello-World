@@ -6,4 +6,5 @@ target 'HelloWorld' do
   pod 'MJExtension'
   pod 'Bolts'
   pod 'Masonry'
+  pod 'Reveal-SDK', :configurations => ['Debug']
 end
